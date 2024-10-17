@@ -1,3 +1,7 @@
+/*****************************
+ * Global Styles Begins Here *
+ *****************************/
+
 * {
   -webkit-tap-highlight-color: rgba(152, 240, 255, 0.3);
 }
@@ -16,6 +20,10 @@ body {
   background-repeat: repeat-x;
   background-size: auto 100%;
 }
+
+/*****************************
+ * Header Styles Begins Here *
+ *****************************/
 
 .search {
   height: 70px;
@@ -44,6 +52,23 @@ body {
   background-image: none;
   color: #006b99;
 }
+
+/*****************************
+ * Middle Styles Begins Here *
+ *****************************/
+
+.content {
+  height: calc(100vh - 245px);
+  margin: 0px 20px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  border: 1px solid white;
+}
+
+
+/*****************************
+ * Footer Styles Begins Here *
+ *****************************/
 
 .footer {
   height: 175px;
@@ -124,7 +149,8 @@ body {
   border-radius: 5px;
   border: white 1px solid;
   background-color: rgba(255, 255, 255, 0.2);
-  transition: all 0.2s;
+  transition: all 0.1s;
+  transition-timing-function: ease-out;
 }
 
 .imgBtnItem:nth-child(2n) {
