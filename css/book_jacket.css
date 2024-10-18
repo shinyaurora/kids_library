@@ -1,0 +1,192 @@
+.content {
+    height: calc(100vh - 280px);
+    width: 100%;
+    padding: 30PX;
+    position: relative;
+}
+.title {
+    margin-left: 20px;
+    background-color: rgba(255, 255, 255, 0.6);
+    height: 40px;
+    font-family: taffy;
+    font-size: 22px;
+    font-weight: bold;
+    width: max-content;
+}
+
+.pageCat {
+    position: absolute;
+    right: 20px;
+    bottom: 35px;
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+    z-index: 99;
+}
+
+.pageCat img {
+    width: 100%;
+    height: 100%;
+}
+
+.dogSaying {
+    width: 390px;
+    position: absolute;
+    right: 235px;
+    bottom: 155px;
+    z-index: 200;
+}
+
+.dogSaying .bubble {
+    position: absolute;
+    max-width: none;
+    max-height: none;
+    width: auto;
+    height: auto;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dogSaying .bubble.top-left {
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 11px;
+}
+.dogSaying .bubble.top-middle {
+    top: 0;
+    left: 20px;
+    right: 20px;
+    height: 11px;
+    border-top: 1px solid #B3B3B3;
+}
+.dogSaying .bubble.top-right {
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 11px;
+}
+.dogSaying .bubble.middle-left {
+    top: 10px;
+    left: 0px;
+    width: 20px;
+    bottom: 11px;
+    border-left: 1px solid #B3B3B3;
+}
+.dogSaying .bubble.middle-middle {
+    top: 11px;
+    left: 20px;
+    right: 20px;
+    bottom: 11px;
+}
+.dogSaying .bubble.middle-right {
+    top: 11px;
+    right: 0;
+    width: 20px;
+    bottom: 12px;
+    border-right: 1px solid #B3B3B3;
+}
+.dogSaying .bubble.bottom-left {
+    left: 0;
+    bottom: 0;
+    width: 20px;
+    height: 11px;
+}
+.dogSaying .bubble.bottom-middle {
+    bottom: 0;
+    border-bottom: 1px solid #B3B3B3;
+    left: 20px;
+    right: 70px;
+    height: 11px;
+}
+.dogSaying .bubble.bottom-right {
+    bottom: -33px;
+    right: 0;
+    width: 70px;
+    height: 45px;
+}
+
+.dogSaying .bubble img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.dogSaying p {
+    font-size: 1.2em;
+    font-family: 'taffy';
+    position: relative;
+    height: 100%;
+    z-index: 1000;
+    padding: 30px 0px 20px 0px;
+    text-align: center;
+}
+
+.availability {
+    position: absolute;
+    left: -9px;
+    top: -9px;
+    height: 50px;
+    width: 50px;
+}
+
+.type {
+    position: absolute;
+    z-index: 1000;
+    left: -10px;
+    bottom: -10px;
+    width: 60px;
+    height: 60px;
+}
+
+.level {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 70px;
+    height: 70px;
+}
+
+.availability img, .type img, .level img {
+    width: 100%;
+    height: 100%;
+}
+
+.jacket-container {
+    position: absolute;
+    top: 50%;
+    transform: translate(0%, -50%);
+}
+
+.jacket-card {
+    border: 1px solid white;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 30px 20px;
+}
+
+
+.jacket-card img {
+    height: 100%;
+    max-height: calc(100vh - 400px);
+    width: auto;
+}
+
+.slider {
+    width: 100%;
+    margin: 100px auto;
+}
+
+.slick-slide {
+    padding: 10px;
+}
+
+.slick-slide img {
+    width: 100%;
+    object-fit: contain;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    color: black;
+}
