@@ -29,6 +29,37 @@ const list = [
     { url: "#", img: "" },
     { url: "#", img: "" },
     { url: "#", img: "" },
+    { url: "#", img: "" },
+    { url: "#", img: "" },
+    { url: "#", img: "" },
+    { url: "#", img: "" },
+    { url: "#", img: "" },
+    { url: "#", img: "" },
+    { url: "#", img: "" },
+    { url: "#", img: "" },
+    { url: "#", img: "" },
+    { url: "#", img: "" },
+    { url: "#", img: "" },
+    { url: "#", img: "" },
+    { url: "#", img: "" },
+    { url: "#", img: "" },
+    { url: "#", img: "" },
+    { url: "#", img: "" },
+    { url: "#", img: "" },
+    { url: "#", img: "" },
+    { url: "#", img: "" },
+    { url: "#", img: "" },
+    { url: "#", img: "" },
+    { url: "#", img: "" },
+    { url: "#", img: "" },
+    { url: "#", img: "" },
+    { url: "#", img: "" },
+    { url: "#", img: "" },
+    { url: "#", img: "" },
+    { url: "#", img: "" },
+    { url: "#", img: "" },
+    { url: "#", img: "" },
+    { url: "#", img: "" },
     { url: "#", img: "" }
 ]
 
@@ -72,7 +103,15 @@ function initCards(categoryList = list) {
         elem.style.display = "flex";
         elem.style.justifyContent = "center";
         elem.style.alignItems = "center";
-        elem.innerHTML = num;
+        elem.style.padding = "8px";
+        
+        let img = document.createElement("img");
+        img.style.width = "100%";
+        img.style.height = "100%";
+
+        img.src = `assets/img/categories/on (${num + 1}).png`;
+
+        elem.appendChild(img);
         return elem;
     }
 
