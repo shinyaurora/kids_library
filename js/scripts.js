@@ -76,6 +76,9 @@ function initCards(categoryList = list) {
     
     let gapX = (window.innerWidth - 64 - 100 * numOfCardsPerRow) / (numOfCardsPerRow + 1);
     let gapY = (window.innerHeight - 280 - 100 * numOfCardsPerCol) / (numOfCardsPerCol + 1);
+
+    let cloudX = 0;
+    let grassX = 0;
     
     
     function btnStateUpdate() {
@@ -89,6 +92,15 @@ function initCards(categoryList = list) {
         } else {
             document.getElementById("next").style.backgroundPositionY = "-280px";
         }
+    }
+
+    function assetsTransform(dir) {
+        let cloud = document.getElementById("cloud");
+        let grass = document.getElementById("grass");
+        cloudX += 100 * dir;
+        grassX += 120 * dir;
+        cloud.style.transform = `translate(${cloudX}px, 0)`;
+        grass.style.right = `${grassX}px`;
     }
 
     function createOneCard(num) {
@@ -158,6 +170,7 @@ function initCards(categoryList = list) {
             indexofPanel--;
             btnStateUpdate();
             arrangeCards();
+            assetsTransform(-1);
         }
     });
 
@@ -166,6 +179,7 @@ function initCards(categoryList = list) {
             indexofPanel++;
             btnStateUpdate();
             arrangeCards();
+            assetsTransform(+1);
         }
     });
 }

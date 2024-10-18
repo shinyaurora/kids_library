@@ -13,6 +13,13 @@
 <body>
 
     <div class="container-fluid vh-100 main">
+        <div class="position-absolute cloudBg" id="cloud">
+            <img src="assets/img/bg/cloud-2.png" alt="cloud-1" />
+            <img src="assets/img/bg/cloud-2.png" alt="cloud-2" style="transform: translate(0, 100px);" />
+            <img src="assets/img/bg/cloud-2.png" alt="cloud-1" />
+            <img src="assets/img/bg/cloud-2.png" alt="cloud-2" style="transform: translate(0, 100px);"  />
+            <img src="assets/img/bg/cloud-2.png" alt="cloud-1" />
+        </div>
         <div class="search px-5 d-flex flex-row justify-content-center align-items-center">
             <input type="text" class="form-control" />
             <button type="button" class="searchBtn mx-2">Search</button>
@@ -29,7 +36,9 @@
     </div>
 
     <div class="footer fixed-bottom w-100">
-        <div class="grass w-100"></div>
+        <div class="grass w-100" id="grass">
+            <img src="assets/img/bg/grass-30.png" width="auto"/>
+        </div>
         <a href="#" class="dogImg">
             <img src="assets/img/item/dog.png" alt="dog" />
         </a>
