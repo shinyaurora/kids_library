@@ -177,7 +177,6 @@
 
 .jacket-card img {
     height: 100%;
-    max-height: calc(100vh - 400px);
     width: auto;
 }
 
