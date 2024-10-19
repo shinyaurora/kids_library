@@ -295,17 +295,14 @@
     <script type="text/javascript">
 
         function updateCardSize() {
-            if(window.innerWidth > 1366 ) {
+            if(window.innerWidth > 1366) {
                 $(".jacket-card").css("height", (window.innerWidth - 90 - 20 * 4) / 5 * 1.3 + "px");
-                return ;
             }
-            if (window.innerWidth > 1024) {
+            if (window.innerWidth > 1024 && window.innerWidth <= 1366) {
                 $(".jacket-card").css("height", (window.innerWidth - 90 - 20 * 3) / 4 * 1.3 + "px");
-                return;
             }
-            if (window.innerWidth > 768) {
+            if (window.innerWidth > 768 && window.innerWidth < 1024) {
                 $(".jacket-card").css("height", (window.innerWidth - 90 - 20 * 2) / 3 * 1.3 + "px");
-                return;
             }
         }
 
@@ -341,14 +338,7 @@
                             slidesToScroll: 2,
                             infinite: true
                         }
-                    },
-                    // {
-                    //     breakpoint: 480,
-                    //     settings: {
-                    //         slidesToShow: 1,
-                    //         slidesToScroll: 1
-                    //     }
-                    // }
+                    }
                 ]
             });
         });
