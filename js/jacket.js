@@ -83,8 +83,6 @@ function initModalEffects() {
         $("#modal").css("display", "none");
     })
 
-    
-
     $(".modal-link").click(function () {
         let target = $(this).data("to");
         let $targetElement = $("#" + target);
@@ -109,5 +107,21 @@ function initModalEffects() {
 
     $(".action-btn.yes").click(function () {
         $(".login").css("display", "flex");
+        $(".dogSaying .confirm").css("display", "none");
+        $(".dogSaying .suggest").css("display", "block");
+        $(".dogSaying").css("z-index", "100001");
+    })
+    
+    $(".placehold").click(function () {
+        $(".dogSaying").css("display", "block");
+        $(".dogSaying .confirm").css("display", "block");
+        $(".dogSaying").css("z-index", "100001");
+        $(".dogImg").css("z-index", "100000");
+    })
+    
+    $(".forget").click(function () {
+        $(".login").css("display", "none");
+        $(".dogSaying").css("display", "none");
+        $(".dogImg").css("z-index", "10");
     })
 }

@@ -316,72 +316,76 @@
                 <label for="remember">Remember Me</label> 
             </div>
             <div class="login-action d-flex justify-content-between">
-                <button type="submit" class="btn btn-primary btn-sm">I want it</button>
-                <button type="reset" class="btn btn-secondary btn-sm">Forget it</button>
+                <button type="submit" class="btn btn-primary btn-sm submit">I want it</button>
+                <button type="reset" class="btn btn-secondary btn-sm forget">Forget it</button>
             </div>
         </form>
     </div>
 
-    <div class="footer fixed-bottom w-100">
+    
+
+    <div class="dogSaying" id="dogSaying">
+        <div class="bubble top-left">
+            <img src="./assets/img/item/message/top-left.png" alt="" role="presentation">
+        </div>
+        <div class="bubble top-middle">
+            <img src="./assets/img/item/message/middle.png" alt="" role="presentation">
+        </div>
+        <div class="bubble top-right">
+            <img src="./assets/img/item/message/top-right.png" alt="" role="presentation" data-nsfw-filter-status="sfw"
+                style="visibility: visible;">
+        </div>
+        <div class="bubble middle-left">
+            <img src="./assets/img/item/message/middle.png" alt="" role="presentation">
+        </div>
+        <div class="bubble middle-middle">
+            <img src="./assets/img/item/message/middle.png" alt="" role="presentation">
+        </div>
+        <div class="bubble middle-right">
+            <img src="./assets/img/item/message/middle.png" alt="" role="presentation">
+        </div>
+        <div class="bubble bottom-left">
+            <img src="./assets/img/item/message/bottom-left.png" alt="" role="presentation" data-nsfw-filter-status="sfw"
+                style="visibility: visible;">
+        </div>
+        <div class="bubble bottom-middle">
+            <img src="./assets/img/item/message/middle.png" alt="" role="presentation">
+        </div>
+        <div class="bubble bottom-right">
+            <img src="./assets/img/item/message/bottom-right.png" alt="" role="presentation" data-nsfw-filter-status="sfw"
+                style="visibility: visible;">
+        </div>
+        <div class="say-content loading">Loading...</div>
+        <div class="say-content confirm">
+            <h3 class="my-1">Do you want the libary to save this for you?</h3>
+            <!-- This part will be modified by book title -->
+            <h4 class="my-3">Which one doesn't belong? :
+                <span id="bookTitle">
+                    playing with shapes
+                </span>
+            </h4>
+            <div class="confirm-action d-flex justify-content-center">
+                <div class="action-btn mx-2 yes">Yes</div>
+                <div class="action-btn mx-2 no">No</div>
+            </div>
+        </div>
+        <div class="say-content suggest">If you want it, login</div>
+    </div>
+
+    <a href="#aurora" class="dogImg">
+        <img src="assets/img/item/dog.png" alt="dog" />
+    </a>
+    
+    <div class="footer w-100">
         <div class="grass w-100" id="grass">
             <img src="assets/img/bg/grass-30.png" width="auto" />
         </div>
-        <a href="#aurora" class="dogImg">
-            <img src="assets/img/item/dog.png" alt="dog" />
-        </a>
         <a href="#" class="dogHouse">
             <img src="assets/img/item/doghouse.png" alt="dogHouse" />
         </a>
 
         <!-- When dogs saying, using JS DOM, can toggle the visibility during loading time -->
         <!-- And can change the saying content -->
-        <div class="dogSaying" id="dogSaying">
-            <div class="bubble top-left">
-                <img src="./assets/img/item/message/top-left.png" alt="" role="presentation">
-            </div>
-            <div class="bubble top-middle">
-                <img src="./assets/img/item/message/middle.png" alt="" role="presentation">
-            </div>
-            <div class="bubble top-right">
-                <img src="./assets/img/item/message/top-right.png" alt="" role="presentation"
-                    data-nsfw-filter-status="sfw" style="visibility: visible;">
-            </div>
-            <div class="bubble middle-left">
-                <img src="./assets/img/item/message/middle.png" alt="" role="presentation">
-            </div>
-            <div class="bubble middle-middle">
-                <img src="./assets/img/item/message/middle.png" alt="" role="presentation">
-            </div>
-            <div class="bubble middle-right">
-                <img src="./assets/img/item/message/middle.png" alt="" role="presentation">
-            </div>
-            <div class="bubble bottom-left">
-                <img src="./assets/img/item/message/bottom-left.png" alt="" role="presentation"
-                    data-nsfw-filter-status="sfw" style="visibility: visible;">
-            </div>
-            <div class="bubble bottom-middle">
-                <img src="./assets/img/item/message/middle.png" alt="" role="presentation">
-            </div>
-            <div class="bubble bottom-right">
-                <img src="./assets/img/item/message/bottom-right.png" alt="" role="presentation"
-                    data-nsfw-filter-status="sfw" style="visibility: visible;">
-            </div>
-            <div class="say-content loading">Loading...</div>
-            <div class="say-content confirm">
-                <h3 class="my-1">Do you want the libary to save this for you?</h3>
-                <!-- This part will be modified by book title -->
-                <h4 class="my-3">Which one doesn't belong? : 
-                    <span id="bookTitle">
-                        playing with shapes
-                    </span>
-                </h4>
-                <div class="confirm-action d-flex justify-content-center">
-                    <div class="action-btn mx-2 yes">Yes</div>
-                    <div class="action-btn mx-2 no">No</div>
-                </div>
-            </div>
-            <div class="say-content suggest">If you want it, login</div>
-        </div>
 
         <!-- Once enter jaket page, then the category icon showes next to dog's house image -->
         <!-- It can also be changed with JS DOM easily here -->
