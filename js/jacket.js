@@ -12,7 +12,10 @@ function updateCardSize() {
 
 function initCardSizeOption() {
     updateCardSize();
-    window.addEventListener("resize", updateCardSize);
+    window.addEventListener("resize", () => {
+        updateCardSize();
+    });
+    
 }
 
 function initSlick() {
@@ -62,8 +65,6 @@ function initModalEffects() {
         moved = false;
         startX = e.pageX || e.originalEvent.touches[0].pageX;
         startY = e.pageY || e.originalEvent.touches[0].pageY;
-        console.log("down");
-        
     });
 
     // Detect when the user stops touching or clicking
@@ -73,11 +74,11 @@ function initModalEffects() {
         }
     });
 
-    $(".jacket-card").click(function () {
+    $('.slider').on('click', '.slick-slide', function () {
         if (!moved) {
             $("#modal").css("display", "flex");
         }
-    })
+    });
 
     $(".close-btn, .overlay").click(function () {
         $("#modal").css("display", "none");
