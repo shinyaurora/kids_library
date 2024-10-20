@@ -112,7 +112,13 @@ function initModalEffects() {
         $(".dogSaying .suggest").css("display", "block");
         $(".dogSaying").css("z-index", "100001");
     })
-    
+
+    $(".action-btn.no").click(function () {
+        $(".dogSaying .confirm").css("display", "none");
+        $(".dogImg").css("z-index", "10");
+        $(".dogSaying").css("display", "none");
+    })
+
     $(".placehold").click(function () {
         $(".dogSaying").css("display", "block");
         $(".dogSaying .confirm").css("display", "block");
