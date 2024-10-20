@@ -108,6 +108,7 @@ function initModalEffects() {
     $(".action-btn.yes").click(function () {
         $(".login").css("display", "flex");
         $(".dogSaying .confirm").css("display", "none");
+        $(".dogSaying .loading").css("display", "none");
         $(".dogSaying .suggest").css("display", "block");
         $(".dogSaying").css("z-index", "100001");
     })
@@ -115,6 +116,8 @@ function initModalEffects() {
     $(".placehold").click(function () {
         $(".dogSaying").css("display", "block");
         $(".dogSaying .confirm").css("display", "block");
+        $(".dogSaying .suggest").css("display", "none");
+        $(".dogSaying .loading").css("display", "none");
         $(".dogSaying").css("z-index", "100001");
         $(".dogImg").css("z-index", "100000");
     })
