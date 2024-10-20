@@ -12,6 +12,12 @@
 
     <link rel="stylesheet" type="text/css" href="css/slick.css" />
     <link rel="stylesheet" type="text/css" href="css/slick-theme.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet" />
 </head>
 
 <body>
@@ -25,7 +31,7 @@
             <img src="assets/img/bg/cloud-2.png" alt="cloud-1" />
         </div>
         <div class="search px-5 d-flex flex-row justify-content-center align-items-center">
-            <input type="text" class="form-control" />
+            <input type="text" required class="form-control" />
             <button type="button" class="searchBtn mx-2">Search</button>
         </div>
         <div class="title rounded-4 px-3 d-flex align-items-center text-black">
@@ -187,11 +193,140 @@
         </div>
     </div>
 
+    <!-- This is modal part -->
+    <div id="modal">
+        <!-- The contents of modal should be modified by JS or PHP  -->
+        <div class="overlay"></div>
+        <div class="d-flex flex-row shadow-sm rounded-7 center-box">
+            <div class="left-section d-flex flex-column d-none d-md-block" >
+                <div class="thumbnail position-relative">
+                    <img src="assets/img/jackets/image6.jpeg" alt="cover_page_img" class="w-100"/>
+                    <img src="assets/img/item/in.png" alt="in" class="detail-avai" />
+                    <img src="assets/img/item/book.png" alt="out" class="detail-type" />
+                </div>
+                <button class="btn btn-style placehold">Place Hold</button>
+                <div class="links d-flex flex-column align-items-end justify-content-end">
+                    <a href="#abc" class="text-decoration-none kalam modal-link" data-to="copies">Copies</a>
+                    <a href="#" class="text-decoration-none kalam modal-link" data-to="summary">Summary</a>
+                    <a href="#" class="text-decoration-none kalam modal-link" data-to="levels">Reading Levels</a>
+                    <a href="#" class="text-decoration-none kalam modal-link" data-to="details">Details</a>
+                </div>
+            </div>
+
+            <div class="right-section d-flex flex-column overflow-auto flex-grow-1">
+                <h1 class="large-text">Wolves</h1>
+                <div id="copies">
+                    <p class="bg-blue-heading kalam">Copies</p>
+                    <p class="text-gray subtitle">Shelf Location at Keyser</p>
+                    <table class="table table-bordered">
+                        <thead class="t-head">
+                            <tr>
+                                <th scope="col">Collection</th>
+                                <th scope="col">Call Number</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Juvenile Non-Fiction</td>
+                                <td>J 599.74 G</td>
+                                <td class="fw-bold">Checked In</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="text-gray subtitle">Shelf Location at Keyser</p>
+                    <table class="table table-bordered">
+                        <thead class="t-head">
+                            <tr>
+                                <th scope="col">Collection</th>
+                                <th scope="col">Call Number</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Juvenile Non-Fiction</td>
+                                <td>J 599.74 Gibbons</td>
+                                <td class="fw-bold">Checked In</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="summary">
+                    <p class="bg-blue-heading margin-top kalam">Summary</p>
+                    <p class="summary-content">Just how these long-feared animals live.</p>
+                </div>
+                <div class="d-flex flex-column" id="levels">
+                    <p class="bg-blue-heading margin-top kalam">
+                        Reading Levels
+                    </p>
+                    <div class="d-flex flex-column gap-1">
+                        <p class="fw-bold">Lexile Measure</p>
+                        <p class="neg-margin">670L</p>
+                    </div>
+                    <div class="d-flex flex-column gap-1">
+                        <p class="fw-bold">AR Reading Level</p>
+                        <p class="neg-margin">4.2</p>
+                    </div>
+                    <div class="d-flex flex-column gap-1">
+                        <p class="fw-bold">AR Interest Level</p>
+                        <p class="neg-margin">MG</p>
+                    </div>
+                    <div class="d-flex flex-column gap-1">
+                        <p class="fw-bold">AR Points</p>
+                        <p class="neg-margin">0.5</p>
+                    </div>
+                </div>
+                <div class="d-flex flex-column" id="details">
+                    <p class="bg-blue-heading margin-top kalam">Details</p>
+                    <div class="d-flex flex-column gap-1">
+                        <p class="fw-bold">Lexile Measure</p>
+                        <a href="#" class="text-decoration-none neg-margin">Gibbons, Gail author</a>
+                    </div>
+                    <div class="d-flex flex-column gap-1 mt-2">
+                        <p class="fw-bold">Lexile Measure</p>
+                        <p class="neg-margin">1 volume (unpaged):</p>
+                    </div>
+                    <div class="d-flex flex-column gap-1">
+                        <p class="fw-bold">Lexile Measure</p>
+                        <a href="#" class="neg-margin text-decoration-none mb-2">Wolves -- Juvenile literature</a>
+                        <a href="#" class="neg-margin text-decoration-none">Wolves.</a>
+                    </div>
+                </div>
+            </div>
+            <img src="assets/img/item/close-button.png" alt="close" class="close-btn"/>
+        </div>
+    </div>
+
+    <!-- This is a login form -->
+    <div class="login justify-content-center">
+        <div class="login-overlay"></div>
+        <form class="login-content">
+            <p>Log in with either your Library Card Number or EZ login</p>
+            <div class="login-item my-3">
+                <label for="id">Libary ID *</label>
+                <input type="text" required name="id" id="id" class="form-control" />
+            </div>
+            <div class="login-item my-3">
+                <label for="pin">PIN *</label>
+                <input type="text" required name="pin" id="pin" class="form-control" />
+            </div>
+            <div class="login-item my-3 d-flex align-items-center">
+                <input type="checkbox" id="remember" name="remember" class="form-check mx-1" />
+                <label for="remember">Remember Me</label> 
+            </div>
+            <div class="login-action d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary btn-sm">I want it</button>
+                <button type="reset" class="btn btn-secondary btn-sm">Forget it</button>
+            </div>
+        </form>
+    </div>
+
     <div class="footer fixed-bottom w-100">
         <div class="grass w-100" id="grass">
             <img src="assets/img/bg/grass-30.png" width="auto" />
         </div>
-        <a href="#" class="dogImg">
+        <a href="#aurora" class="dogImg">
             <img src="assets/img/item/dog.png" alt="dog" />
         </a>
         <a href="#" class="dogHouse">
@@ -231,7 +366,21 @@
                 <img src="./assets/img/item/message/bottom-right.png" alt="" role="presentation"
                     data-nsfw-filter-status="sfw" style="visibility: visible;">
             </div>
-            <p>Loading...</p>
+            <div class="say-content loading">Loading...</div>
+            <div class="say-content confirm">
+                <h3 class="my-1">Do you want the libary to save this for you?</h3>
+                <!-- This part will be modified by book title -->
+                <h4 class="my-3">Which one doesn't belong? : 
+                    <span id="bookTitle">
+                        playing with shapes
+                    </span>
+                </h4>
+                <div class="confirm-action d-flex justify-content-center">
+                    <div class="action-btn mx-2 yes">Yes</div>
+                    <div class="action-btn mx-2 no">No</div>
+                </div>
+            </div>
+            <div class="say-content suggest">If you want it, login</div>
         </div>
 
         <!-- Once enter jaket page, then the category icon showes next to dog's house image -->
@@ -292,60 +441,11 @@
     <!-- Here, the JS script goes -->
     <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
     <script src="./js/slick.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript">
-
-        function updateCardSize() {
-            if(window.innerWidth > 1366) {
-                $(".jacket-card").css("height", (window.innerWidth - 90 - 20 * 4) / 5 * 1.3 + "px");
-            }
-            if (window.innerWidth > 1024 && window.innerWidth <= 1366) {
-                $(".jacket-card").css("height", (window.innerWidth - 90 - 20 * 3) / 4 * 1.3 + "px");
-            }
-            if (window.innerWidth > 768 && window.innerWidth < 1024) {
-                $(".jacket-card").css("height", (window.innerWidth - 90 - 20 * 2) / 3 * 1.3 + "px");
-            }
-        }
-
-        updateCardSize();
-        window.addEventListener("resize", updateCardSize);
-
-        $(document).on('ready', function () {
-            // The Book Jacket Fetching and Showing in document code gose here
-
-            
-            // Then we draw the slick carousel
-            $(".jacket-container").slick({
-                slidesToShow: 5,
-                slidesToScroll: 5,
-                infinite: true,
-                responsive: [
-                    {
-                        breakpoint: 1366,
-                        settings: {
-                            slidesToShow: 4,
-                            slidesToScroll: 4,
-                            infinite: true,
-                        }
-                    },
-                    {
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToShow: 3,
-                            slidesToScroll: 3,
-                            infinite: true,
-                        }
-                    },
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 2,
-                            infinite: true
-                        }
-                    }
-                ]
-            });
-        });
+    <script src="./js/jacket.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        initCardSizeOption();
+        initSlick();
+        initModalEffects();
     </script>
 
 </body>

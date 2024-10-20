@@ -1,3 +1,7 @@
+* {
+    font-family: sans-serif;
+}
+
 .content {
     height: calc(100vh - 280px);
     width: 100%;
@@ -37,7 +41,7 @@
     margin-left: 20px;
     background-color: rgba(255, 255, 255, 0.6);
     height: 40px;
-    font-family: taffy;
+    font-family: 'taffy';
     font-size: 22px;
     font-weight: bold;
     width: max-content;
@@ -64,6 +68,7 @@
     right: 235px;
     bottom: 155px;
     z-index: 200;
+    display: none;
 }
 
 .dogSaying .bubble {
@@ -142,14 +147,46 @@
     height: 100%;
 }
 
-.dogSaying p {
-    font-size: 1.2em;
+.dogSaying .say-content {
+    font-size: 1.2em;   
     font-family: 'taffy';
     position: relative;
     height: 100%;
     z-index: 1000;
-    padding: 30px 0px 20px 0px;
+    padding: 30px 20px 20px 20px;
     text-align: center;
+    display: none;
+}
+
+.dogSaying .say-content * {
+    font-family: taffy;
+}
+
+.confirm h3 {
+    font-size: 25px;
+}
+
+.confirm h4 {
+    font-size: 19px;
+    font-weight: 500;
+}
+
+.confirm-action .action-btn {
+    width: 100px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    font-size: 24px;
+    color: #0071bc;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.confirm-action .action-btn:hover {
+    background-color: #0071bc;
+    color: white;
 }
 
 .availability {
@@ -201,6 +238,7 @@
     border: 1px solid white;
     background-color: rgba(255, 255, 255, 0.2);
     padding: 30px 20px;
+    cursor: pointer;
 }
 
 
@@ -226,4 +264,240 @@
 .slick-next:before {
     color: black;
     display: none;
+}
+
+
+#modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9999;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 40px;
+    transition: all 0.3s;
+}
+
+#modal .overlay {
+    position: fixed;
+    background-color: rgba(0,0,0,0.5);
+    width: 100%;
+    height: 100vh;
+}
+
+.kalam {
+    font-family: "taffy";
+    color: #0071BC;
+    font-size: 24px;
+
+}
+
+.center-box {
+    width: 900px;
+    height: 90%;
+    background: white;
+    position: relative;
+}
+
+.left-section {
+    width: 240px;
+    padding: 15px;
+    border-right: 1px solid rgb(78, 74, 74);
+}
+
+.right-section {
+    padding: 10px;
+}
+
+.right-section::-webkit-scrollbar {
+    width: 14px;
+}
+
+.right-section::-webkit-scrollbar-thumb {
+    background-color: #2b66c0;
+}
+
+.right-section::-webkit-scrollbar-track {
+    background-color: #e9ecef;
+}
+
+.btn {
+    border: 1px solid gray;
+    width: 100%;
+    height: 48px;
+    padding: 6px;
+    background: #297af2;
+    color: white;
+    margin-top: 20px;
+    border-radius: 0px;
+}
+
+.btn-style {
+    font-size: 26px !important;
+    color: #FFF !important;
+    font-family: "taffy" !important;
+    text-shadow: 1px 1px 1px #444;
+    background: linear-gradient(#008eec, #0071bc);
+}
+
+.links {
+    width: 100%;
+}
+
+.large-text {
+    font-size: 32px;
+    font-family: 'taffy';
+}
+
+.bg-blue-heading {
+    width: 100%;
+    background: #0071bc;
+    color: white;
+    padding-left: 6px;
+    font-size: 22px;
+    text-shadow: 1px 1px 1px black;
+}
+
+.summary-content {
+    font-size: 15px !important;
+}
+
+.text-gray {
+    color: #444;
+    font-weight: 700;
+    font-size: 17px;
+    font-family: sans-serif;
+}
+
+.subtitle {
+    font-size: 15px;
+    margin: -9px 0px 6px 0px;
+    font-weight: 600;
+
+}
+
+.t-head th {
+    background: linear-gradient(#d4d4d4, #c2c2c2);
+    padding: 5px 8px !important;
+    color: #444444 !important;
+}
+
+.table td {
+    font-size: 14px;
+    padding: 7px !important;
+    color: #444444 !important;
+}
+
+.margin-top {
+    margin-top: 50px;
+}
+
+.neg-margin {
+    margin-top: -18px;
+}
+
+.btn-gradient {
+    background: linear-gradient(to bottom, #297af2, #0056b3);
+    color: white;
+    border: none;
+}
+
+.btn-gradient:hover {
+    background: linear-gradient(to bottom, #0056b3, #297af2);
+    color: white;
+}
+
+.absolute-div{
+    position: absolute;
+    top: -20px;
+    right:-20px;
+    background: white;
+    border: 4px solid gray;
+    padding: 5px 10px; 
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.icon{
+    color: rgb(202, 13, 13);
+    font-weight: bolder;
+    font-size: 30px;
+}
+
+.links {
+    margin-top: 14px !important;
+}
+
+.links a {
+    font-size: 22px;
+    line-height: 1.25em;
+    width: 100%;
+    text-align: right;
+}
+
+.close-btn {
+    position: absolute;
+    right: -20px;
+    top: -20px;
+    cursor: pointer;
+}
+
+.detail-avai {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: -10px;
+    top: -10px;
+}
+
+.detail-type {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: -10px;
+    bottom: -10px;
+}
+
+.login {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 100000;
+    display: none;
+}
+
+.login-overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    z-index: -1;
+}
+
+.login-content {
+    margin-top: 100px;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: max-content;
+}
+
+input[type=checkbox] {
+    width: 16px;
+    height: 16px;
+}
+
+.login button {
+    font-family: taffy;
+    font-size: 20px;
+    padding: 0px 20px !important;
+    width: auto;
 }
