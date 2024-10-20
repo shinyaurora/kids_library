@@ -63,19 +63,19 @@ const list = [
     { url: "#", img: "" }
 ]
 
-function initCards(categoryList = list) {
+function initCards(categoryList = list, cardW = 160, cardH = 160) {
     let container = document.getElementById("container");
     let cards = [];
     container.innerHTML = "";
 
-    let numOfCardsPerRow = Math.floor((window.innerWidth - 64) / 120);
-    let numOfCardsPerCol = Math.floor((window.innerHeight - 280) / 120);
+    let numOfCardsPerRow = Math.floor((window.innerWidth - 64) / (cardW + 20));
+    let numOfCardsPerCol = Math.floor((window.innerHeight - 280) / (cardH + 20));
     let numOfCardsPerPanel = numOfCardsPerRow * numOfCardsPerCol;
     let numofPanel = Math.ceil(categoryList.length / numOfCardsPerPanel);
     let indexofPanel = 0;
     
-    let gapX = (window.innerWidth - 64 - 100 * numOfCardsPerRow) / (numOfCardsPerRow + 1);
-    let gapY = (window.innerHeight - 280 - 100 * numOfCardsPerCol) / (numOfCardsPerCol + 1);
+    let gapX = (window.innerWidth - 64 - cardW * numOfCardsPerRow) / (numOfCardsPerRow + 1);
+    let gapY = (window.innerHeight - 280 - cardH * numOfCardsPerCol) / (numOfCardsPerCol + 1);
 
     let cloudX = 0;
     let grassX = 0;
@@ -106,16 +106,20 @@ function initCards(categoryList = list) {
     function createOneCard(num) {
         let elem = document.createElement("div");
         elem.style.position = "absolute";
-        elem.style.width = "100px";
-        elem.style.height = "100px";
+        elem.style.width = cardW + "px";
+        elem.style.height = cardH + "px";
         elem.style.borderRadius = "10px";
         elem.style.border = "1px solid white";
         elem.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
         elem.style.transition = "all 0.5s";
         elem.style.display = "flex";
         elem.style.justifyContent = "center";
+        elem.style.cursor = "pointer";
         elem.style.alignItems = "center";
         elem.style.padding = "8px";
+        
+        //when click category item icon or series icon, then goes to book_jacket.html page
+        elem.onclick = () => window.location.assign("book_jacket.html");
         
         let img = document.createElement("img");
         img.style.width = "100%";
@@ -139,8 +143,8 @@ function initCards(categoryList = list) {
         for (let j = 0; j < cards.length; j++) {
             let i = j % numOfCardsPerPanel;
             
-            cards[j].style.left = (window.innerWidth - 64) * (Math.floor(j / numOfCardsPerPanel) - indexofPanel) + (i % numOfCardsPerRow + 1) * gapX + (i % numOfCardsPerRow) * 100 + "px";
-            cards[j].style.top = Math.floor(i / numOfCardsPerRow + 1) * gapY + Math.floor(i/ numOfCardsPerRow) * 100 + "px";
+            cards[j].style.left = (window.innerWidth - 64) * (Math.floor(j / numOfCardsPerPanel) - indexofPanel) + (i % numOfCardsPerRow + 1) * gapX + (i % numOfCardsPerRow) * cardW + "px";
+            cards[j].style.top = Math.floor(i / numOfCardsPerRow + 1) * gapY + Math.floor(i/ numOfCardsPerRow) * cardH + "px";
         }
     }
 
@@ -149,8 +153,8 @@ function initCards(categoryList = list) {
     arrangeCards();
 
     window.addEventListener("resize", () => {
-        numOfCardsPerRow = Math.floor((window.innerWidth - 64) / 120);
-        numOfCardsPerCol = Math.floor((window.innerHeight - 280) / 120);
+        numOfCardsPerRow = Math.floor((window.innerWidth - 64) / (cardW + 20));
+        numOfCardsPerCol = Math.floor((window.innerHeight - 280) / (cardH + 20));
         numOfCardsPerPanel = numOfCardsPerRow * numOfCardsPerCol;
         numofPanel = Math.ceil(categoryList.length / numOfCardsPerPanel);
         
@@ -158,8 +162,8 @@ function initCards(categoryList = list) {
             indexofPanel = numofPanel - 1;
         }
 
-        gapX = (window.innerWidth - 64 - 100 * numOfCardsPerRow) / (numOfCardsPerRow + 1);
-        gapY = (window.innerHeight - 280 - 100 * numOfCardsPerCol) / (numOfCardsPerCol + 1);
+        gapX = (window.innerWidth - 64 - cardW * numOfCardsPerRow) / (numOfCardsPerRow + 1);
+        gapY = (window.innerHeight - 280 - cardH * numOfCardsPerCol) / (numOfCardsPerCol + 1);
         
         btnStateUpdate();
         arrangeCards();
