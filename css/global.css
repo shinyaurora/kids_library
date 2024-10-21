@@ -4,6 +4,7 @@
 
 * {
   -webkit-tap-highlight-color: rgba(152, 240, 255, 0.3);
+  user-select: none;
 }
 
 @font-face {

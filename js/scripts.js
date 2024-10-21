@@ -79,6 +79,43 @@ function initCards(categoryList = list, cardW = 160, cardH = 160, imgUrl = "cate
 
     let cloudX = 0;
     let grassX = 0;
+    let moved = false;
+
+    function initTouchEventForSlider() {
+        let startX = 0;
+        let threshold = 20; // Minimum swipe distance to consider as swipe
+
+        // Detect when the user starts touching or clicking
+        $('#container').on('mousedown touchstart', function (e) {
+            moved = false;
+            startX = e.pageX || e.originalEvent.touches[0].pageX;
+        });
+
+        // Detect when the user stops touching or clicking
+        $('#container').on('mouseup touchend', function (e) {
+            let delta = e.pageX - startX;
+
+            if (Math.abs(delta) > threshold) {
+                moved = true;
+                if (delta < 0 && indexofPanel < numofPanel - 1) {
+                    indexofPanel++;
+                    btnStateUpdate();
+                    arrangeCards();
+                    assetsTransform(+1);
+                }
+
+                if (delta > 0 && indexofPanel > 0) {
+                    indexofPanel--;
+                    btnStateUpdate();
+                    arrangeCards();
+                    assetsTransform(-1);
+                }
+
+                console.log(moved);
+                
+            }
+        });
+    }
     
     
     function btnStateUpdate() {
@@ -119,12 +156,14 @@ function initCards(categoryList = list, cardW = 160, cardH = 160, imgUrl = "cate
         elem.style.padding = "8px";
         
         //when click category item icon or series icon, then goes to book_jacket.html page
-        elem.onclick = () => window.location.assign("book_jacket.html");
+        elem.onclick = () => !moved && window.location.assign("book_jacket.html");
         
         let img = document.createElement("img");
         img.style.width = "100%";
         img.style.height = "100%";
         img.style.objectFit = "contain";
+        // img.addEventListener("dragstart", function (e) { e.preventDefault() });
+        img.draggable = false;
 
         img.src = `assets/img/${imgUrl}/on (${num + 1}).${type}`;
 
@@ -152,6 +191,7 @@ function initCards(categoryList = list, cardW = 160, cardH = 160, imgUrl = "cate
     btnStateUpdate();
     placeCards();
     arrangeCards();
+    initTouchEventForSlider();
 
     window.addEventListener("resize", () => {
         numOfCardsPerRow = Math.floor((window.innerWidth - 64) / (cardW + 20));
