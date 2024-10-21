@@ -63,7 +63,7 @@ const list = [
     { url: "#", img: "" }
 ]
 
-function initCards(categoryList = list, cardW = 160, cardH = 160) {
+function initCards(categoryList = list, cardW = 160, cardH = 160, imgUrl = "categories", type="png") {
     let container = document.getElementById("container");
     let cards = [];
     container.innerHTML = "";
@@ -124,8 +124,9 @@ function initCards(categoryList = list, cardW = 160, cardH = 160) {
         let img = document.createElement("img");
         img.style.width = "100%";
         img.style.height = "100%";
+        img.style.objectFit = "contain";
 
-        img.src = `assets/img/categories/on (${num + 1}).png`;
+        img.src = `assets/img/${imgUrl}/on (${num + 1}).${type}`;
 
         elem.appendChild(img);
         return elem;
