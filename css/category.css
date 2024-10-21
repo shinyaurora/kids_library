@@ -50,3 +50,7 @@
   overflow: hidden;
   transition: all 0.5s;
 }
+
+.dogImg {
+  z-index: 99;
+}
