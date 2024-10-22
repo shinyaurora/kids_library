@@ -105,10 +105,11 @@
             <img src="assets/img/bg/cloud-2.png" alt="cloud-2" style="transform: translate(0, 100px);" />
             <img src="assets/img/bg/cloud-2.png" alt="cloud-1" />
         </div>
-        <div class="search px-5 d-flex flex-row justify-content-center align-items-center">
-            <input type="text" required class="form-control" />
-            <button type="button" class="searchBtn mx-2">Search</button>
-        </div>
+        <form class="search px-5 d-flex flex-row justify-content-center align-items-center" action="book_jacket.php" type="get">
+            <input type="text" name="filterTerm" value="searchBox" hidden />
+            <input type="text" class="form-control" name="searchBox" />
+            <button type="submit" class="searchBtn mx-2">Search</button>
+        </form>
         <div class="title rounded-4 px-3 d-flex align-items-center text-black">
             <!-- Place the number of result here -->
             <span id="numResults">100</span>
