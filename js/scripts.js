@@ -154,13 +154,13 @@ function initCards(categoryList = list, cardW = 140, cardH = 140, imgUrl = "cate
         elem.style.cursor = "pointer";
         elem.style.alignItems = "center";
         elem.style.padding = "8px";
-        elem.title = `Image ${num + 1}`;
-        
         //when click category item icon or series icon, then goes to book_jacket.html page
         elem.onclick = () => !moved && window.location.assign("book_jacket.html");
         
         let img = document.createElement("img");
+        img.title = `Image ${num + 1}`;
         img.style.width = "100%";
+        
         img.style.height = "100%";
         img.style.objectFit = "contain";
         // img.addEventListener("dragstart", function (e) { e.preventDefault() });
