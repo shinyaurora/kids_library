@@ -11,6 +11,112 @@
     # mimic this below using just an array of records.
     # while through the array and creaet the series carousal
 
+    ########################################################
+    # Modify code goes here. You can reference below code. #
+    ########################################################
+
+    # Let's assume that you got this result array by mysql code
+    $result = [
+        [
+            "name"   => "Author 1",
+            "imgUrl" => "assets/img/series/on (1).jpeg"
+        ], [
+            "name"   => "Author 2",
+            "imgUrl" => "assets/img/series/on (2).jpeg"
+        ], [
+            "name"   => "Author 3",
+            "imgUrl" => "assets/img/series/on (3).jpeg"
+        ], [
+            "name"   => "Author 4",
+            "imgUrl" => "assets/img/series/on (4).jpeg"
+        ], [
+            "name"   => "Author 5",
+            "imgUrl" => "assets/img/series/on (5).jpeg"
+        ], [
+            "name"   => "Author 6",
+            "imgUrl" => "assets/img/series/on (6).jpeg"
+        ], [
+            "name"   => "Author 7",
+            "imgUrl" => "assets/img/series/on (7).jpeg"
+        ], [
+            "name"   => "Author 8",
+            "imgUrl" => "assets/img/series/on (8).jpeg"
+        ], [
+            "name"   => "Author 9",
+            "imgUrl" => "assets/img/series/on (9).jpeg"
+        ], [
+            "name"   => "Author 10",
+            "imgUrl" => "assets/img/series/on (10).jpeg"
+        ], [
+            "name"   => "Author 11",
+            "imgUrl" => "assets/img/series/on (11).jpeg"
+        ], [
+            "name"   => "Author 12",
+            "imgUrl" => "assets/img/series/on (12).jpeg"
+        ], [
+            "name"   => "Author 13",
+            "imgUrl" => "assets/img/series/on (13).jpeg"
+        ], [
+            "name"   => "Author 14",
+            "imgUrl" => "assets/img/series/on (14).jpeg"
+        ], [
+            "name"   => "Author 15",
+            "imgUrl" => "assets/img/series/on (15).jpeg"
+        ], [
+            "name"   => "Author 16",
+            "imgUrl" => "assets/img/series/on (16).jpeg"
+        ], [
+            "name"   => "Author 17",
+            "imgUrl" => "assets/img/series/on (17).jpeg"
+        ], [
+            "name"   => "Author 18",
+            "imgUrl" => "assets/img/series/on (18).jpeg"
+        ], [
+            "name"   => "Author 19",
+            "imgUrl" => "assets/img/series/on (19).jpeg"
+        ], [
+            "name"   => "Author 20",
+            "imgUrl" => "assets/img/series/on (20).jpeg"
+        ], [
+            "name"   => "Author 21",
+            "imgUrl" => "assets/img/series/on (21).jpeg"
+        ], [
+            "name"   => "Author 22",
+            "imgUrl" => "assets/img/series/on (22).jpeg"
+        ], [
+            "name"   => "Author 23",
+            "imgUrl" => "assets/img/series/on (23).jpeg"
+        ], [
+            "name"   => "Author 24",
+            "imgUrl" => "assets/img/series/on (24).jpeg"
+        ], [
+            "name"   => "Author 25",
+            "imgUrl" => "assets/img/series/on (25).jpeg"
+        ], [
+            "name"   => "Author 26",
+            "imgUrl" => "assets/img/series/on (26).jpeg"
+        ], [
+            "name"   => "Author 27",
+            "imgUrl" => "assets/img/series/on (27).jpeg"
+        ], [
+            "name"   => "Author 28",
+            "imgUrl" => "assets/img/series/on (28).jpeg"
+        ], [
+            "name"   => "Author 29",
+            "imgUrl" => "assets/img/series/on (29).jpeg"
+        ], [
+            "name"   => "Author 30",
+            "imgUrl" => "assets/img/series/on (30).jpeg"
+        ]
+    ];
+
+    # We muse convert the result array to json array for using in JavaScript
+    # I used this $jsonResult variable as a parameter for initCards() function.
+    # You can check that bottom of this file.
+    $jsonResult = json_encode($result);
+    # Also give a filter term name like series or category or searchbox
+    # In this case, it will be series. But you can change it.
+    $filterTerm = "series";
 ?>
 
 
@@ -38,8 +144,9 @@
             <img src="assets/img/bg/cloud-2.png" alt="cloud-2" style="transform: translate(0, 100px);" />
             <img src="assets/img/bg/cloud-2.png" alt="cloud-1" />
         </div>
-        <form class="search px-5 d-flex flex-row justify-content-center align-items-center" action="book_jacket.html">
-            <input type="text" class="form-control" />
+        <form class="search px-5 d-flex flex-row justify-content-center align-items-center" action="book_jacket.php" type="get">
+            <input type="text" name="filterTerm" value="searchBox" hidden />
+            <input type="text" class="form-control" name="searchBox" />
             <button type="submit" class="searchBtn mx-2">Search</button>
         </form>
         <div class="title rounded-4 px-3 d-flex align-items-center text-black">
@@ -57,14 +164,14 @@
         <div class="grass w-100" id="grass">
             <img src="assets/img/bg/grass-30.png" width="auto" />
         </div>
-        <a href="category.html" class="dogImg">
+        <a href="category.php" class="dogImg">
             <img src="assets/img/item/dog.png" alt="dog" />
         </a>
-        <a href="category.html" class="dogHouse">
+        <a href="category.php" class="dogHouse">
             <img src="assets/img/item/doghouse.png" alt="dogHouse" />
         </a>
         <div class="footerContent rounded-4 d-flex justify-content-between px-4">
-            <a class="d-flex flex-column text-decoration-none footer-item" href="category.html">
+            <a class="d-flex flex-column text-decoration-none footer-item" href="category.php">
                 <div class="imgBtn d-flex">
                     <div class="imgBtnItem item1 p-1">
                         <img src="./assets/img/categories/on (1).png" class="w-100 h-100" />
@@ -81,7 +188,7 @@
                 </div>
                 <span>Explore Categories</span>
             </a>
-            <a class="d-flex flex-column text-decoration-none footer-item" href="series.html">
+            <a class="d-flex flex-column text-decoration-none footer-item" href="series.php">
                 <div class="imgBtn d-flex">
                     <div class="imgBtnItem item1 p-1">
                         <img src="./assets/img/categories/on (5).png" class="w-100 h-100" />
@@ -112,62 +219,12 @@
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
-    <script src="./js/scripts.js"></script>
+    <script src="./js/script.js"></script>
     <script>
-        const serieslist = [
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-                { url: "#", img: "" },
-            ]
-        initCards(serieslist, 160, ( window.innerHeight - 360 ) / 2);
+        let list = <?php echo $jsonResult ?>;
+        let term = "<?php echo $filterTerm ?>";
 
+        initCards(list, 160, ( window.innerHeight - 360 ) / 2, term);
     </script>
 </body>
 

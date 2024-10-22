@@ -19,6 +19,52 @@
     
     # question?  how to link the modal dialog box (catalog record information) to each record?  Do I include that in theformation of the carousal?
 
+    ########################################################
+    # Modify code goes here. You can reference below code. #
+    ########################################################
+
+    # This is code for gettring search term and search content
+    $term = isset($_GET['filterTerm']) ? $_GET['filterTerm'] : ""; 
+    $search = $term ? $_GET[$term] : "";
+    # You can use these values for mysql query to select corresponding filtered result
+
+    # I will skip the SQL code
+
+    # Let's assume that you got below result array by mysql query above.
+    $result = [
+        [
+            "title"  => "What Is The Story of Hello Kitty?",
+            "status" => "in",
+            "type"   => "book",
+            "level"  => "30L",
+            "imgUrl" => "./assets/img/jackets/image 1.jpeg"
+        ], [
+            "title"  => "Waylon! One Awesome Thing",
+            "status" => "out",
+            "type"   => "dvd",
+            "level"  => "530L",
+            "imgUrl" => "./assets/img/jackets/image 2.jpeg"
+        ], [
+            "title"  => "DIARY OF A MINECRAFT ZOMBIE",
+            "status" => "in",
+            "type"   => "book",
+            "level"  => "210L",
+            "imgUrl" => "./assets/img/jackets/image 1.jpeg"
+        ], [
+            "title"  => "Life according to Og the Frog",
+            "status" => "in",
+            "type"   => "dvd",
+            "level"  => "10L",
+            "imgUrl" => "./assets/img/jackets/image 1.jpeg"
+        ], [
+            "title"  => "There's a Monter IN YOUR BOOK",
+            "status" => "out",
+            "type"   => "book",
+            "level"  => "80L",
+            "imgUrl" => "./assets/img/jackets/image 1.jpeg"
+        ], 
+    ];
+
 ?>
 
 
@@ -28,7 +74,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Book Jacket</title>
+    <title>Book Jacket <?php echo $term ?></title>
     <link rel="stylesheet" type="text/css" href="css/global.css">
     <link rel="stylesheet" type="text/css" href="css/book_jacket.css">
 
@@ -396,7 +442,7 @@
         <div class="say-content suggest">If you want it, login</div>
     </div>
 
-    <a href="category.html" class="dogImg">
+    <a href="category.php" class="dogImg">
         <img src="assets/img/item/dog.png" alt="dog" />
     </a>
 
@@ -404,7 +450,7 @@
         <div class="grass w-100" id="grass">
             <img src="assets/img/bg/grass-30.png" width="auto" />
         </div>
-        <a href="category.html" class="dogHouse">
+        <a href="category.php" class="dogHouse">
             <img src="assets/img/item/doghouse.png" alt="dogHouse" />
         </a>
 
@@ -418,7 +464,7 @@
         </div>
 
         <div class="footerContent rounded-4 d-flex justify-content-between px-4">
-            <a class="d-flex flex-column text-decoration-none footer-item" href="category.html">
+            <a class="d-flex flex-column text-decoration-none footer-item" href="category.php">
                 <div class="imgBtn d-flex">
                     <div class="imgBtnItem item1 p-1">
                         <img src="./assets/img/categories/on (1).png" class="w-100 h-100" />
@@ -435,7 +481,7 @@
                 </div>
                 <span>Explore Categories</span>
             </a>
-            <a class="d-flex flex-column text-decoration-none footer-item" href="series.html">
+            <a class="d-flex flex-column text-decoration-none footer-item" href="series.php">
                 <div class="imgBtn d-flex">
                     <div class="imgBtnItem item1 p-1">
                         <img src="./assets/img/categories/on (5).png" class="w-100 h-100" />

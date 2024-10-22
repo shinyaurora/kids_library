@@ -1,4 +1,4 @@
-function initCards(list, cardW, cardH) {
+function initCards(list, cardW, cardH, term) {
     let container = document.getElementById("container");
     let cards = [];
     container.innerHTML = "";
@@ -90,7 +90,7 @@ function initCards(list, cardW, cardH) {
         elem.style.alignItems = "center";
         elem.style.padding = "8px";
         //when click category item icon or series icon, then goes to book_jacket.html page
-        elem.onclick = () => !moved && window.location.assign("book_jacket.html");
+        elem.onclick = () => !moved && window.location.assign(`book_jacket.php?filterTerm=${term}&${term}=${item.name}`);
         
         let img = document.createElement("img");
         img.title = item.name;

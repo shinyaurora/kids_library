@@ -10,104 +10,112 @@
     # mimic this below using just an array of records.
     # while through the array and creaet the category carousal
 
-    ##########################################################################
-    # Let's Say that you got this result array like below using MySQL query. #
-    ##########################################################################
+    ########################################################
+    # Modify code goes here. You can reference below code. #
+    ########################################################
+
+    # Let's assume that you got this result array by mysql code
     $result = [
         [
-            "name" => "Rabbits 1",
+            "name"   => "Rabbits 1",
             "imgUrl" => "assets/img/categories/on (1).png"
         ], [
-            "name" => "Rabbits 2",
+            "name"   => "Rabbits 2",
             "imgUrl" => "assets/img/categories/on (2).png"
         ], [
-            "name" => "Rabbits 3",
+            "name"   => "Rabbits 3",
             "imgUrl" => "assets/img/categories/on (3).png"
         ], [
-            "name" => "Rabbits 4",
+            "name"   => "Rabbits 4",
             "imgUrl" => "assets/img/categories/on (4).png"
         ], [
-            "name" => "Rabbits 5",
+            "name"   => "Rabbits 5",
             "imgUrl" => "assets/img/categories/on (5).png"
         ], [
-            "name" => "Rabbits 6",
+            "name"   => "Rabbits 6",
             "imgUrl" => "assets/img/categories/on (6).png"
         ], [
-            "name" => "Rabbits 7",
+            "name"   => "Rabbits 7",
             "imgUrl" => "assets/img/categories/on (7).png"
         ], [
-            "name" => "Rabbits 8",
+            "name"   => "Rabbits 8",
             "imgUrl" => "assets/img/categories/on (8).png"
         ], [
-            "name" => "Rabbits 9",
+            "name"   => "Rabbits 9",
             "imgUrl" => "assets/img/categories/on (9).png"
         ], [
-            "name" => "Rabbits 10",
+            "name"   => "Rabbits 10",
             "imgUrl" => "assets/img/categories/on (10).png"
         ], [
-            "name" => "Rabbits 11",
+            "name"   => "Rabbits 11",
             "imgUrl" => "assets/img/categories/on (11).png"
         ], [
-            "name" => "Rabbits 12",
+            "name"   => "Rabbits 12",
             "imgUrl" => "assets/img/categories/on (12).png"
         ], [
-            "name" => "Rabbits 13",
+            "name"   => "Rabbits 13",
             "imgUrl" => "assets/img/categories/on (13).png"
         ], [
-            "name" => "Rabbits 14",
+            "name"   => "Rabbits 14",
             "imgUrl" => "assets/img/categories/on (14).png"
         ], [
-            "name" => "Rabbits 15",
+            "name"   => "Rabbits 15",
             "imgUrl" => "assets/img/categories/on (15).png"
         ], [
-            "name" => "Rabbits 16",
+            "name"   => "Rabbits 16",
             "imgUrl" => "assets/img/categories/on (16).png"
         ], [
-            "name" => "Rabbits 17",
+            "name"   => "Rabbits 17",
             "imgUrl" => "assets/img/categories/on (17).png"
         ], [
-            "name" => "Rabbits 18",
+            "name"   => "Rabbits 18",
             "imgUrl" => "assets/img/categories/on (18).png"
         ], [
-            "name" => "Rabbits 19",
+            "name"   => "Rabbits 19",
             "imgUrl" => "assets/img/categories/on (19).png"
         ], [
-            "name" => "Rabbits 20",
+            "name"   => "Rabbits 20",
             "imgUrl" => "assets/img/categories/on (20).png"
         ], [
-            "name" => "Rabbits 21",
+            "name"   => "Rabbits 21",
             "imgUrl" => "assets/img/categories/on (21).png"
         ], [
-            "name" => "Rabbits 22",
+            "name"   => "Rabbits 22",
             "imgUrl" => "assets/img/categories/on (22).png"
         ], [
-            "name" => "Rabbits 23",
+            "name"   => "Rabbits 23",
             "imgUrl" => "assets/img/categories/on (23).png"
         ], [
-            "name" => "Rabbits 24",
+            "name"   => "Rabbits 24",
             "imgUrl" => "assets/img/categories/on (24).png"
         ], [
-            "name" => "Rabbits 25",
+            "name"   => "Rabbits 25",
             "imgUrl" => "assets/img/categories/on (25).png"
         ], [
-            "name" => "Rabbits 26",
+            "name"   => "Rabbits 26",
             "imgUrl" => "assets/img/categories/on (26).png"
         ], [
-            "name" => "Rabbits 27",
+            "name"   => "Rabbits 27",
             "imgUrl" => "assets/img/categories/on (27).png"
         ], [
-            "name" => "Rabbits 28",
+            "name"   => "Rabbits 28",
             "imgUrl" => "assets/img/categories/on (28).png"
         ], [
-            "name" => "Rabbits 29",
+            "name"   => "Rabbits 29",
             "imgUrl" => "assets/img/categories/on (29).png"
         ], [
-            "name" => "Rabbits 30",
+            "name"   => "Rabbits 30",
             "imgUrl" => "assets/img/categories/on (30).png"
         ]
     ];
 
+    # We muse convert the result array to json array for using in JavaScript
+    # I used this $jsonResult variable as a parameter for initCards() function.
+    # You can check that bottom of this file.
     $jsonResult = json_encode($result);
+    # Also give a filter term name like series or category or searchbox
+    # In this case, it will be category. But you can change it.
+    $filterTerm = "category";
 ?>
 
 
@@ -122,7 +130,6 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="css/global.css" rel="stylesheet">
     <link href="css/category.css" rel="stylesheet">
-    <link href="./css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -135,8 +142,9 @@
             <img src="assets/img/bg/cloud-2.png" alt="cloud-2" style="transform: translate(0, 100px);"  />
             <img src="assets/img/bg/cloud-2.png" alt="cloud-1" />
         </div>
-        <form class="search px-5 d-flex flex-row justify-content-center align-items-center" action="book_jacket.html">
-            <input type="text" class="form-control" />
+        <form class="search px-5 d-flex flex-row justify-content-center align-items-center" action="book_jacket.php" type="get">
+            <input type="text" name="filterTerm" value="searchBox" hidden />
+            <input type="text" class="form-control" name="searchBox" />
             <button type="submit" class="searchBtn mx-2">Search</button>
         </form>
         <div class="title rounded-4 px-3 d-flex align-items-center text-black">
@@ -161,7 +169,7 @@
             <img src="assets/img/item/doghouse.png" alt="dogHouse" />
         </a>
         <div class="footerContent rounded-4 d-flex justify-content-between px-4">
-            <a class="d-flex flex-column text-decoration-none footer-item" href="category.html">
+            <a class="d-flex flex-column text-decoration-none footer-item" href="category.php">
                 <div class="imgBtn d-flex">
                     <div class="imgBtnItem item1 p-1">
                         <img src="./assets/img/categories/on (1).png" class="w-100 h-100" />
@@ -178,7 +186,7 @@
                 </div>
                 <span>Explore Categories</span>
             </a>
-            <a class="d-flex flex-column text-decoration-none footer-item" href="series.html">
+            <a class="d-flex flex-column text-decoration-none footer-item" href="series.php">
                 <div class="imgBtn d-flex">
                     <div class="imgBtnItem item1 p-1">
                         <img src="./assets/img/categories/on (5).png" class="w-100 h-100" />
@@ -213,7 +221,9 @@
     <script src="./js/script.js"></script>
     <script>
         let list = <?php echo $jsonResult ?>;
-        initCards(list, 140, 140);
+        let term = "<?php echo $filterTerm ?>";
+
+        initCards(list, 140, 140, term);
     </script>
 </body>
 
