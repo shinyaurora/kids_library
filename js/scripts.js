@@ -63,7 +63,7 @@ const list = [
     { url: "#", img: "" }
 ]
 
-function initCards(categoryList = list, cardW = 160, cardH = 160, imgUrl = "categories", type="png") {
+function initCards(categoryList = list, cardW = 140, cardH = 140, imgUrl = "categories", type="png") {
     let container = document.getElementById("container");
     let cards = [];
     container.innerHTML = "";
