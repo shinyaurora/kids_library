@@ -33,35 +33,40 @@
     # Let's assume that you got below result array by mysql query above.
     $result = [
         [
+            "id"     => "1",
             "title"  => "What Is The Story of Hello Kitty?",
             "status" => "in",
             "type"   => "book",
             "level"  => "30L",
-            "imgUrl" => "./assets/img/jackets/image 1.jpeg"
+            "imgUrl" => "./assets/img/jackets/image1.jpeg"
         ], [
+            "id"     => "2",
             "title"  => "Waylon! One Awesome Thing",
             "status" => "out",
             "type"   => "dvd",
             "level"  => "530L",
-            "imgUrl" => "./assets/img/jackets/image 2.jpeg"
+            "imgUrl" => "./assets/img/jackets/image2.jpeg"
         ], [
+            "id"     => "3",
             "title"  => "DIARY OF A MINECRAFT ZOMBIE",
             "status" => "in",
             "type"   => "book",
             "level"  => "210L",
-            "imgUrl" => "./assets/img/jackets/image 1.jpeg"
+            "imgUrl" => "./assets/img/jackets/image3.jpeg"
         ], [
+            "id"     => "4",
             "title"  => "Life according to Og the Frog",
             "status" => "in",
             "type"   => "dvd",
             "level"  => "10L",
-            "imgUrl" => "./assets/img/jackets/image 1.jpeg"
+            "imgUrl" => "./assets/img/jackets/image4.jpeg"
         ], [
+            "id"     => "5",
             "title"  => "There's a Monter IN YOUR BOOK",
             "status" => "out",
             "type"   => "book",
             "level"  => "80L",
-            "imgUrl" => "./assets/img/jackets/image 1.jpeg"
+            "imgUrl" => "./assets/img/jackets/image5.jpeg"
         ], 
     ];
 
@@ -115,150 +120,32 @@
             <div class="prevBtn" id="prev"></div>
             <div class="nextBtn" id="next"></div>
             <div class="jacket-container slider" id="container">
-                <div>
-                    <div class="jacket-card d-flex justify-content-center align-items-center position-relative">
-                        <div class="availability">
-                            <img src="assets/img/item/in.png" />
-                        </div>
-                        <div class="type">
-                            <img title="book" src="assets/img/item/book.png" />
-                        </div>
-                        <div class="level">
-                            <img src="assets/img/item/pagecurl.png" />
-                            <!-- Change this level number using JS DOM -->
-                            <span class="level-text" id="level-text">530L</span>
-                        </div>
-                        <img src="assets/img/jackets/image1.jpeg" />
-                    </div>
-                </div>
-                <div>
-                    <div class="jacket-card d-flex justify-content-center align-items-center position-relative">
-                        <div class="availability">
-                            <img src="assets/img/item/in.png" />
-                        </div>
-                        <div class="type">
-                            <img title="dvd" src="assets/img/item/dvd.png" />
-                        </div>
-                        <div class="level">
-                            <img src="assets/img/item/pagecurl.png" />
-                            <!-- Change this level number using JS DOM -->
-                            <span class="level-text" id="level-text">530L</span>
-                        </div>
-                        <img src="assets/img/jackets/image2.jpeg" />
-                    </div>
-                </div>
-                <div>
-                    <div class="jacket-card d-flex justify-content-center align-items-center position-relative">
-                        <div class="availability">
-                            <img src="assets/img/item/in.png" />
-                        </div>
-                        <div class="type">
-                            <img title="book" src="assets/img/item/book.png" />
-                        </div>
-                        <div class="level">
-                            <img src="assets/img/item/pagecurl.png" />
-                            <!-- Change this level number using JS DOM -->
-                            <span class="level-text" id="level-text">530L</span>
-                        </div>
-                        <img src="assets/img/jackets/image3.jpeg" />
-                    </div>
-                </div>
-                <div>
-                    <div class="jacket-card d-flex justify-content-center align-items-center position-relative">
-                        <div class="availability">
-                            <img src="assets/img/item/in.png" />
-                        </div>
-                        <div class="type">
-                            <img title="dvd" src="assets/img/item/dvd.png" />
-                        </div>
-                        <div class="level">
-                            <img src="assets/img/item/pagecurl.png" />
-                            <!-- Change this level number using JS DOM -->
-                            <span class="level-text" id="level-text">530L</span>
-                        </div>
-                        <img src="assets/img/jackets/image4.jpeg" />
-                    </div>
-                </div>
-                <div>
-                    <div class="jacket-card d-flex justify-content-center align-items-center position-relative">
-                        <div class="availability">
-                            <img src="assets/img/item/out.png" />
-                        </div>
-                        <div class="type">
-                            <img title="book" src="assets/img/item/book.png" />
-                        </div>
-                        <div class="level">
-                            <img src="assets/img/item/pagecurl.png" />
-                            <!-- Change this level number using JS DOM -->
-                            <span class="level-text" id="level-text">530L</span>
-                        </div>
-                        <img src="assets/img/jackets/image5.jpeg" />
-                    </div>
-                </div>
-                <div>
-                    <div class="jacket-card d-flex justify-content-center align-items-center position-relative">
-                        <div class="availability">
-                            <img src="assets/img/item/in.png" />
-                        </div>
-                        <div class="type">
-                            <img title="book" src="assets/img/item/dvd.png" />
-                        </div>
-                        <div class="level">
-                            <img src="assets/img/item/pagecurl.png" />
-                            <!-- Change this level number using JS DOM -->
-                            <span class="level-text" id="level-text">530L</span>
-                        </div>
-                        <img src="assets/img/jackets/image6.jpeg" />
-                    </div>
-                </div>
-                <div>
-                    <div class="jacket-card d-flex justify-content-center align-items-center position-relative">
-                        <div class="availability">
-                            <img src="assets/img/item/out.png" />
-                        </div>
-                        <div class="type">
-                            <img title="book" src="assets/img/item/book.png" />
-                        </div>
-                        <div class="level">
-                            <img src="assets/img/item/pagecurl.png" />
-                            <!-- Change this level number using JS DOM -->
-                            <span class="level-text" id="level-text">530L</span>
-                        </div>
-                        <img src="assets/img/jackets/image4.jpeg" />
-                    </div>
-                </div>
-                <div>
-                    <div class="jacket-card d-flex justify-content-center align-items-center position-relative">
-                        <div class="availability">
-                            <img src="assets/img/item/in.png" />
-                        </div>
-                        <div class="type">
-                            <img title="book" src="assets/img/item/dvd.png" />
-                        </div>
-                        <div class="level">
-                            <img src="assets/img/item/pagecurl.png" />
-                            <!-- Change this level number using JS DOM -->
-                            <span class="level-text" id="level-text">530L</span>
-                        </div>
-                        <img src="assets/img/jackets/image2.jpeg" />
-                    </div>
-                </div>
-                <div>
-                    <div class="jacket-card d-flex justify-content-center align-items-center position-relative">
-                        <div class="availability">
-                            <img src="assets/img/item/in.png" />
-                        </div>
-                        <div class="type">
-                            <img title="book" src="assets/img/item/book.png" />
-                        </div>
-                        <div class="level">
-                            <img src="assets/img/item/pagecurl.png" />
-                            <!-- Change this level number using JS DOM -->
-                            <span class="level-text" id="level-text">530L</span>
-                        </div>
-                        <img src="assets/img/jackets/image5.jpeg" />
-                    </div>
-                </div>
+                
+                <!-- -------------------------------------------- -->
+                <!--  This is for exporint the card item elements -->
+                <!-- -------------------------------------------- -->
+                    <?php
+                        foreach($result as $item) {
+                            echo "<div>".
+                                    "<div class='jacket-card d-flex justify-content-center align-items-center position-relative'>".
+                                        "<div class='availability'>".
+                                            "<img src='assets/img/item/".$item['status'].".png' />".
+                                        "</div>".
+                                        "<div class='type'>".
+                                            "<img title='".$item['type']."' src='assets/img/item/".$item['type'].".png' />".
+                                        "</div>".
+                                        "<div class='level'>".
+                                            "<img src='assets/img/item/pagecurl.png' />".
+                                            "<span class='level-text' id='level-text'>".$item['level']."</span>".
+                                        "</div>".
+                                        "<img src='".$item['imgUrl']."' />".
+                                    "</div>".
+                                "</div>";
+                        }
+                    ?>
+                <!-- -------------------------------------------- -->
+                <!-- -------------------------------------------- -->
+
             </div>
         </div>
     </div>
