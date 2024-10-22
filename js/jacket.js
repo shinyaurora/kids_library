@@ -76,6 +76,43 @@ function initModalEffects() {
 
     $('.slider').on('click', '.slick-slide', function () {
         if (!moved) {
+
+            /**
+             * When we click an jacket item, we send jQuery Ajax Request with jacket/book id value to equivalent php file 
+             * which send response with detailed info of that book.
+             * Then, we can get response. The response should be array with several required values(like Copies, Summary, Reading Levels, availability, type, title, etc). 
+             * In this case, each item of array should be html element which implement the equivalent content or string value.
+             * Then, according to the response, we update the modal content using jQuery.
+             * After that, we show/open the modal.
+             * Below code parts impelemt these steps.
+             */
+
+            // AJAX call to fetch modal content
+
+            /*
+            $.ajax({
+                url: 'fetch_modal_content.php', // URL to fetch content (maybe you already have it.)
+                type: 'POST', // If then, you can get the request value(jacket/boot ID) using $_POST['id]
+                data: { id: itemId }, // This is the request value
+                success: function (response) { // If the request is successful and get response,
+                    // then update modal body with response
+                    $("#cover-img").attr("src", response['coverImgUrl']);
+                    $("#avail-img").attr("src", `assets/img/item/${response['status']}.png`);
+                    $("#type-img") .attr("src", `assets/img/item/${response['type']}.png`);
+                    $("#title")    .html(response['title']);
+                    $("#copies")   .html(response['copies']);
+                    $("#summary")  .html(response['summary']);
+                    $("#levels")   .html(response['levels']);
+                    $("#details")  .html(response['details']);
+
+                    $('#myModal').show(); 
+                    $("#modal").css("display", "flex"); // Show the modal
+                }
+            });
+            */
+            
+            // For now, I make this code parts as comment because you should modify according to your strategy
+            // Once if you modify, then activate the commented parts above and make this below line as a comment
             $("#modal").css("display", "flex");
         }
     });

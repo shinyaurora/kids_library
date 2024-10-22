@@ -157,13 +157,17 @@
         <div class="d-flex flex-row shadow-sm rounded-7 center-box">
             <div class="left-section d-flex flex-column d-none d-md-block" >
                 <div class="thumbnail position-relative">
-                    <img src="assets/img/jackets/image6.jpeg" alt="cover_page_img" class="w-100"/>
-                    <img src="assets/img/item/in.png" alt="in" class="detail-avai" />
-                    <img src="assets/img/item/book.png" alt="out" class="detail-type" />
+
+                    <!-- These three image elements are modified by jQuery code -->
+                    <img src="assets/img/jackets/image6.jpeg" alt="cover_page_img" class="w-100" id="cover-img" />
+                    <img src="assets/img/item/in.png" alt="availability" class="detail-avai" id="avail-img" />
+                    <img src="assets/img/item/book.png" alt="type" class="detail-type" id="type-img" />
+                    <!-- =============================================================== -->
+
                 </div>
                 <button class="btn btn-style placehold">Place Hold</button>
                 <div class="links d-flex flex-column align-items-end justify-content-end">
-                    <a href="#abc" class="text-decoration-none kalam modal-link" data-to="copies">Copies</a>
+                    <a href="#" class="text-decoration-none kalam modal-link" data-to="copies">Copies</a>
                     <a href="#" class="text-decoration-none kalam modal-link" data-to="summary">Summary</a>
                     <a href="#" class="text-decoration-none kalam modal-link" data-to="levels">Reading Levels</a>
                     <a href="#" class="text-decoration-none kalam modal-link" data-to="details">Details</a>
@@ -171,84 +175,110 @@
             </div>
 
             <div class="right-section d-flex flex-column overflow-auto flex-grow-1">
-                <h1 class="large-text">Wolves</h1>
+
+                <!-- Also the title will be modified  -->
+                <h1 class="large-text" id="title">Wolves</h1>
+                <!-- ===================================== -->
+
                 <div id="copies">
                     <p class="bg-blue-heading kalam">Copies</p>
-                    <p class="text-gray subtitle">Shelf Location at Keyser</p>
-                    <table class="table table-bordered">
-                        <thead class="t-head">
-                            <tr>
-                                <th scope="col">Collection</th>
-                                <th scope="col">Call Number</th>
-                                <th scope="col">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Juvenile Non-Fiction</td>
-                                <td>J 599.74 G</td>
-                                <td class="fw-bold">Checked In</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p class="text-gray subtitle">Shelf Location at Keyser</p>
-                    <table class="table table-bordered">
-                        <thead class="t-head">
-                            <tr>
-                                <th scope="col">Collection</th>
-                                <th scope="col">Call Number</th>
-                                <th scope="col">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Juvenile Non-Fiction</td>
-                                <td>J 599.74 Gibbons</td>
-                                <td class="fw-bold">Checked In</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    
+                    <!-- These parts will be also modified -->
+                    <div id="copies">
+                        <p class="text-gray subtitle">Shelf Location at Keyser</p>
+                        <table class="table table-bordered">
+                            <thead class="t-head">
+                                <tr>
+                                    <th scope="col">Collection</th>
+                                    <th scope="col">Call Number</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Juvenile Non-Fiction</td>
+                                    <td>J 599.74 G</td>
+                                    <td class="fw-bold">Checked In</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="text-gray subtitle">Shelf Location at Keyser</p>
+                        <table class="table table-bordered">
+                            <thead class="t-head">
+                                <tr>
+                                    <th scope="col">Collection</th>
+                                    <th scope="col">Call Number</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Juvenile Non-Fiction</td>
+                                    <td>J 599.74 Gibbons</td>
+                                    <td class="fw-bold">Checked In</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- ============================================================= -->
+
                 </div>
                 <div id="summary">
                     <p class="bg-blue-heading margin-top kalam">Summary</p>
-                    <p class="summary-content">Just how these long-feared animals live.</p>
+
+                    <!-- Also the summary will be modified  -->
+                    <p class="summary-content" id="summary">Just how these long-feared animals live.</p>
+                    <!-- ============================================================= -->
+
                 </div>
                 <div class="d-flex flex-column" id="levels">
                     <p class="bg-blue-heading margin-top kalam">
                         Reading Levels
                     </p>
-                    <div class="d-flex flex-column gap-1">
-                        <p class="fw-bold">Lexile Measure</p>
-                        <p class="neg-margin">670L</p>
+                    
+                    <!-- These parts will be also modified -->
+                    <div id="levels">
+                        <div class="d-flex flex-column gap-1">
+                            <p class="fw-bold">Lexile Measure</p>
+                            <p class="neg-margin">670L</p>
+                        </div>
+                        <div class="d-flex flex-column gap-1">
+                            <p class="fw-bold">AR Reading Level</p>
+                            <p class="neg-margin">4.2</p>
+                        </div>
+                        <div class="d-flex flex-column gap-1">
+                            <p class="fw-bold">AR Interest Level</p>
+                            <p class="neg-margin">MG</p>
+                        </div>
+                        <div class="d-flex flex-column gap-1">
+                            <p class="fw-bold">AR Points</p>
+                            <p class="neg-margin">0.5</p>
+                        </div>
                     </div>
-                    <div class="d-flex flex-column gap-1">
-                        <p class="fw-bold">AR Reading Level</p>
-                        <p class="neg-margin">4.2</p>
-                    </div>
-                    <div class="d-flex flex-column gap-1">
-                        <p class="fw-bold">AR Interest Level</p>
-                        <p class="neg-margin">MG</p>
-                    </div>
-                    <div class="d-flex flex-column gap-1">
-                        <p class="fw-bold">AR Points</p>
-                        <p class="neg-margin">0.5</p>
-                    </div>
+                    <!-- ============================================================= -->
+
                 </div>
                 <div class="d-flex flex-column" id="details">
                     <p class="bg-blue-heading margin-top kalam">Details</p>
-                    <div class="d-flex flex-column gap-1">
-                        <p class="fw-bold">Lexile Measure</p>
-                        <a href="#" class="text-decoration-none neg-margin">Gibbons, Gail author</a>
+
+                    <!-- These parts will be also modified -->
+                    <div id="details">
+                        <div class="d-flex flex-column gap-1">
+                            <p class="fw-bold">Lexile Measure</p>
+                            <a href="#" class="text-decoration-none neg-margin">Gibbons, Gail author</a>
+                        </div>
+                        <div class="d-flex flex-column gap-1 mt-2">
+                            <p class="fw-bold">Lexile Measure</p>
+                            <p class="neg-margin">1 volume (unpaged):</p>
+                        </div>
+                        <div class="d-flex flex-column gap-1">
+                            <p class="fw-bold">Lexile Measure</p>
+                            <a href="#" class="neg-margin text-decoration-none mb-2">Wolves -- Juvenile literature</a>
+                            <a href="#" class="neg-margin text-decoration-none">Wolves.</a>
+                        </div>
                     </div>
-                    <div class="d-flex flex-column gap-1 mt-2">
-                        <p class="fw-bold">Lexile Measure</p>
-                        <p class="neg-margin">1 volume (unpaged):</p>
-                    </div>
-                    <div class="d-flex flex-column gap-1">
-                        <p class="fw-bold">Lexile Measure</p>
-                        <a href="#" class="neg-margin text-decoration-none mb-2">Wolves -- Juvenile literature</a>
-                        <a href="#" class="neg-margin text-decoration-none">Wolves.</a>
-                    </div>
+                    <!-- ============================================================= -->
+
                 </div>
             </div>
             <img src="assets/img/item/close-button.png" alt="close" class="close-btn"/>
