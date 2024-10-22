@@ -1,69 +1,4 @@
-const list = [
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" },
-    { url: "#", img: "" }
-]
-
-function initCards(categoryList = list, cardW = 140, cardH = 140, imgUrl = "categories", type="png") {
+function initCards(list, cardW, cardH) {
     let container = document.getElementById("container");
     let cards = [];
     container.innerHTML = "";
@@ -71,7 +6,7 @@ function initCards(categoryList = list, cardW = 140, cardH = 140, imgUrl = "cate
     let numOfCardsPerRow = Math.floor((window.innerWidth - 64) / (cardW + 20));
     let numOfCardsPerCol = Math.floor((window.innerHeight - 280) / (cardH + 20));
     let numOfCardsPerPanel = numOfCardsPerRow * numOfCardsPerCol;
-    let numofPanel = Math.ceil(categoryList.length / numOfCardsPerPanel);
+    let numofPanel = Math.ceil(list.length / numOfCardsPerPanel);
     let indexofPanel = 0;
     
     let gapX = (window.innerWidth - 64 - cardW * numOfCardsPerRow) / (numOfCardsPerRow + 1);
@@ -140,7 +75,7 @@ function initCards(categoryList = list, cardW = 140, cardH = 140, imgUrl = "cate
         grass.style.right = `${grassX}px`;
     }
 
-    function createOneCard(num) {
+    function createOneCard(item) {
         let elem = document.createElement("div");
         elem.style.position = "absolute";
         elem.style.width = cardW + "px";
@@ -158,7 +93,7 @@ function initCards(categoryList = list, cardW = 140, cardH = 140, imgUrl = "cate
         elem.onclick = () => !moved && window.location.assign("book_jacket.html");
         
         let img = document.createElement("img");
-        img.title = `Image ${num + 1}`;
+        img.title = item.name;
         img.style.width = "100%";
         
         img.style.height = "100%";
@@ -166,15 +101,15 @@ function initCards(categoryList = list, cardW = 140, cardH = 140, imgUrl = "cate
         // img.addEventListener("dragstart", function (e) { e.preventDefault() });
         img.draggable = false;
 
-        img.src = `assets/img/${imgUrl}/on (${num + 1}).${type}`;
+        img.src = item.imgUrl;
 
         elem.appendChild(img);
         return elem;
     }
 
     function placeCards() {
-        for (let i = 0; i < categoryList.length; i++) {
-            let card = createOneCard(i + 1);
+        for (let i = 0; i < list.length; i++) {
+            let card = createOneCard(list[i]);
             cards.push(card);
             container.appendChild(card);
         }
@@ -198,7 +133,7 @@ function initCards(categoryList = list, cardW = 140, cardH = 140, imgUrl = "cate
         numOfCardsPerRow = Math.floor((window.innerWidth - 64) / (cardW + 20));
         numOfCardsPerCol = Math.floor((window.innerHeight - 280) / (cardH + 20));
         numOfCardsPerPanel = numOfCardsPerRow * numOfCardsPerCol;
-        numofPanel = Math.ceil(categoryList.length / numOfCardsPerPanel);
+        numofPanel = Math.ceil(list.length / numOfCardsPerPanel);
         
         if (indexofPanel >= numofPanel) {
             indexofPanel = numofPanel - 1;

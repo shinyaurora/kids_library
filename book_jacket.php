@@ -1,3 +1,27 @@
+
+<?php
+
+    # lots security and mysql data code goes here
+    
+    # Open a library database 
+    # retrieve search term 
+    # $term = $_GET['term'];
+    # this could be comingfrom the Search From or category link or series link
+    # Select the catalog records from the library catalog table
+    # While loop through the find set  and create each book jacket carasoul item with 
+    # catalog record information book jacket, chich is in the catalog record.
+    # records contains fields like title, author, cover_id. 
+    # close daabase. 
+
+  
+    # mimic this below using just an array of records.
+    # while through the array and creaet the book jacket carousal
+    
+    # question?  how to link the modal dialog box (catalog record information) to each record?  Do I include that in theformation of the carousal?
+
+?>
+
+
 <!doctype html>
 <html lang="en">
 
