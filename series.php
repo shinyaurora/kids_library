@@ -166,7 +166,7 @@
                 { url: "#", img: "" },
                 { url: "#", img: "" },
             ]
-        initCards(serieslist, 160, ( window.innerHeight - 360 ) / 2 , "series", "jpeg");
+        initCards(serieslist, 160, ( window.innerHeight - 360 ) / 2);
 
     </script>
 </body>

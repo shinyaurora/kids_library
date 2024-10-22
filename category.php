@@ -74,8 +74,38 @@
         ], [
             "name" => "Rabbits 20",
             "imgUrl" => "assets/img/categories/on (20).png"
+        ], [
+            "name" => "Rabbits 21",
+            "imgUrl" => "assets/img/categories/on (21).png"
+        ], [
+            "name" => "Rabbits 22",
+            "imgUrl" => "assets/img/categories/on (22).png"
+        ], [
+            "name" => "Rabbits 23",
+            "imgUrl" => "assets/img/categories/on (23).png"
+        ], [
+            "name" => "Rabbits 24",
+            "imgUrl" => "assets/img/categories/on (24).png"
+        ], [
+            "name" => "Rabbits 25",
+            "imgUrl" => "assets/img/categories/on (25).png"
+        ], [
+            "name" => "Rabbits 26",
+            "imgUrl" => "assets/img/categories/on (26).png"
+        ], [
+            "name" => "Rabbits 27",
+            "imgUrl" => "assets/img/categories/on (27).png"
+        ], [
+            "name" => "Rabbits 28",
+            "imgUrl" => "assets/img/categories/on (28).png"
+        ], [
+            "name" => "Rabbits 29",
+            "imgUrl" => "assets/img/categories/on (29).png"
+        ], [
+            "name" => "Rabbits 30",
+            "imgUrl" => "assets/img/categories/on (30).png"
         ]
-    ]
+    ];
 
     $jsonResult = json_encode($result);
 ?>
@@ -182,9 +212,7 @@
     <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
     <script src="./js/script.js"></script>
     <script>
-
         let list = <?php echo $jsonResult ?>;
-
         initCards(list, 140, 140);
     </script>
 </body>
