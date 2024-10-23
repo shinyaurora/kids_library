@@ -111,11 +111,21 @@
             <button type="submit" class="searchBtn mx-2">Search</button>
         </form>
         <div class="title rounded-4 px-3 d-flex align-items-center text-black">
+
+
             <!-- Place the number of result here -->
-            <span id="numResults">100</span>
+            <span id="numResults">
+                <?php echo count($result) ?>
+            </span>
+
+
             <span style="margin: 0px 8px;">Results for</span>
+
             <!-- Place the name of category here -->
-            <span id="catName">Cats</span>
+            <span id="catName">
+                <?php echo $search ?>
+            </span>
+
         </div>
         <div class="content overflow-hidden">
             <div class="prevBtn" id="prev"></div>
