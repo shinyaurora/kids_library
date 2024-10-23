@@ -19,8 +19,6 @@ function initCardSizeOption() {
 }
 
 function initSlick() {
-    console.log("okok");
-    
     $(".jacket-container").slick({
         slidesToShow: 5,
         slidesToScroll: 5,

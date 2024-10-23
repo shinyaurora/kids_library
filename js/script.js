@@ -1,12 +1,10 @@
-function initCards(list, cardW, cardH, term) {
-    let container = document.getElementById("container");
-    let cards = [];
-    container.innerHTML = "";
+function initCards(cardW, cardH, term) {
+    let cards = document.getElementsByClassName("custom-card");
 
     let numOfCardsPerRow = Math.floor((window.innerWidth - 64) / (cardW + 20));
     let numOfCardsPerCol = Math.floor((window.innerHeight - 280) / (cardH + 20));
     let numOfCardsPerPanel = numOfCardsPerRow * numOfCardsPerCol;
-    let numofPanel = Math.ceil(list.length / numOfCardsPerPanel);
+    let numofPanel = Math.ceil(cards.length / numOfCardsPerPanel);
     let indexofPanel = 0;
     
     let gapX = (window.innerWidth - 64 - cardW * numOfCardsPerRow) / (numOfCardsPerRow + 1);
@@ -45,9 +43,6 @@ function initCards(list, cardW, cardH, term) {
                     arrangeCards();
                     assetsTransform(-1);
                 }
-
-                console.log(moved);
-                
             }
         });
     }
@@ -75,46 +70,6 @@ function initCards(list, cardW, cardH, term) {
         grass.style.right = `${grassX}px`;
     }
 
-    function createOneCard(item) {
-        let elem = document.createElement("div");
-        elem.style.position = "absolute";
-        elem.style.width = cardW + "px";
-        elem.style.height = cardH + "px";
-        elem.style.borderRadius = "10px";
-        elem.style.border = "1px solid white";
-        elem.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
-        elem.style.transition = "all 0.5s";
-        elem.style.display = "flex";
-        elem.style.justifyContent = "center";
-        elem.style.cursor = "pointer";
-        elem.style.alignItems = "center";
-        elem.style.padding = "8px";
-        //when click category item icon or series icon, then goes to book_jacket.html page
-        elem.onclick = () => !moved && window.location.assign(`book_jacket.php?filterTerm=${term}&${term}=${item.name}`);
-        
-        let img = document.createElement("img");
-        img.title = item.name;
-        img.style.width = "100%";
-        
-        img.style.height = "100%";
-        img.style.objectFit = "contain";
-        // img.addEventListener("dragstart", function (e) { e.preventDefault() });
-        img.draggable = false;
-
-        img.src = item.imgUrl;
-
-        elem.appendChild(img);
-        return elem;
-    }
-
-    function placeCards() {
-        for (let i = 0; i < list.length; i++) {
-            let card = createOneCard(list[i]);
-            cards.push(card);
-            container.appendChild(card);
-        }
-    }
-
     function arrangeCards() {
         for (let j = 0; j < cards.length; j++) {
             let i = j % numOfCardsPerPanel;
@@ -125,7 +80,6 @@ function initCards(list, cardW, cardH, term) {
     }
 
     btnStateUpdate();
-    placeCards();
     arrangeCards();
     initTouchEventForSlider();
 
@@ -133,7 +87,7 @@ function initCards(list, cardW, cardH, term) {
         numOfCardsPerRow = Math.floor((window.innerWidth - 64) / (cardW + 20));
         numOfCardsPerCol = Math.floor((window.innerHeight - 280) / (cardH + 20));
         numOfCardsPerPanel = numOfCardsPerRow * numOfCardsPerCol;
-        numofPanel = Math.ceil(list.length / numOfCardsPerPanel);
+        numofPanel = Math.ceil(cards.length / numOfCardsPerPanel);
         
         if (indexofPanel >= numofPanel) {
             indexofPanel = numofPanel - 1;
@@ -163,4 +117,13 @@ function initCards(list, cardW, cardH, term) {
             assetsTransform(+1);
         }
     });
+
+    $(".custom-card").css("width", `${cardW}px`);
+    $(".custom-card").css("height", `${cardH}px`);
+    
+    $(".custom-card").click(function () {
+        let id = $(this).data("id");
+        window.location.href = `book_jacket.php?filterTerm=${term}&${term}=${id}`;
+    })
+
 }

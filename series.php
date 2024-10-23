@@ -109,14 +109,6 @@
             "imgUrl" => "assets/img/series/on (30).jpeg"
         ]
     ];
-
-    # We muse convert the result array to json array for using in JavaScript
-    # I used this $jsonResult variable as a parameter for initCards() function.
-    # You can check that bottom of this file.
-    $jsonResult = json_encode($result);
-    # Also give a filter term name like series or category or searchbox
-    # In this case, it will be series. But you can change it.
-    $filterTerm = "series";
 ?>
 
 
@@ -132,6 +124,15 @@
     <link href="css/global.css" rel="stylesheet">
     <link href="css/category.css" rel="stylesheet">
     <link href="./css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Here is modified part -->
+    <script>
+        function handleClick(search) {
+            window.location.href = `book_jacket.php?filterTerm=series&series=${search}`;
+        }
+    </script>
+    <!-- ===================== -->
+
 </head>
 
 <body>
@@ -156,6 +157,18 @@
             <div class="prevBtn" id="prev"></div>
             <div class="nextBtn" id="next"></div>
             <div id="container" class="position-relative w-100 h-100">
+
+                <!-- I modified the code here -->
+                <?php
+
+                    foreach($result as $item) {
+                        echo "<div class=\"custom-card d-flex justify-content-center align-align-items-center\" title=\"".$item['name']."\" data-id=\"".$item["name"]."\">".
+                                "<img src=\"".$item['imgUrl']."\" draggable=\"false\" >".
+                             "</div>";
+                    };
+                ?>
+                <!-- ======================== -->
+
             </div>
         </div>
     </div>
@@ -221,10 +234,7 @@
     <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
     <script src="./js/script.js"></script>
     <script>
-        let list = <?php echo $jsonResult ?>;
-        let term = "<?php echo $filterTerm ?>";
-
-        initCards(list, 160, ( window.innerHeight - 360 ) / 2, term);
+        initCards(160, ( window.innerHeight - 360 ) / 2, "series");
     </script>
 </body>
 
