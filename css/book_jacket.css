@@ -508,3 +508,13 @@ input[type=checkbox] {
     font-weight: 600;
     text-align: center;
 }
+
+.fallback {
+    display: block;
+    position: absolute;
+    width: calc(100% - 40px);
+    height: calc(100% - 60px);
+    background-image: url(../assets/img/item/default.png);
+    left: 20px;
+    top: 30px;
+}
