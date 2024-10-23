@@ -66,7 +66,7 @@
             "status" => "out",
             "type"   => "book",
             "level"  => "80L",
-            "imgUrl" => "./assets/img/jackets/image5.jpeg"
+            "imgUrl" => "./assets/img/jackets/image5.jpegdd"
         ], 
     ];
 
@@ -149,7 +149,8 @@
                                             "<img src='assets/img/item/pagecurl.png' />".
                                             "<span class='level-text' id='level-text'>".$item['level']."</span>".
                                         "</div>".
-                                        "<img src='".$item['imgUrl']."' />".
+                                        "<img src='".$item['imgUrl']."' onerror=\"this.src='assets/img/item/default.png'; this.alt=''; this.nextElementSibling.style.display='block';\" />".
+                                        "<div class=\"alt-text\">".$item["title"]."</div>".
                                     "</div>".
                                 "</div>";
                         }

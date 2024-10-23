@@ -497,3 +497,14 @@ input[type=checkbox] {
     padding: 0px 20px !important;
     width: auto;
 }
+
+.alt-text {
+    display: none;
+    position: absolute;
+    top: 40px;
+    width: 100%;
+    padding: 40px;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+}
