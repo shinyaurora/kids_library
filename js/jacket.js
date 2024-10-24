@@ -74,19 +74,6 @@ function initModalEffects() {
 
     $('.jacket-card').on('click', function () {
         if (!moved) {
-
-            /**
-             * When we click an jacket item, we send jQuery Ajax Request with jacket/book id value to equivalent php file 
-             * which send response with detailed info of that book.
-             * Then, we can get response. The response should be array with several required values(like Copies, Summary, Reading Levels, availability, type, title, etc). 
-             * In this case, each item of array should be html element which implement the equivalent content or string value.
-             * Then, according to the response, we update the modal content using jQuery.
-             * After that, we show/open the modal.
-             * Below code parts impelemt these steps.
-             */
-
-            // AJAX call to fetch modal content
-            
             
             let jacketID = $(this).data("id");
             $.ajax({
@@ -97,14 +84,10 @@ function initModalEffects() {
                     // then update modal body with response
                     let detailInfo = JSON.parse(response);
 
-                    console.log(detailInfo);
-                    
-
                     $("#cover-img").attr("src", detailInfo.coverImgUrl);
                     $("#avail-img").attr("src", `assets/img/item/${detailInfo['status']}.png`);
                     $("#type-img").attr("src", `assets/img/item/${detailInfo['type']}.png`);
                     $("#title").html(detailInfo.title);
-                    
 
                     // This is to make Copies part in Modal
                     let copiesHTML = "";
@@ -245,10 +228,6 @@ function initModalEffects() {
                     $("#modal").css("display", "flex"); // After then, Show the modal
                 }
             });
-            
-            
-            // For now, I make this code parts as comment because you should modify according to your strategy
-            // Once if you modify, then activate the commented parts above and make this below line as a comment
         }
     });
 
@@ -265,7 +244,7 @@ function initModalEffects() {
     });
 
     $(".links").mouseleave(function () {
-        let items = ["#copies", "#summary", "#levels", "#details"];
+        let items = ["#copies-container", "#summary", "#levels-container", "#details-container"];
         $(items.join(", ")).animate({ opacity: 1 }, 100);
     })
 
@@ -273,7 +252,6 @@ function initModalEffects() {
         let items = ["#copies-container", "#summary", "#levels-container", "#details-container"];
         let target = $(this).data("to");
         let restItems = items.filter(item => item !== `#${target}`);
-
         $(restItems.join(", ")).animate({ opacity: 0.5 }, 100);
         $("#" + target).animate({ opacity: 1 }, 100);
     })
