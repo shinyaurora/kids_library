@@ -18,57 +18,139 @@
     # while through the array and creaet the book jacket carousal
     
     # question?  how to link the modal dialog box (catalog record information) to each record?  Do I include that in theformation of the carousal?
-
-    ########################################################
-    # Modify code goes here. You can reference below code. #
-    ########################################################
-
+    
     # This is code for gettring search term and search content
     $term = isset($_GET['filterTerm']) ? $_GET['filterTerm'] : ""; 
     $search = $term ? $_GET[$term] : "";
     # You can use these values for mysql query to select corresponding filtered result
 
-    # I will skip the SQL code
-
+  
     # Let's assume that you got below result array by mysql query above.
-    $result = [
-        [
-            "id"     => "1",
-            "title"  => "What Is The Story of Hello Kitty?",
+    $result_array = [];
+;
+        
+        
+        
+    ########################################################
+    # Modify code goes here. You can reference below code. #
+    ########################################################
+    
+    require_once("/library/webserver/cgi-executables/kids_ini.php");
+    include("functions.php");
+    
+    $filter = $term;
+
+    $term = $search;
+
+    $term = normalize_term($term);
+
+    
+    $database = "library_$library_id";
+    $link = mysqli_connect("$library_server","$user","$pw", "$database");
+     if (mysqli_connect_errno())  {
+        echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    }
+   
+    $words = explode(' ',$term);
+    $union_findset = array();
+    $count_loop = 0;
+    
+    
+    
+    foreach ($words as $word) {
+	    $count_loop++;
+	    $findset = array();
+	    $where_str = "index_key like 'CAT::$word%::$field_num%'";
+	    $query = "SELECT index_value from index_words where $where_str group by index_id";
+
+	    $result = mysqli_query($link, $query);
+	    
+	    $num_rows = mysqli_num_rows($result);
+	    if ($num_rows > 0) {
+		    $old_id = '';			// used to deduplicate
+		    while($a_row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+			    $index_value = stripslashes($a_row['index_value']);
+			    $fields = explode('::',$index_value);
+			    $record_id = $fields[1];
+			    if ($record_id != $old_id) {
+				    array_push($findset,$record_id);
+			    }
+			    $old_id = $record_id;
+		    }
+	    }
+	    
+	    if ($count_loop == 1) {
+		    $union_findset = $findset;
+	    }
+	    else {
+		    $union_findset = array_intersect($union_findset, $findset);
+	    }
+    }
+  
+    $findset_count = count($union_findset);
+    
+    #create the carrousal
+    $item_c = '';
+    
+    foreach($union_findset as $record_id) {
+		
+		$query = "select catalog_id, cover_id, type, record, thumbnail from catalog where catalog_id = $record_id";
+		$result = mysqli_query($link, $query);
+		$a_row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+		
+		$a_catalog_id = stripslashes($a_row['catalog_id']);
+		$a_cover_id = stripslashes($a_row['cover_id']);
+		$a_type = stripslashes($a_row['type']);
+		$a_record = stripslashes($a_row['record']);
+		$thumbnail = stripslashes($a_row['thumbnail']);
+		
+		$r_count = 10;
+		$a_record = str_replace('\'\'','\'',$a_record);
+		$a_record = str_replace('""','"',$a_record);
+		
+		$a_record = str_replace('\'\'','\'',$a_record);
+		$a_record = str_replace('""','"',$a_record);
+		
+		# $lib_call = '082';			//  needs to be updated to by dynamic.
+		$lib_call = $_SESSION['lib_call'];			// where is the call
+		$lib_subcall = $_SESSION['lib_subcall'];   // where is the subcall
+		
+		$cat_fields = getFields($a_record);
+		
+		$isbn = $cat_fields[0];
+		$issn = $cat_fields[1];
+		$author = $cat_fields[2];
+		$title = $cat_fields[3];
+		$call = $cat_fields[4];
+		$notes = $cat_fields[5];
+		$pub_date = $cat_fields[6];
+		$target_audience = $cat_fields[7];
+		$study_program_note = $cat_fields[8];
+		$electronic_access_field = $cat_fields[9];  // electronic access field
+
+		$notes = substr($notes,4);
+
+		$location = '';
+		
+		 $coverstr = "<img src=\"cover_server.php?cover_id=$a_cover_id&isbn=$isbn&type=$a_type\" height=$size border=0 alt=\"Book Jacket\">";
+		
+        # update the array here.
+        
+        
+        $result_array[] = [
+            "id"     => "$a_catalog_id",
+            "title"  => "$title",
             "status" => "in",
             "type"   => "book",
-            "level"  => "30L",
-            "imgUrl" => "./assets/img/jackets/image1.jpeg"
-        ], [
-            "id"     => "2",
-            "title"  => "Waylon! One Awesome Thing",
-            "status" => "out",
-            "type"   => "dvd",
-            "level"  => "530L",
-            "imgUrl" => "./assets/img/jackets/image2.jpeg"
-        ], [
-            "id"     => "3",
-            "title"  => "DIARY OF A MINECRAFT ZOMBIE",
-            "status" => "in",
-            "type"   => "book",
-            "level"  => "210L",
-            "imgUrl" => "./assets/img/jackets/image3.jpeg"
-        ], [
-            "id"     => "4",
-            "title"  => "Life according to Og the Frog",
-            "status" => "in",
-            "type"   => "dvd",
-            "level"  => "10L",
-            "imgUrl" => "./assets/img/jackets/image4.jpeg"
-        ], [
-            "id"     => "5",
-            "title"  => "There's a Monter IN YOUR BOOK",
-            "status" => "out",
-            "type"   => "book",
-            "level"  => "80L",
-            "imgUrl" => "./assets/img/jackets/image5.jpegdd"
-        ], 
-    ];
+            "level"  => "99L",
+            "imgUrl" => "cover_server.php?cover_id=$a_cover_id&isbn=$isbn&type=$a_type\" height=$size border=0 alt=\"Book Jacket\""
+        ];
+        
+		
+	}
+    
+    
+    # ##########################################################################################################################  
 
 ?>
 
@@ -115,7 +197,7 @@
 
             <!-- Place the number of result here -->
             <span id="numResults">
-                <?php echo count($result) ?>
+                <?php echo count($result_array) ?>
             </span>
 
 
@@ -136,7 +218,7 @@
                 <!--  This is for exporint the card item elements -->
                 <!-- -------------------------------------------- -->
                     <?php
-                        foreach($result as $item) {
+                        foreach($result_array as $item) {
                             echo "<div>".
                                     "<div data-id=\"".$item["id"]."\" class='jacket-card d-flex justify-content-center align-items-center position-relative'>".
                                         "<div class='availability'>".
