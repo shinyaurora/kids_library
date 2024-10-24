@@ -124,15 +124,6 @@
     <link href="css/global.css" rel="stylesheet">
     <link href="css/category.css" rel="stylesheet">
     <link href="./css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Here is modified part -->
-    <script>
-        function handleClick(search) {
-            window.location.href = `book_jacket.php?filterTerm=series&series=${search}`;
-        }
-    </script>
-    <!-- ===================== -->
-
 </head>
 
 <body>
@@ -234,7 +225,7 @@
     <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
     <script src="./js/script.js"></script>
     <script>
-        initCards(160, ( window.innerHeight - 360 ) / 2, "series");
+        initCards(160, ( window.innerHeight - 360 ) / 2, "seriesId");
     </script>
 </body>
 
