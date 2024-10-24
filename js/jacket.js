@@ -72,7 +72,7 @@ function initModalEffects() {
         }
     });
 
-    $('.slider').on('click', '.slick-slide', function () {
+    $('.jacket-card').on('click', function () {
         if (!moved) {
 
             /**
@@ -86,12 +86,13 @@ function initModalEffects() {
              */
 
             // AJAX call to fetch modal content
-
+            
             /*
+            let jacketID = $(this).data("id");
             $.ajax({
                 url: 'fetch_modal_content.php', // URL to fetch content (maybe you already have it.)
                 type: 'POST', // If then, you can get the request value(jacket/boot ID) using $_POST['id]
-                data: { id: itemId }, // This is the request value
+                data: { id: jacketID }, // This is the request value
                 success: function (response) { // If the request is successful and get response,
                     // then update modal body with response
                     $("#cover-img").attr("src", response['coverImgUrl']);

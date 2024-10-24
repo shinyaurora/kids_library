@@ -138,7 +138,7 @@
                     <?php
                         foreach($result as $item) {
                             echo "<div>".
-                                    "<div class='jacket-card d-flex justify-content-center align-items-center position-relative'>".
+                                    "<div data-id=\"".$item["id"]."\" class='jacket-card d-flex justify-content-center align-items-center position-relative'>".
                                         "<div class='availability'>".
                                             "<img src='assets/img/item/".$item['status'].".png' />".
                                         "</div>".
