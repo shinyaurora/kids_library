@@ -314,6 +314,7 @@
 
 .right-section {
     padding: 10px;
+    width: calc(100% - 240px) !important;
 }
 
 .right-section::-webkit-scrollbar {
@@ -526,4 +527,10 @@ input[type=checkbox] {
     background-image: url(../assets/img/item/default.png);
     left: 20px;
     top: 30px;
+}
+
+@media screen and (max-width: 600px) {
+    #title {
+        font-size: 22px;
+    }
 }

@@ -72,10 +72,12 @@ function initModalEffects() {
         }
     });
 
-    $('.jacket-card').on('click', function () {
+    $('.slider').on('click', ".slick-slide", function () {
         if (!moved) {
             
-            let jacketID = $(this).data("id");
+            let jacketID = $(this).find(".jacket-card").data("id");
+            console.log(jacketID);
+            
             $.ajax({
                 url: 'fetch_modal_content.php', // URL to fetch content (maybe you already have it.)
                 type: 'POST', // If then, you can get the request value(jacket/boot ID) using $_POST['id]

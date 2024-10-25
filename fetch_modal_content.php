@@ -10,7 +10,7 @@
         "coverImgUrl" => "some image url from cover server", // cover_server.php?cover_id=$a_cover_id&isbn=$isbn&type=$a_type
         "status" => "out", // in or out
         "type" => "dvd", // book or dvd
-        "title" => "Some Title", // title of jacket
+        "title" => "leSome TitleSome Title", // title of jacket
         "copies" => [
             [
                 "position" => "Any Library 1",
