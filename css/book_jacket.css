@@ -233,10 +233,32 @@
 .jacket-card {
     border: 1px solid white;
     background-color: rgba(255, 255, 255, 0.2);
-    padding: 30px 20px;
+    padding: 30px 20px 60px 20px;
     cursor: pointer;
 }
 
+.jacket-footer {
+    width: 100%;
+    /* height: 30px; */
+    background-color: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 50px;
+    padding-right: 10px;
+    font-size: 12px;
+    color: #008eec;
+    font-weight: 700;
+}
+
+.jacket-footer span {
+    word-wrap: none;
+}
 
 .jacket-card img {
     height: 100%;
@@ -532,5 +554,11 @@ input[type=checkbox] {
 @media screen and (max-width: 600px) {
     #title {
         font-size: 22px;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .content {
+        padding: 50px;
     }
 }

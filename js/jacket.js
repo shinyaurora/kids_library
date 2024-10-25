@@ -47,6 +47,14 @@ function initSlick() {
                     slidesToScroll: 2,
                     infinite: true
                 }
+            },
+            {
+                breakpoint: 530,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: true
+                }
             }
         ]
     });

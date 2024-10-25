@@ -26,14 +26,47 @@
 
   
     # Let's assume that you got below result array by mysql query above.
-    $result_array = [[
-        "id"     => "a",
-        "title"  => "a",
-        "status" => "in",
-        "type"   => "book",
-        "level"  => "99L",
-        "imgUrl" => "a"
-    ]
+    $result_array = [
+        [
+            "id"     => "a",
+            "title"  => "a",
+            "status" => "in",
+            "type"   => "book",
+            "level"  => "99L",
+            "imgUrl" => "a",
+            "location" => "Juv Pict",
+            "callnum" => "J Pict Burl 2011"
+        ],
+        [
+            "id"     => "a",
+            "title"  => "a",
+            "status" => "in",
+            "type"   => "book",
+            "level"  => "99L",
+            "imgUrl" => "a",
+            "location" => "Juv Pict",
+            "callnum" => "J Pict Burl 2011"
+        ],
+        [
+            "id"     => "a",
+            "title"  => "a",
+            "status" => "in",
+            "type"   => "book",
+            "level"  => "99L",
+            "imgUrl" => "a",
+            "location" => "Juv Pict",
+            "callnum" => "J Pict Burl 2011"
+        ],
+        [
+            "id"     => "a",
+            "title"  => "a",
+            "status" => "in",
+            "type"   => "book",
+            "level"  => "99L",
+            "imgUrl" => "a",
+            "location" => "Juv Pict",
+            "callnum" => "J Pict Burl 2011"
+        ],
     ];
 ;
         
@@ -228,7 +261,7 @@
                     <?php
                         foreach($result_array as $item) {
                             echo "<div>".
-                                    "<div data-id=\"".$item["id"]."\" class='jacket-card d-flex justify-content-center align-items-center position-relative'>".
+                                    "<div data-id=\"".$item["id"]."\" class='jacket-card d-flex justify-content-center flex-column align-items-center position-relative'>".
                                         "<div class='availability'>".
                                             "<img src='assets/img/item/".$item['status'].".png' />".
                                         "</div>".
@@ -242,6 +275,10 @@
                                         "<div class=\"fallback\">".$item["title"]."</div>".
                                         "<img src='".$item['imgUrl']."' onerror=\"this.src='assets/img/item/default.png'; this.alt=''; this.nextElementSibling.style.display='block';\" onload=\"this.previousElementSibling.style.display='none';\" />".
                                         "<div class=\"alt-text\">".$item["title"]."</div>".
+                                        "<div class=\"jacket-footer\">".
+                                            "<span>".$item['location']."</span>".
+                                            "<span>".$item['callnum']."</span>".
+                                        "</div>".
                                     "</div>".
                                 "</div>";
                         }
