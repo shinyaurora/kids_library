@@ -86,9 +86,7 @@
     # this is normally in a While statement to get all copies. 
     #  would like to inser each into the detail collections array below. 
             
-    $collections = [
-        
-    ]
+    $collections = [];
         
     while($a_row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         $holding_id = stripslashes($a_row['holding_id']);
@@ -119,7 +117,7 @@
             "$location",
             "$call_number $call_cutter",
             "$status",
-        ]
+        ];
     }
 
     # ok there is more than one copy per title.  How to add more collections? 

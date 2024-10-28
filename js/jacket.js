@@ -132,9 +132,9 @@ function initModalEffects() {
                     // then update modal body with response
                     let detailInfo = JSON.parse(response);
 
-                    $("#cover-img").css("src", detailInfo.coverImgUrl);
-                    $("#avail-img").css("src", `assets/img/item/${detailInfo['status']}.png`);
-                    $("#type-img").css("src", `assets/img/item/${detailInfo['type']}.png`);
+                    $("#cover-img").attr("src", detailInfo.coverImgUrl);
+                    $("#avail-img").attr("src", `assets/img/item/${detailInfo['status']}.png`);
+                    $("#type-img").attr("src", `assets/img/item/${detailInfo['type']}.png`);
                     $("#title").html(detailInfo.title);
                     $("#bookTitle").html(detailInfo.title);
 
