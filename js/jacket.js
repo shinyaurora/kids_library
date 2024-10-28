@@ -100,6 +100,8 @@ function initModalEffects() {
     var startY = 0;
     var threshold = 50; // Minimum swipe distance to consider as swipe
 
+    let currentJacketID = "";
+
     // Detect when the user starts touching or clicking
     $('.slider').on('mousedown touchstart', function (e) {
         moved = false;
@@ -118,6 +120,8 @@ function initModalEffects() {
         if (!moved) {
             
             let jacketID = $(this).find(".jacket-card").data("id");
+            currentJacketID = jacketID;
+
             console.log(jacketID);
             
             $.ajax({
@@ -128,147 +132,147 @@ function initModalEffects() {
                     // then update modal body with response
                     // let detailInfo = JSON.parse(response);
 
-                    $("#cover-img").css("src", detailInfo.coverImgUrl);
-                    $("#avail-img").css("src", `assets/img/item/${detailInfo['status']}.png`);
-                    $("#type-img").css("src", `assets/img/item/${detailInfo['type']}.png`);
-                    $("#title").html(detailInfo.title);
-                    $("#bookTitle").html(detailInfo.title);
+                    // $("#cover-img").css("src", detailInfo.coverImgUrl);
+                    // $("#avail-img").css("src", `assets/img/item/${detailInfo['status']}.png`);
+                    // $("#type-img").css("src", `assets/img/item/${detailInfo['type']}.png`);
+                    // $("#title").html(detailInfo.title);
+                    // $("#bookTitle").html(detailInfo.title);
 
-                    // This is to make Copies part in Modal
-                    let copiesHTML = "";
+                    // // This is to make Copies part in Modal
+                    // let copiesHTML = "";
 
-                    detailInfo.copies.forEach(copyItem => {
-                        copiesHTML += `
-                            <p class="text-gray subtitle">Shelf Location at ${copyItem.position}</p>
-                            <table class="table table-bordered">
-                                <thead class="t-head">
-                                    <tr>
-                                        <th scope="col">Collection</th>
-                                        <th scope="col">Call Number</th>
-                                        <th scope="col">Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                            `;
+                    // detailInfo.copies.forEach(copyItem => {
+                    //     copiesHTML += `
+                    //         <p class="text-gray subtitle">Shelf Location at ${copyItem.position}</p>
+                    //         <table class="table table-bordered">
+                    //             <thead class="t-head">
+                    //                 <tr>
+                    //                     <th scope="col">Collection</th>
+                    //                     <th scope="col">Call Number</th>
+                    //                     <th scope="col">Status</th>
+                    //                 </tr>
+                    //             </thead>
+                    //             <tbody>
+                    //         `;
                         
-                        copyItem.collections.forEach(collectionItem => {
-                            copiesHTML += `
-                                    <tr>
-                                        <td>${collectionItem[0]}</td>
-                                        <td>${collectionItem[1]}</td>
-                                        <td class="fw-bold">${collectionItem[2]}</td>
-                                    </tr>
-                            `;
-                        });
+                    //     copyItem.collections.forEach(collectionItem => {
+                    //         copiesHTML += `
+                    //                 <tr>
+                    //                     <td>${collectionItem[0]}</td>
+                    //                     <td>${collectionItem[1]}</td>
+                    //                     <td class="fw-bold">${collectionItem[2]}</td>
+                    //                 </tr>
+                    //         `;
+                    //     });
 
-                        copiesHTML += `
-                                </tbody>
-                            </table>
-                        `;
-                    });
+                    //     copiesHTML += `
+                    //             </tbody>
+                    //         </table>
+                    //     `;
+                    // });
 
-                    // This is to make Summary part in Modal
-                    let summaryHTML = "";
+                    // // This is to make Summary part in Modal
+                    // let summaryHTML = "";
 
-                    summaryHTML += `
-                        <div class="bg-blue-heading kalam">Summary</div>
-                    `;
+                    // summaryHTML += `
+                    //     <div class="bg-blue-heading kalam">Summary</div>
+                    // `;
 
-                    detailInfo.summary.forEach(summaryItem => {
-                        summaryHTML += `
-                            <p class="summary-content">${summaryItem}</p>
-                        `;
-                    });
+                    // detailInfo.summary.forEach(summaryItem => {
+                    //     summaryHTML += `
+                    //         <p class="summary-content">${summaryItem}</p>
+                    //     `;
+                    // });
 
-                    // This is to make Reading Levels part in Modal
-                    let levelsHTML = "";
+                    // // This is to make Reading Levels part in Modal
+                    // let levelsHTML = "";
 
-                    let levelStrList = [
-                        "Lexile Measure",
-                        "AR Reading Level",
-                        "AR Interest Level",
-                        "AR Points"
-                    ]
+                    // let levelStrList = [
+                    //     "Lexile Measure",
+                    //     "AR Reading Level",
+                    //     "AR Interest Level",
+                    //     "AR Points"
+                    // ]
 
-                    detailInfo.levels.forEach((levelItem, index) => {
-                        if (levelItem) {
-                            levelsHTML += `
-                                <div class="d-flex flex-column">
-                                    <div class="fw-bold">${levelStrList[index]}</div>
-                                    <span class="neg-margin">${levelItem}</span>
-                                </div>
-                            `;
-                        }
-                    })
+                    // detailInfo.levels.forEach((levelItem, index) => {
+                    //     if (levelItem) {
+                    //         levelsHTML += `
+                    //             <div class="d-flex flex-column">
+                    //                 <div class="fw-bold">${levelStrList[index]}</div>
+                    //                 <span class="neg-margin">${levelItem}</span>
+                    //             </div>
+                    //         `;
+                    //     }
+                    // })
 
-                    // This is to make Details part in Modal
-                    let detailsHTML = "";
+                    // // This is to make Details part in Modal
+                    // let detailsHTML = "";
 
-                    if (detailInfo.details.author.length) { // If there is author list in detail information
-                        detailsHTML += `
-                            <div class="d-flex flex-column my-1">
-                                <div class="fw-bold">It's by</div>
-                        `;
+                    // if (detailInfo.details.author.length) { // If there is author list in detail information
+                    //     detailsHTML += `
+                    //         <div class="d-flex flex-column my-1">
+                    //             <div class="fw-bold">It's by</div>
+                    //     `;
 
-                        detailInfo.details.author.forEach(author => {
-                            detailsHTML += `
-                                <a href="book_jacket.php?filterTerm=author&author=${author}" class="text-decoration-none neg-margin">${author}, author.</a>
-                            `;
-                        })
+                    //     detailInfo.details.author.forEach(author => {
+                    //         detailsHTML += `
+                    //             <a href="book_jacket.php?filterTerm=author&author=${author}" class="text-decoration-none neg-margin">${author}, author.</a>
+                    //         `;
+                    //     })
 
-                        detailsHTML += `
-                            </div>
-                        `;
-                    }
+                    //     detailsHTML += `
+                    //         </div>
+                    //     `;
+                    // }
 
-                    if (detailInfo.details.belongs.length) { // If there is belongs list in detail information
-                        detailsHTML += `
-                            <div class="d-flex flex-column my-1">
-                                <div class="fw-bold">It's part of the series</div>
-                        `;
+                    // if (detailInfo.details.belongs.length) { // If there is belongs list in detail information
+                    //     detailsHTML += `
+                    //         <div class="d-flex flex-column my-1">
+                    //             <div class="fw-bold">It's part of the series</div>
+                    //     `;
 
-                        detailInfo.details.belongs.forEach(belong => {
-                            detailsHTML += `
-                                <a href="book_jacket.php?filterTerm=seriesTitle&seriesTitle=${belong}" class="text-decoration-none neg-margin">${belong}</a>
-                            `;
-                        });
+                    //     detailInfo.details.belongs.forEach(belong => {
+                    //         detailsHTML += `
+                    //             <a href="book_jacket.php?filterTerm=seriesTitle&seriesTitle=${belong}" class="text-decoration-none neg-margin">${belong}</a>
+                    //         `;
+                    //     });
                         
-                        detailsHTML += `
-                            </div>
-                        `;
-                    }
+                    //     detailsHTML += `
+                    //         </div>
+                    //     `;
+                    // }
 
-                    if (detailInfo.details.length) { // If there is belongs list in detail information
-                        detailsHTML += `
-                            <div class="d-flex flex-column mt-2">
-                                <div class="fw-bold">Length</div>
-                                <span class="neg-margin">${detailInfo.details.length}</span>
-                            </div>
-                        `;
-                    }
+                    // if (detailInfo.details.length) { // If there is belongs list in detail information
+                    //     detailsHTML += `
+                    //         <div class="d-flex flex-column mt-2">
+                    //             <div class="fw-bold">Length</div>
+                    //             <span class="neg-margin">${detailInfo.details.length}</span>
+                    //         </div>
+                    //     `;
+                    // }
 
-                    if (detailInfo.details.relates.length) { // If there is author list in detail information
-                        detailsHTML += `
-                            <div class="d-flex flex-column my-1">
-                                <div class="fw-bold">Related Things</div>
-                        `;
+                    // if (detailInfo.details.relates.length) { // If there is author list in detail information
+                    //     detailsHTML += `
+                    //         <div class="d-flex flex-column my-1">
+                    //             <div class="fw-bold">Related Things</div>
+                    //     `;
 
-                        detailInfo.details.relates.forEach(relatedItem => {
-                            detailsHTML += `
-                                <a href="book_jacket.php?filterTerm=searchBox&searchBox=${relatedItem}" class="text-decoration-none neg-margin">${relatedItem}</a>
-                            `;
-                        })
+                    //     detailInfo.details.relates.forEach(relatedItem => {
+                    //         detailsHTML += `
+                    //             <a href="book_jacket.php?filterTerm=searchBox&searchBox=${relatedItem}" class="text-decoration-none neg-margin">${relatedItem}</a>
+                    //         `;
+                    //     })
 
-                        detailsHTML += `
-                            </div>
-                        `;
-                    }
+                    //     detailsHTML += `
+                    //         </div>
+                    //     `;
+                    // }
 
-                    // Then update the Modal content using above values
-                    $("#copies")   .html(copiesHTML);
-                    $("#summary")  .html(summaryHTML);
-                    $("#levels")   .html(levelsHTML);
-                    $("#details")  .html(detailsHTML);
+                    // // Then update the Modal content using above values
+                    // $("#copies")   .html(copiesHTML);
+                    // $("#summary")  .html(summaryHTML);
+                    // $("#levels")   .html(levelsHTML);
+                    // $("#details")  .html(detailsHTML);
 
                     $("#modal").css("display", "flex"); // After then, Show the modal
                 }
@@ -301,34 +305,78 @@ function initModalEffects() {
         $("#" + target).animate({ opacity: 1 }, 100);
     })
 
+    // $(".action-btn.yes").click(function () {
+    //     $(".login").css("display", "flex");
+    //     $(".dogSaying .confirm").css("display", "none");
+    //     $(".dogSaying .loading").css("display", "none");
+    //     $(".dogSaying .suggest").css("display", "block");
+    //     $(".dogSaying").css("z-index", "100001");
+    // })
+
+    // $(".action-btn.no").click(function () {
+    //     $(".dogSaying .confirm").css("display", "none");
+    //     $(".dogImg").css("z-index", "10");
+    //     $(".dogSaying").css("display", "none");
+    // })
+
+    // $(".placehold").click(function () {
+    //     $(".dogSaying").css("display", "block");
+    //     $(".dogSaying .confirm").css("display", "block");
+    //     $(".dogSaying .suggest").css("display", "none");
+    //     $(".dogSaying .loading").css("display", "none");
+    //     $(".dogSaying").css("z-index", "100001");
+    //     $(".dogImg").css("z-index", "100000");
+    // })
+    
+    // $(".forget").click(function () {
+    //     $(".login").css("display", "none");
+    //     $(".dogSaying").css("display", "none");
+    //     $(".dogImg").css("z-index", "10");
+    // })
+    function showElement(selector, displayType = "block", zIndex = null) {
+        $(selector).css("display", displayType);
+        if (zIndex !== null) {
+            $(selector).css("z-index", zIndex);
+        }
+    }
+
+    function hideElement(selector, zIndex = null) {
+        $(selector).css("display", "none");
+        if (zIndex !== null) {
+            $(selector).css("z-index", zIndex);
+        }
+    }
+
+    // Button actions
     $(".action-btn.yes").click(function () {
-        $(".login").css("display", "flex");
-        $(".dogSaying .confirm").css("display", "none");
-        $(".dogSaying .loading").css("display", "none");
-        $(".dogSaying .suggest").css("display", "block");
-        $(".dogSaying").css("z-index", "100001");
-    })
+        showElement(".login", "flex");
+        hideElement(".dogSaying .confirm");
+        hideElement(".dogSaying .loading");
+        showElement(".dogSaying .suggest");
+        showElement(".dogSaying", "block", "100001");
+    });
 
     $(".action-btn.no").click(function () {
-        $(".dogSaying .confirm").css("display", "none");
-        $(".dogImg").css("z-index", "10");
-        $(".dogSaying").css("display", "none");
-    })
+        hideElement(".dogSaying .confirm");
+        hideElement(".dogSaying", "none", "10");
+    });
 
     $(".placehold").click(function () {
-        $(".dogSaying").css("display", "block");
-        $(".dogSaying .confirm").css("display", "block");
-        $(".dogSaying .suggest").css("display", "none");
-        $(".dogSaying .loading").css("display", "none");
-        $(".dogSaying").css("z-index", "100001");
-        $(".dogImg").css("z-index", "100000");
-    })
-    
+        showElement(".dogSaying", "block", "100001");
+        showElement(".dogSaying .confirm");
+        hideElement(".dogSaying .suggest");
+        hideElement(".dogSaying .loading");
+        showElement(".dogImg", "block", "100000");
+    });
+
     $(".forget").click(function () {
-        $(".login").css("display", "none");
-        $(".dogSaying").css("display", "none");
-        $(".dogImg").css("z-index", "10");
-    })
+        hideElement(".login");
+        hideElement(".dogSaying");
+        hideElement(".dogImg", "10");
+    });
+
+
+    // Slick Slider Button Effect
 
     $('.slider').on('afterChange', function (event, slick, currentSlide) {
         detectPanelState();
@@ -343,4 +391,36 @@ function initModalEffects() {
     $('#next').on('click', function () {
         $('.slider').slick('slickNext'); // Go to the next slide
     });
+
+    // When I clicked the submit button
+
+    $("button.submit").click(function (e) {
+        e.preventDefault();
+        let name = $("#name").val();
+        let email = $("#email").val();
+        let record_id = currentJacketID;
+        var remember = $('#remember').is(':checked');
+
+        if (!name) {
+            $(".say-content.suggest").html("Please input the Name.");
+        }
+
+        if (!email) {
+            $(".say-content.suggest").html("Please input the Email.");
+        }
+
+        $.ajax({
+            url: 'mail_handler.php', // URL to Mail.php
+            type: 'POST', // If then, you can get the request value(jacket/boot ID) using $_POST['id]
+            data: { name: name, email: email, remember, record_id }, // This is the request value
+            success: function () {
+                console.log("successfully sent");
+                $(".login").css("display", "none");
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        })
+
+    })
 }
