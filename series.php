@@ -76,7 +76,7 @@
 </head>
 
 <body>
-    <img src="./assets/img/item/loader-big.gif" id="loader" alt="loader" />
+    <!-- <img src="./assets/img/item/loader-big.gif" id="loader" alt="loader" /> -->
 
     <div class="container-fluid vh-100 main">
         <div class="position-absolute cloudBg" id="cloud">
@@ -177,6 +177,6 @@
     <script>
         initCards(160, (window.innerHeight - 360) / 2, "seriesId");
     </script>
-    <script src="./js/loader.js"></script>
+    <!-- <script src="./js/loader.js"></script> -->
 </body>
 </html>

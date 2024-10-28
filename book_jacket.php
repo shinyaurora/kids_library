@@ -264,7 +264,7 @@
 </head>
 
 <body>
-    <img src="./assets/img/item/loader-big.gif" alt="loader" id="loader" />
+    <!-- <img src="./assets/img/item/loader-big.gif" alt="loader" id="loader" /> -->
 
     <div class="container-fluid vh-100 main">
         <div class="position-absolute cloudBg" id="cloud">
@@ -527,7 +527,7 @@
         initSlick();
         initModalEffects();
     </script>
-    <script src="js/loader.js"></script>
+    <!-- <script src="js/loader.js"></script> -->
 
 </body>
 
