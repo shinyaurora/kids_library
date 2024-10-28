@@ -116,20 +116,20 @@
     # ############################################################################
     # Get the library name and other options from the library table
     ##############################################################################
-    require_once("/library/webserver/cgi-executables/kids_ini.php");
+    // require_once("/library/webserver/cgi-executables/kids_ini.php");
      
-    $database = "libraryworld";
-    $link_library = mysqli_connect("$library_server","$user","$pw", "$database");
-     if (mysqli_connect_errno())  {
-        echo "Failed to connect to MySQL: " . mysqli_connect_error();
-    }
+    // $database = "libraryworld";
+    // $link_library = mysqli_connect("$library_server","$user","$pw", "$database");
+    //  if (mysqli_connect_errno())  {
+    //     echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    // }
 
-    $query = "select libraryname from libraries where library_id = $library_id";
+    // $query = "select libraryname from libraries where library_id = $library_id";
     
-    $library_result = mysqli_query($link_library, $query);
+    // $library_result = mysqli_query($link_library, $query);
     
-    $a_row = mysqli_fetch_array($library_result, MYSQLI_ASSOC);
-    $libraryname = stripslashes($a_row['libraryname']);
+    // $a_row = mysqli_fetch_array($library_result, MYSQLI_ASSOC);
+    // $libraryname = stripslashes($a_row['libraryname']);
     
 
     
@@ -150,6 +150,7 @@
 </head>
 
 <body>
+    <img src="./assets/img/item/loader-big.gif" alt="loader" id="loader" />
 
     <div class="container-fluid vh-100 main">
         <div class="position-absolute cloudBg" id="cloud">
@@ -167,7 +168,7 @@
         <div class="title rounded-4 px-3 d-flex align-items-center text-black">
             Explore Categories
         </div>
-        <div class="content overflow-hidden">
+        <div class="content overflow-hidden" id="content">
             <div class="prevBtn" id="prev"></div>
             <div class="nextBtn" id="next"></div>
             <div id="container" class="position-relative w-100 h-100">
@@ -251,6 +252,7 @@
     <script>
         initCards(140, 140, "category");
     </script>
+    <script src="./js/loader.js"></script>
 </body>
 
 </html>

@@ -17,6 +17,25 @@ body {
   overflow: hidden;
 }
 
+#content {
+  opacity: 0;
+}
+
+#loader {
+  z-index: 9999 !important;
+  display: flex;
+  transition: all 3.5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
+
 .main {
   background-image: url(../assets/img/bg/blueGradient.png);
   background-repeat: repeat-x;
