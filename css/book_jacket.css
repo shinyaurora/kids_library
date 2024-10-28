@@ -16,6 +16,8 @@
   background-position-y: 0px;
   width: 30px;
   height: 50px;
+  border: none;
+  background-color: transparent;
 }
 
 .nextBtn {
@@ -31,6 +33,8 @@
   background-size: 100%;
   width: 30px;
   height: 50px;
+  border: none;
+  background-color: transparent;
 }
 
 .title {

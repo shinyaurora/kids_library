@@ -265,9 +265,7 @@
 </head>
 
 <body>
-    <div id="loader" class="vh-100 w-100 bg-white align-items-center flex-column justify-content-center position-fixed">
-        <img src="./assets/img/item/loader-big.gif" alt="loader" />
-    </div>
+    <img src="./assets/img/item/loader-big.gif" alt="loader" id="loader" />
 
     <div class="container-fluid vh-100 main">
         <div class="position-absolute cloudBg" id="cloud">
@@ -468,9 +466,9 @@
 
         <!-- Once enter jaket page, then the category icon showes next to dog's house image -->
         <!-- It can also be changed with JS DOM easily here -->
-        <div class="pageCat">
+        <!-- <div class="pageCat">
             <img src="assets/img/categories/on (1).png" id="pageCatImg" />
-        </div>
+        </div> -->
 
         <div class="footerContent rounded-4 d-flex justify-content-between px-4">
             <a class="d-flex flex-column text-decoration-none footer-item" href="category.php">

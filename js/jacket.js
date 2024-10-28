@@ -18,11 +18,45 @@ function initCardSizeOption() {
     
 }
 
+function detectPanelState() {
+    const slick = $('.slider').slick('getSlick'); // Get the Slick instance
+    const currentSlide = slick.currentSlide; // Usually 0 on init
+    const slidesToShow = slick.options.slidesToShow;
+    const totalSlides = slick.slideCount;
+
+    // Calculate start and end panels
+    const startSlide = 0;
+    const endSlide = Math.ceil(totalSlides / slidesToShow) - 1;
+
+    // $("#prev").css("background-position-y", "0px");
+    // $("#next").css("background-position-y", "105px");
+    $("#next").css("display", "block");
+    $("#prev").css("display", "block");
+
+    if (startSlide == endSlide) {
+        // $("#prev").css("background-position-y", "-50px");
+        // $("#next").css("background-position-y", "-260px");
+
+        $("#next").css("display", "none");
+        $("#prev").css("display", "none");
+    }
+
+    if (Math.floor(currentSlide / slidesToShow) === startSlide) {
+        // $("#prev").css("background-position-y", "-50px");
+        $("#prev").css("display", "none");
+    } else if (Math.floor(currentSlide / slidesToShow) === endSlide) {
+        // $("#next").css("background-position-y", "-260px");
+        $("#next").css("display", "none");
+    }
+}
+
 function initSlick() {
     $(".jacket-container").slick({
         slidesToShow: 5,
         slidesToScroll: 5,
-        infinite: true,
+        prevArrow: '<div class="prevBtn" id="prev"></div>',
+        nextArrow: '<div class="prevBtn" id="next"></div>',
+        infinite: false,
         responsive: [
             {
                 breakpoint: 1366,
@@ -94,9 +128,9 @@ function initModalEffects() {
                     // then update modal body with response
                     let detailInfo = JSON.parse(response);
 
-                    $("#cover-img").attr("src", detailInfo.coverImgUrl);
-                    $("#avail-img").attr("src", `assets/img/item/${detailInfo['status']}.png`);
-                    $("#type-img").attr("src", `assets/img/item/${detailInfo['type']}.png`);
+                    $("#cover-img").css("src", detailInfo.coverImgUrl);
+                    $("#avail-img").css("src", `assets/img/item/${detailInfo['status']}.png`);
+                    $("#type-img").css("src", `assets/img/item/${detailInfo['type']}.png`);
                     $("#title").html(detailInfo.title);
 
                     // This is to make Copies part in Modal
@@ -294,4 +328,18 @@ function initModalEffects() {
         $(".dogSaying").css("display", "none");
         $(".dogImg").css("z-index", "10");
     })
+
+    $('.slider').on('afterChange', function (event, slick, currentSlide) {
+        detectPanelState();
+    });
+
+    detectPanelState();
+
+    $('#prev').on('click', function () {
+        $('.slider').slick('slickPrev'); // Go to the previous slide
+    });
+
+    $('#next').on('click', function () {
+        $('.slider').slick('slickNext'); // Go to the next slide
+    });
 }
