@@ -15,99 +15,124 @@
     ########################################################
 
     # Let's assume that you got this result array by mysql code
-    $result = [
+   $result = [
         [
-            "name"   => "Rabbits 1",
-            "imgUrl" => "assets/img/categories/on (1).png"
+            "name"   => "Money",
+            "imgUrl" => "assets/img/categories/Money.png"
         ], [
-            "name"   => "Rabbits 2",
-            "imgUrl" => "assets/img/categories/on (2).png"
+            "name"   => "Olympic",
+            "imgUrl" => "assets/img/categories/Olympic.png"
         ], [
-            "name"   => "Rabbits 3",
-            "imgUrl" => "assets/img/categories/on (3).png"
+            "name"   => "Horse",
+            "imgUrl" => "assets/img/categories/Horse.png"
         ], [
-            "name"   => "Rabbits 4",
-            "imgUrl" => "assets/img/categories/on (4).png"
+            "name"   => "Ladybug",
+            "imgUrl" => "assets/img/categories/Ladybug.png"
         ], [
-            "name"   => "Rabbits 5",
-            "imgUrl" => "assets/img/categories/on (5).png"
+            "name"   => "Frog",
+            "imgUrl" => "assets/img/categories/Frog.png"
         ], [
-            "name"   => "Rabbits 6",
-            "imgUrl" => "assets/img/categories/on (6).png"
+            "name"   => "Giraffe",
+            "imgUrl" => "assets/img/categories/Giraffe.png"
         ], [
-            "name"   => "Rabbits 7",
-            "imgUrl" => "assets/img/categories/on (7).png"
+            "name"   => "Hippopotamus",
+            "imgUrl" => "assets/img/categories/Hippopotamus.png"
         ], [
-            "name"   => "Rabbits 8",
-            "imgUrl" => "assets/img/categories/on (8).png"
+            "name"   => "Pigs",
+            "imgUrl" => "assets/img/categories/Pigs.png"
         ], [
-            "name"   => "Rabbits 9",
-            "imgUrl" => "assets/img/categories/on (9).png"
+            "name"   => "Airplane",
+            "imgUrl" => "assets/img/categories/Airplane.png"
         ], [
-            "name"   => "Rabbits 10",
-            "imgUrl" => "assets/img/categories/on (10).png"
+            "name"   => "Car",
+            "imgUrl" => "assets/img/categories/Car.png"
         ], [
-            "name"   => "Rabbits 11",
-            "imgUrl" => "assets/img/categories/on (11).png"
+            "name"   => "Fish",
+            "imgUrl" => "assets/img/categories/Fish.png"
         ], [
-            "name"   => "Rabbits 12",
-            "imgUrl" => "assets/img/categories/on (12).png"
+            "name"   => "Planet",
+            "imgUrl" => "assets/img/categories/Planet.png"
         ], [
-            "name"   => "Rabbits 13",
-            "imgUrl" => "assets/img/categories/on (13).png"
+            "name"   => "Moon",
+            "imgUrl" => "assets/img/categories/Moon.png"
         ], [
-            "name"   => "Rabbits 14",
-            "imgUrl" => "assets/img/categories/on (14).png"
+            "name"   => "Teddy Bear",
+            "imgUrl" => "assets/img/categories/Teddy Bear.png"
         ], [
-            "name"   => "Rabbits 15",
-            "imgUrl" => "assets/img/categories/on (15).png"
+            "name"   => "School Bus",
+            "imgUrl" => "assets/img/categories/School Bus.png"
         ], [
-            "name"   => "Rabbits 16",
-            "imgUrl" => "assets/img/categories/on (16).png"
+            "name"   => "Pirate",
+            "imgUrl" => "assets/img/categories/Pirate.png"
         ], [
-            "name"   => "Rabbits 17",
-            "imgUrl" => "assets/img/categories/on (17).png"
+            "name"   => "Rabbitt",
+            "imgUrl" => "assets/img/categories/Rabbitt.png"
         ], [
-            "name"   => "Rabbits 18",
-            "imgUrl" => "assets/img/categories/on (18).png"
+            "name"   => "Fire Engine",
+            "imgUrl" => "assets/img/categories/Fire Engine.png"
         ], [
-            "name"   => "Rabbits 19",
-            "imgUrl" => "assets/img/categories/on (19).png"
+            "name"   => "Shark",
+            "imgUrl" => "assets/img/categories/Shark.png"
         ], [
-            "name"   => "Rabbits 20",
-            "imgUrl" => "assets/img/categories/on (20).png"
+            "name"   => "Rainbow",
+            "imgUrl" => "assets/img/categories/Rainbow.png"
         ], [
-            "name"   => "Rabbits 21",
-            "imgUrl" => "assets/img/categories/on (21).png"
+            "name"   => "Truck",
+            "imgUrl" => "assets/img/categories/Truck.png"
         ], [
-            "name"   => "Rabbits 22",
-            "imgUrl" => "assets/img/categories/on (22).png"
+            "name"   => "Dragon",
+            "imgUrl" => "assets/img/categories/Dragon.png"
         ], [
-            "name"   => "Rabbits 23",
-            "imgUrl" => "assets/img/categories/on (23).png"
+            "name"   => "Fourth of July",
+            "imgUrl" => "assets/img/categories/Fourth of July.png"
         ], [
-            "name"   => "Rabbits 24",
-            "imgUrl" => "assets/img/categories/on (24).png"
+            "name"   => "Whale",
+            "imgUrl" => "assets/img/categories/Whale.png"
         ], [
-            "name"   => "Rabbits 25",
-            "imgUrl" => "assets/img/categories/on (25).png"
+            "name"   => "Rain",
+            "imgUrl" => "assets/img/categories/Rain.png"
         ], [
-            "name"   => "Rabbits 26",
-            "imgUrl" => "assets/img/categories/on (26).png"
+            "name"   => "Monkey",
+            "imgUrl" => "assets/img/categories/Monkey.png"
         ], [
-            "name"   => "Rabbits 27",
-            "imgUrl" => "assets/img/categories/on (27).png"
+            "name"   => "Train",
+            "imgUrl" => "assets/img/categories/Train.png"
         ], [
-            "name"   => "Rabbits 28",
-            "imgUrl" => "assets/img/categories/on (28).png"
+            "name"   => "Holloween",
+            "imgUrl" => "assets/img/categories/Holloween.png"
         ], [
-            "name"   => "Rabbits 29",
-            "imgUrl" => "assets/img/categories/on (29).png"
+            "name"   => "Crabs",
+            "imgUrl" => "assets/img/categories/Crabs.png"
         ], [
-            "name"   => "Rabbits 30",
-            "imgUrl" => "assets/img/categories/on (30).png"
+            "name"   => "Easter",
+            "imgUrl" => "assets/img/categories/Easter.png"
+        ], [
+            "name"   => "monkey",
+            "imgUrl" => "assets/img/categories/monkey.png"
         ]
     ];
+    
+    
+    # ############################################################################
+    # Get the library name and other options from the library table
+    ##############################################################################
+    require_once("/library/webserver/cgi-executables/kids_ini.php");
+     
+    $database = "libraryworld";
+    $link_library = mysqli_connect("$library_server","$user","$pw", "$database");
+     if (mysqli_connect_errno())  {
+        echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    }
+
+    $query = "select libraryname from libraries where library_id = $library_id";
+    
+    $library_result = mysqli_query($link_library, $query);
+    
+    $a_row = mysqli_fetch_array($library_result, MYSQLI_ASSOC);
+    $libraryname = stripslashes($a_row['libraryname']);
+    
+
+    
 ?>
 
 
@@ -176,16 +201,16 @@
             <a class="d-flex flex-column text-decoration-none footer-item" href="category.php">
                 <div class="imgBtn d-flex">
                     <div class="imgBtnItem item1 p-1">
-                        <img src="./assets/img/categories/on (1).png" class="w-100 h-100" />
+                        <img src="./assets/img/categories/Money.png" class="w-100 h-100" />
                     </div>
                     <div class="imgBtnItem item2 p-1">
-                        <img src="./assets/img/categories/on (2).png" class="w-100 h-100" />
+                        <img src="./assets/img/categories/Olympic.png" class="w-100 h-100" />
                     </div>
                     <div class="imgBtnItem item3 p-1">
-                        <img src="./assets/img/categories/on (3).png" class="w-100 h-100" />
+                        <img src="./assets/img/categories/Horse.png" class="w-100 h-100" />
                     </div>
                     <div class="imgBtnItem item4 p-1">
-                        <img src="./assets/img/categories/on (4).png" class="w-100 h-100" />
+                        <img src="./assets/img/categories/Airplane.png" class="w-100 h-100" />
                     </div>
                 </div>
                 <span>Explore Categories</span>
@@ -193,16 +218,16 @@
             <a class="d-flex flex-column text-decoration-none footer-item" href="series.php">
                 <div class="imgBtn d-flex">
                     <div class="imgBtnItem item1 p-1">
-                        <img src="./assets/img/categories/on (5).png" class="w-100 h-100" />
+                        <img src="./assets/img/series/Captain Underpants.jpeg" class="w-100 h-100" />
                     </div>
                     <div class="imgBtnItem item2 p-1">
-                        <img src="./assets/img/categories/on (6).png" class="w-100 h-100" />
+                        <img src="./assets/img/series/Diary of a Wimpy Kid.jpeg" class="w-100 h-100" />
                     </div>
                     <div class="imgBtnItem item3 p-1">
-                        <img src="./assets/img/categories/on (7).png" class="w-100 h-100" />
+                        <img src="./assets/img/series/Mercy Watson.jpeg" class="w-100 h-100" />
                     </div>
                     <div class="imgBtnItem item4 p-1">
-                        <img src="./assets/img/categories/on (8).png" class="w-100 h-100" />
+                        <img src="./assets/img/series/Harry Potter.jpeg" class="w-100 h-100" />
                     </div>
                 </div>
                 <span>Chapter & Series</span>
@@ -210,13 +235,13 @@
         </div>
         <div class="footerBar w-100 d-flex overflow-visible">
             <a href="#" class="text-white text-decoration-none">Library Catalog</a>
-            <a href="#" class="text-white text-decoration-none mx-3">Francais (Cambiar idioma)</a>
+            <a href="#" class="text-white text-decoration-none mx-3"></a>
             <div class="flex-grow-1"></div>
             <a href="#" class="text-white text-decoration-none address">
-                <span class="a">Eastern</span>
-                <span class="b">Panhandle</span>
-                <span class="c">Library</span>
-                <span class="d">Consortium</span>
+                <span class="a"><?php echo $libraryname?></span>
+                <span class="b"></span>
+                <span class="c"></span>
+                <span class="d"></span>
             </a>
         </div>
     </div>

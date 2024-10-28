@@ -23,8 +23,10 @@
     $term = isset($_GET['filterTerm']) ? $_GET['filterTerm'] : ""; 
     $search = $term ? $_GET[$term] : "";
     # You can use these values for mysql query to select corresponding filtered result
+    
 
-  
+    $term = $search;
+    
     # Let's assume that you got below result array by mysql query above.
     $result_array = [
         // [
@@ -79,117 +81,161 @@
     require_once("/library/webserver/cgi-executables/kids_ini.php");
     include("functions.php");
     
-    $filter = $term;
-
-    $term = $search;
-
-    $term = normalize_term($term);
-
     
-    $database = "library_$library_id";
-    $link = mysqli_connect("$library_server","$user","$pw", "$database");
+    #############################################################################
+    # Get the library name and other options from the library table     
+    #############################################################################
+    require_once("/library/webserver/cgi-executables/kids_ini.php");
+    
+     
+    $database = "libraryworld";
+    $link_library = mysqli_connect("$library_server","$user","$pw", "$database");
      if (mysqli_connect_errno())  {
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
-   
-    $words = explode(' ',$term);
-    $union_findset = array();
-    $count_loop = 0;
-    
-    
-    
-    foreach ($words as $word) {
-	    $count_loop++;
-	    $findset = array();
-	    $where_str = "index_key like 'CAT::$word%::$field_num%'";
-	    $query = "SELECT index_value from index_words where $where_str group by index_id";
 
-	    $result = mysqli_query($link, $query);
-	    
-	    $num_rows = mysqli_num_rows($result);
-	    if ($num_rows > 0) {
-		    $old_id = '';			// used to deduplicate
-		    while($a_row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-			    $index_value = stripslashes($a_row['index_value']);
-			    $fields = explode('::',$index_value);
-			    $record_id = $fields[1];
-			    if ($record_id != $old_id) {
-				    array_push($findset,$record_id);
-			    }
-			    $old_id = $record_id;
-		    }
-	    }
-	    
-	    if ($count_loop == 1) {
-		    $union_findset = $findset;
-	    }
-	    else {
-		    $union_findset = array_intersect($union_findset, $findset);
-	    }
-    }
-  
-    $findset_count = count($union_findset);
+    $query = "select libraryname from libraries where library_id = $library_id";
     
-    #create the carrousal
-    $item_c = '';
+    $library_result = mysqli_query($link_library, $query);
     
-    foreach($union_findset as $record_id) {
-		
-		$query = "select catalog_id, cover_id, type, record, thumbnail from catalog where catalog_id = $record_id";
-		$result = mysqli_query($link, $query);
-		$a_row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-		
-		$a_catalog_id = stripslashes($a_row['catalog_id']);
-		$a_cover_id = stripslashes($a_row['cover_id']);
-		$a_type = stripslashes($a_row['type']);
-		$a_record = stripslashes($a_row['record']);
-		$thumbnail = stripslashes($a_row['thumbnail']);
-		
-		$r_count = 10;
-		$a_record = str_replace('\'\'','\'',$a_record);
-		$a_record = str_replace('""','"',$a_record);
-		
-		$a_record = str_replace('\'\'','\'',$a_record);
-		$a_record = str_replace('""','"',$a_record);
-		
-		# $lib_call = '082';			//  needs to be updated to by dynamic.
-		$lib_call = $_SESSION['lib_call'];			// where is the call
-		$lib_subcall = $_SESSION['lib_subcall'];   // where is the subcall
-		
-		$cat_fields = getFields($a_record);
-		
-		$isbn = $cat_fields[0];
-		$issn = $cat_fields[1];
-		$author = $cat_fields[2];
-		$title = $cat_fields[3];
-		$call = $cat_fields[4];
-		$notes = $cat_fields[5];
-		$pub_date = $cat_fields[6];
-		$target_audience = $cat_fields[7];
-		$study_program_note = $cat_fields[8];
-		$electronic_access_field = $cat_fields[9];  // electronic access field
+    $a_row = mysqli_fetch_array($library_result, MYSQLI_ASSOC);
+    $libraryname = stripslashes($a_row['libraryname']);
+    
+    
 
-		$notes = substr($notes,4);
+    # Search for term using filter 
 
-		$location = '';
-		
-		 $coverstr = "<img src=\"cover_server.php?cover_id=$a_cover_id&isbn=$isbn&type=$a_type\" height=$size border=0 alt=\"Book Jacket\">";
-		
-        # update the array here.
-        
-        
-        $result_array[] = [
-            "id"     => "$a_catalog_id",
-            "title"  => "$title",
-            "status" => "in",
-            "type"   => "book",
-            "level"  => "99L",
-            "imgUrl" => "cover_server.php?cover_id=$a_cover_id&isbn=$isbn&type=$a_type\" height=$size border=0 alt=\"Book Jacket\""
-        ];
-        
-		
-	}
-    
+
+    $term = normalize_term($term);
+
+    if (strlen($term) >= 2 ) {
+        $database = "library_$library_id";
+        $link = mysqli_connect("$library_server","$user","$pw", "$database");
+         if (mysqli_connect_errno())  {
+            echo "Failed to connect to MySQL: " . mysqli_connect_error();
+        }
+
+        $words = explode(' ',$term);
+        $union_findset = array();
+        $count_loop = 0;
+
+        foreach ($words as $word) {
+            $count_loop++;
+            $findset = array();
+            $where_str = "index_key like 'CAT::$word%::$field_num%'";
+            $query = "SELECT index_value from index_words where $where_str group by index_id";
+
+            $result = mysqli_query($link, $query);
+            
+            $num_rows = mysqli_num_rows($result);
+            if ($num_rows > 0) {
+	            $old_id = '';			// used to deduplicate
+	            while($a_row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+		            $index_value = stripslashes($a_row['index_value']);
+		            $fields = explode('::',$index_value);
+		            $record_id = $fields[1];
+		            if ($record_id != $old_id) {
+			            array_push($findset,$record_id);
+		            }
+		            $old_id = $record_id;
+	            }
+            }
+            if ($count_loop == 1) {
+	            $union_findset = $findset;
+            }
+            else {
+	            $union_findset = array_intersect($union_findset, $findset);
+            }
+        }
+        $findset_count = count($union_findset);
+        if ($findset_count >= 501) {
+            $union_findset = '';
+        }
+
+        #create the carrousal
+        foreach($union_findset as $record_id) {
+	        
+	        $query = "select catalog_id, cover_id, type, record, thumbnail from catalog where catalog_id = $record_id";
+	        $result = mysqli_query($link, $query);
+	        $a_row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+	        
+	        $a_catalog_id = stripslashes($a_row['catalog_id']);
+	        $a_cover_id = stripslashes($a_row['cover_id']);
+	        $a_type = stripslashes($a_row['type']);
+	        $a_record = stripslashes($a_row['record']);
+	        $thumbnail = stripslashes($a_row['thumbnail']);
+	        
+	        $r_count = 10;
+	        $a_record = str_replace('\'\'','\'',$a_record);
+	        $a_record = str_replace('""','"',$a_record);
+	        
+	        $a_record = str_replace('\'\'','\'',$a_record);
+	        $a_record = str_replace('""','"',$a_record);
+	        
+	        # $lib_call = '082';			//  needs to be updated to by dynamic.
+	        $lib_call = $_SESSION['lib_call'];			// where is the call
+	        $lib_subcall = $_SESSION['lib_subcall'];   // where is the subcall
+	        
+	        $cat_fields = getFields($a_record);
+	        
+	        $isbn = $cat_fields[0];
+	        $issn = $cat_fields[1];
+	        $author = $cat_fields[2];
+	        $title = $cat_fields[3];
+	        $call = $cat_fields[4];
+	        $notes = $cat_fields[5];
+	        $pub_date = $cat_fields[6];
+	        $target_audience = $cat_fields[7];
+	        $study_program_note = $cat_fields[8];
+	        $electronic_access_field = $cat_fields[9];  // electronic access field
+
+	        $notes = substr($notes,4);
+	        
+	        
+	        # retrieve the first holdingrecord.
+	        $query = "SELECT holding_id, barcode, branch, location, status, call_number, call_cutter, price, volume, issue from holdings where catalog_id = '$record_id'";
+
+
+	        $result = mysqli_query($link, $query);
+	        $a_row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+	        
+	        $holding_id = stripslashes($a_row['holding_id']);
+		    $barcode = stripslashes($a_row['barcode']);
+		    $branch = stripslashes($a_row['branch']);
+		    
+		    $location = stripslashes($a_row['location']);
+		    $status = stripslashes($a_row['status']);
+		    $call_number = stripslashes($a_row['call_number']);
+		    $call_cutter = stripslashes($a_row['call_cutter']);
+		    $price = stripslashes($a_row['price']);
+		    $volume = stripslashes($a_row['volume']);
+		    $issue = stripslashes($a_row['issue']);
+
+	        $status = strtolower($status);
+	        
+	        if ($status == 'hold') {
+	            $status = 'out';
+	        }
+	        if ($status == 'lost') {
+	            $status = 'out';
+	        }
+	        
+	         $coverstr = "<img src=\"cover_server.php?cover_id=$a_cover_id&isbn=$isbn&type=$a_type\" height=$size border=0 alt=\"Book Jacket\">";
+	        
+            # update the array here.
+            
+            $result_array[] = [
+                "id"     => "$a_catalog_id",
+                "title"  => "$title",
+                "status" => "$status",
+                "type"   => "book",
+                "level"  => "$target_audience",
+                "imgUrl" => "cover_server.php?cover_id=$a_cover_id&isbn=$isbn&type=$a_type\" height=$size border=0 alt=\"Book Jacket\"",
+                "location" => "$location",
+                "callnum" => "$call_number $call_cutter"
+            ];
+        }
+    }  # end if strlen great or equal to 2 . Do not want to search for 1 character or nothing. 
     
     # ##########################################################################################################################  
 
@@ -461,13 +507,13 @@
         </div>
         <div class="footerBar w-100 d-flex overflow-visible">
             <a href="#" class="text-white text-decoration-none">Library Catalog</a>
-            <a href="#" class="text-white text-decoration-none mx-3">Francais (Cambiar idioma)</a>
+            <a href="#" class="text-white text-decoration-none mx-3"></a>
             <div class="flex-grow-1"></div>
             <a href="#" class="text-white text-decoration-none address">
-                <span class="a">Eastern</span>
-                <span class="b">Panhandle</span>
-                <span class="c">Library</span>
-                <span class="d">Consortium</span>
+                <span class="a"><?php echo $libraryname?></span>
+                <span class="b"></span>
+                <span class="c"></span>
+                <span class="d"></span>
             </a>
         </div>
     </div>

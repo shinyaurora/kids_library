@@ -16,99 +16,48 @@
     ########################################################
 
     # Let's assume that you got this result array by mysql code
-    $result = [
+     $result = [
         [
-            "name"   => "Author 1",
-            "imgUrl" => "assets/img/series/on (1).jpeg"
+            "name"   => "Percy Jackson",
+            "imgUrl" => "assets/img/series/Percy Jackson.jpeg"
         ], [
-            "name"   => "Author 2",
-            "imgUrl" => "assets/img/series/on (2).jpeg"
+            "name"   => "Diary of a Wimpy Kid",
+            "imgUrl" => "assets/img/series/Diary of a Wimpy Kid.jpeg"
         ], [
-            "name"   => "Author 3",
-            "imgUrl" => "assets/img/series/on (3).jpeg"
+            "name"   => "Harry Potter",
+            "imgUrl" => "assets/img/series/Harry Potter.jpeg"
         ], [
-            "name"   => "Author 4",
-            "imgUrl" => "assets/img/series/on (4).jpeg"
+            "name"   => "Captain Underpants",
+            "imgUrl" => "assets/img/series/Captain Underpants.jpeg"
         ], [
-            "name"   => "Author 5",
-            "imgUrl" => "assets/img/series/on (5).jpeg"
-        ], [
-            "name"   => "Author 6",
-            "imgUrl" => "assets/img/series/on (6).jpeg"
-        ], [
-            "name"   => "Author 7",
-            "imgUrl" => "assets/img/series/on (7).jpeg"
-        ], [
-            "name"   => "Author 8",
-            "imgUrl" => "assets/img/series/on (8).jpeg"
-        ], [
-            "name"   => "Author 9",
-            "imgUrl" => "assets/img/series/on (9).jpeg"
-        ], [
-            "name"   => "Author 10",
-            "imgUrl" => "assets/img/series/on (10).jpeg"
-        ], [
-            "name"   => "Author 11",
-            "imgUrl" => "assets/img/series/on (11).jpeg"
-        ], [
-            "name"   => "Author 12",
-            "imgUrl" => "assets/img/series/on (12).jpeg"
-        ], [
-            "name"   => "Author 13",
-            "imgUrl" => "assets/img/series/on (13).jpeg"
-        ], [
-            "name"   => "Author 14",
-            "imgUrl" => "assets/img/series/on (14).jpeg"
-        ], [
-            "name"   => "Author 15",
-            "imgUrl" => "assets/img/series/on (15).jpeg"
-        ], [
-            "name"   => "Author 16",
-            "imgUrl" => "assets/img/series/on (16).jpeg"
-        ], [
-            "name"   => "Author 17",
-            "imgUrl" => "assets/img/series/on (17).jpeg"
-        ], [
-            "name"   => "Author 18",
-            "imgUrl" => "assets/img/series/on (18).jpeg"
-        ], [
-            "name"   => "Author 19",
-            "imgUrl" => "assets/img/series/on (19).jpeg"
-        ], [
-            "name"   => "Author 20",
-            "imgUrl" => "assets/img/series/on (20).jpeg"
-        ], [
-            "name"   => "Author 21",
-            "imgUrl" => "assets/img/series/on (21).jpeg"
-        ], [
-            "name"   => "Author 22",
-            "imgUrl" => "assets/img/series/on (22).jpeg"
-        ], [
-            "name"   => "Author 23",
-            "imgUrl" => "assets/img/series/on (23).jpeg"
-        ], [
-            "name"   => "Author 24",
-            "imgUrl" => "assets/img/series/on (24).jpeg"
-        ], [
-            "name"   => "Author 25",
-            "imgUrl" => "assets/img/series/on (25).jpeg"
-        ], [
-            "name"   => "Author 26",
-            "imgUrl" => "assets/img/series/on (26).jpeg"
-        ], [
-            "name"   => "Author 27",
-            "imgUrl" => "assets/img/series/on (27).jpeg"
-        ], [
-            "name"   => "Author 28",
-            "imgUrl" => "assets/img/series/on (28).jpeg"
-        ], [
-            "name"   => "Author 29",
-            "imgUrl" => "assets/img/series/on (29).jpeg"
-        ], [
-            "name"   => "Author 30",
-            "imgUrl" => "assets/img/series/on (30).jpeg"
+            "name"   => "Mercy Watson",
+            "imgUrl" => "assets/img/series/Mercy Watson.jpeg"
         ]
     ];
+    
+    
+    # ############################################################################
+    # Get the library name and other options from the library table
+    ##############################################################################
+    require_once("/library/webserver/cgi-executables/kids_ini.php");
+     
+    $database = "libraryworld";
+    $link_library = mysqli_connect("$library_server","$user","$pw", "$database");
+     if (mysqli_connect_errno())  {
+        echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    }
+
+    $query = "select libraryname from libraries where library_id = $library_id";
+    
+    $library_result = mysqli_query($link_library, $query);
+    
+    $a_row = mysqli_fetch_array($library_result, MYSQLI_ASSOC);
+    $libraryname = stripslashes($a_row['libraryname']);
+    
+    
+    
+    
+    
 ?>
 
 
@@ -178,16 +127,16 @@
             <a class="d-flex flex-column text-decoration-none footer-item" href="category.php">
                 <div class="imgBtn d-flex">
                     <div class="imgBtnItem item1 p-1">
-                        <img src="./assets/img/categories/on (1).png" class="w-100 h-100" />
+                        <img src="./assets/img/categories/Money.png" class="w-100 h-100" />
                     </div>
                     <div class="imgBtnItem item2 p-1">
-                        <img src="./assets/img/categories/on (2).png" class="w-100 h-100" />
+                        <img src="./assets/img/categories/Olympic.png" class="w-100 h-100" />
                     </div>
                     <div class="imgBtnItem item3 p-1">
-                        <img src="./assets/img/categories/on (3).png" class="w-100 h-100" />
+                        <img src="./assets/img/categories/Horse.png" class="w-100 h-100" />
                     </div>
                     <div class="imgBtnItem item4 p-1">
-                        <img src="./assets/img/categories/on (4).png" class="w-100 h-100" />
+                        <img src="./assets/img/categories/Airplane.png" class="w-100 h-100" />
                     </div>
                 </div>
                 <span>Explore Categories</span>
@@ -195,16 +144,16 @@
             <a class="d-flex flex-column text-decoration-none footer-item" href="series.php">
                 <div class="imgBtn d-flex">
                     <div class="imgBtnItem item1 p-1">
-                        <img src="./assets/img/categories/on (5).png" class="w-100 h-100" />
+                        <img src="./assets/img/series/Captain Underpants.jpeg" class="w-100 h-100" />
                     </div>
                     <div class="imgBtnItem item2 p-1">
-                        <img src="./assets/img/categories/on (6).png" class="w-100 h-100" />
+                        <img src="./assets/img/series/Diary of a Wimpy Kid.jpeg" class="w-100 h-100" />
                     </div>
                     <div class="imgBtnItem item3 p-1">
-                        <img src="./assets/img/categories/on (7).png" class="w-100 h-100" />
+                        <img src="./assets/img/series/Mercy Watson.jpeg" class="w-100 h-100" />
                     </div>
                     <div class="imgBtnItem item4 p-1">
-                        <img src="./assets/img/categories/on (8).png" class="w-100 h-100" />
+                        <img src="./assets/img/series/Harry Potter.jpeg" class="w-100 h-100" />
                     </div>
                 </div>
                 <span>Chapter & Series</span>
@@ -212,13 +161,13 @@
         </div>
         <div class="footerBar w-100 d-flex overflow-visible">
             <a href="#" class="text-white text-decoration-none">Library Catalog</a>
-            <a href="#" class="text-white text-decoration-none mx-3">Francais (Cambiar idioma)</a>
+            <a href="#" class="text-white text-decoration-none mx-3"></a>
             <div class="flex-grow-1"></div>
             <a href="#" class="text-white text-decoration-none address">
-                <span class="a">Eastern</span>
-                <span class="b">Panhandle</span>
-                <span class="c">Library</span>
-                <span class="d">Consortium</span>
+                <span class="a"><?php echo $libraryname?></span>
+                <span class="b"></span>
+                <span class="c"></span>
+                <span class="d"></span>
             </a>
         </div>
     </div>
