@@ -409,13 +409,19 @@ function initModalEffects() {
             $(".say-content.suggest").html("Please input the Email.");
         }
 
+        $("#name").val("");
+        $("#email").val("");
+
         $.ajax({
             url: 'mail_handler.php', // URL to Mail.php
             type: 'POST', // If then, you can get the request value(jacket/boot ID) using $_POST['id]
             data: { name: name, email: email, remember, record_id }, // This is the request value
             success: function () {
                 console.log("successfully sent");
-                $(".login").css("display", "none");
+                $("#modal").css("display", "none");
+                hideElement(".login");
+                hideElement(".dogSaying");
+                $(".dogImg").css("z-index", "10");
             },
             error: function (err) {
                 console.log(err);
