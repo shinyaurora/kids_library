@@ -379,6 +379,7 @@
                     <div class="bg-blue-heading kalam">Details</div>
                     <div id="details"></div>
                 </div>
+                <button class="btn btn-style placehold">Change Hold</button>
             </div>
             <img src="assets/img/item/close-button.png" alt="close" class="close-btn"/>
         </div>
@@ -454,6 +455,7 @@
             </div>
         </div>
         <div class="say-content suggest">If you want it, login</div>
+        <div class="say-content noresult">There is no result.</div>
     </div>
 
     <a href="category.php" class="dogImg">
@@ -536,6 +538,18 @@
         initModalEffects();
     </script>
     <!-- <script src="js/loader.js"></script> -->
+
+    <script>
+        let result = <?php echo count($result_array); ?>;
+        
+        if(result == 0) {
+            $(".dogSaying").css("display", "block");
+            $(".dogSaying .noresult").css("display", "block");
+
+            resetDogSaying();
+        }
+        
+    </script>
 
 </body>
 

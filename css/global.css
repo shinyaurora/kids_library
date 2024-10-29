@@ -301,6 +301,14 @@ body {
     right: 50px;
     transform: translate(0%, 0);
   }
+
+  .dogSaying {
+    right: 100px !important;
+  }
+
+  .login-content {
+    margin-top: 20px !important;
+  }
   
   .dogHouse {
     bottom: 30px;
@@ -343,6 +351,11 @@ body {
   .dogImg {
     right: 0%;
     transform: translate(0%, 0);
+  }
+
+  .dogSaying {
+    right: 50px !important;
+    width: 300px !important;
   }
 
   .dogImg > img {
