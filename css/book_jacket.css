@@ -44,7 +44,17 @@
     font-family: taffy !important;
     font-size: 22px;
     font-weight: bold;
-    width: max-content;
+    max-width: calc(100% - 40px) !important;
+    text-wrap: nowrap;
+    overflow: hidden;
+    width: auto;
+    padding-right: 10px;
+    width: fit-content;
+}
+
+.title > div {
+    width: auto;
+    overflow: hidden;
 }
 
 .pageCat {
