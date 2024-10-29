@@ -455,7 +455,7 @@
             </div>
         </div>
         <div class="say-content suggest">If you want it, login</div>
-        <div class="say-content noresult">There is no result.</div>
+        <div class="say-content noresult">Nothing found, please try again.</div>
     </div>
 
     <a href="category.php" class="dogImg">

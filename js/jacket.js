@@ -75,7 +75,7 @@ function initSlick() {
                 settings: {
                     slidesToShow: 4,
                     slidesToScroll: 4,
-                    infinite: true,
+                    infinite: false,
                 }
             },
             {
@@ -83,7 +83,7 @@ function initSlick() {
                 settings: {
                     slidesToShow: 3,
                     slidesToScroll: 3,
-                    infinite: true,
+                    infinite: false,
                 }
             },
             {
@@ -91,7 +91,7 @@ function initSlick() {
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2,
-                    infinite: true
+                    infinite: false
                 }
             },
             {
@@ -99,7 +99,7 @@ function initSlick() {
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
-                    infinite: true
+                    infinite: false
                 }
             }
         ]
@@ -366,6 +366,7 @@ function initModalEffects() {
     // Button actions
     $(".action-btn.yes").click(function () {
         showElement(".login", "flex");
+        $(".say-content.suggest").html("If you want it, login.");
         hideElement(".dogSaying .confirm");
         hideElement(".dogSaying .loading");
         showElement(".dogSaying .suggest");
@@ -377,7 +378,7 @@ function initModalEffects() {
     $(".action-btn.no").click(function () {
         hideElement(".dogSaying .confirm");
         hideElement(".dogSaying", "none", "10");
-
+        $(".dogImg").css("z-index", "10");
         resetDogSaying();
     });
 

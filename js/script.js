@@ -4,13 +4,16 @@ function getHeight() {
 
 function initCards(cardW, cardH, term, delta) {
     let cards = document.getElementsByClassName("custom-card");
+    let initCardW = cardW;
+    let initCardH = cardH;
 
     if (window.innerHeight < 500) {
         cardH = window.innerHeight - 270;
     }
 
     if (window.innerHeight > 500) {
-        cardH = (window.innerHeight - 360) / 2;
+        cardH = term === "category" ? initCardH : (window.innerHeight - 360) / 2;
+
         $(".custom-card").css("height", `${cardH}px`);
     }
 
@@ -106,7 +109,7 @@ function initCards(cardW, cardH, term, delta) {
         }
 
         if (window.innerHeight > 500) {
-            cardH = ( window.innerHeight - 360 ) / 2;
+            cardH = term === "category" ? initCardH : (window.innerHeight - 360) / 2;
             $(".custom-card").css("height", `${cardH}px`);
         }
 
