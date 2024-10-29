@@ -305,9 +305,12 @@
                 <!--  This is for exporint the card item elements -->
                 <!-- -------------------------------------------- -->
                     <?php
+                        $colors = ["gray", "purple", "green"];
+                        
                         foreach($result_array as $item) {
+                            $randomNumber = random_int(0, 2);
                             echo "<div>".
-                                    "<div data-id=\"".$item["id"]."\" class='jacket-card d-flex justify-content-center flex-column align-items-center position-relative'>".
+                                    "<div data-id=\"".$item["id"]."\" data-default='".$colors[$randomNumber]."' class='jacket-card d-flex justify-content-center flex-column align-items-center position-relative'>".
                                         "<div class='availability'>".
                                             "<img src='assets/img/item/".$item['status'].".png' />".
                                         "</div>".
@@ -319,7 +322,7 @@
                                             "<span class='level-text' id='level-text'>".$item['level']."</span>".
                                         "</div>".
                                         "<div class=\"fallback\">".$item["title"]."</div>".
-                                        "<img src='".$item['imgUrl']."' onerror=\"this.src='assets/img/item/default.png'; this.alt=''; this.nextElementSibling.style.display='block';\" onload=\"this.previousElementSibling.style.display='none';\" />".
+                                        "<img src='".$item['imgUrl']."' onerror=\"this.src='assets/img/item/".$colors[$randomNumber].".png'; this.alt=''; this.nextElementSibling.style.display='block';\" onload=\"this.previousElementSibling.style.display='none';\" />".
                                         "<div class=\"alt-text\">".$item["title"]."</div>".
                                         "<div class=\"jacket-footer\">".
                                             "<span>".$item['location']."</span>".
@@ -343,7 +346,11 @@
         <div class="d-flex flex-row shadow-sm rounded-7 center-box">
             <div class="left-section d-flex flex-column d-none d-md-block" >
                 <div class="thumbnail position-relative">
-                    <img src="" alt="cover_page_img" class="w-100" id="cover-img" onerror="this.src='assets/img/item/default.png';" />
+                    <img src="" alt="cover_page_img" class="w-100" id="cover-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"  onload="this.style.display='block'; this.nextElementSibling.style.display='none';"/>
+                    <div class="thumb-alt">
+                        <img id="thumb-alt-img" src="" />
+                        <span id="thumb-alt-text"></span>
+                    </div>
                     <img src="" alt="availability" class="detail-avai" id="avail-img" />
                     <img src="" alt="type" class="detail-type" id="type-img" />
                 </div>

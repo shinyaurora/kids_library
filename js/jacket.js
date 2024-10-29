@@ -120,23 +120,27 @@ function initModalEffects() {
         if (!moved) {
             
             let jacketID = $(this).find(".jacket-card").data("id");
+            let defaultColor = $(this).find(".jacket-card").data("default");
             currentJacketID = jacketID;
 
-            console.log(jacketID);
-            
             $.ajax({
                 url: 'fetch_modal_content.php', // URL to fetch content (maybe you already have it.)
                 type: 'POST', // If then, you can get the request value(jacket/boot ID) using $_POST['id]
                 data: { id: jacketID }, // This is the request value
                 success: function (response) { // If the request is successful and get response,
                     // then update modal body with response
+
                     let detailInfo = JSON.parse(response);
 
+                    $("#thumb-alt-text").html("what is your name?");
+                    $("#thumb-alt-img").attr("src", `assets/img/item/${defaultColor}.png`);
+                    // $("#cover-img").attr("src", "assets/img/jackets/image1.jpeg");
                     $("#cover-img").attr("src", detailInfo.coverImgUrl);
                     $("#avail-img").attr("src", `assets/img/item/${detailInfo['status']}.png`);
                     $("#type-img").attr("src", `assets/img/item/${detailInfo['type']}.png`);
                     $("#title").html(detailInfo.title);
                     $("#bookTitle").html(detailInfo.title);
+                    $(".thumb-alt-text").html(detailInfo.title);
 
                     // This is to make Copies part in Modal
                     let copiesHTML = "";
@@ -372,7 +376,7 @@ function initModalEffects() {
     $(".forget").click(function () {
         hideElement(".login");
         hideElement(".dogSaying");
-        hideElement(".dogImg", "10");
+        $(".dogImg").css("z-index", "10");
     });
 
 

@@ -566,3 +566,26 @@ input[type=checkbox] {
         padding: 50px;
     }
 }
+
+.thumb-alt {
+    display: none;
+    position: relative;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+#thumb-alt-img {
+    width: 100%;
+    height: auto;
+}
+
+#thumb-alt-text {
+    position: absolute;
+    text-align: center;
+    padding: 20px 8px;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
