@@ -1,14 +1,27 @@
-function initCards(cardW, cardH, term) {
+function getHeight() {
+    return window.innerHeight < 500 ? window.innerHeight - 220 : window.innerHeight - 280;
+}
+
+function initCards(cardW, cardH, term, delta) {
     let cards = document.getElementsByClassName("custom-card");
 
+    if (window.innerHeight < 500) {
+        cardH = window.innerHeight - 270;
+    }
+
+    if (window.innerHeight > 500) {
+        cardH = (window.innerHeight - 360) / 2;
+        $(".custom-card").css("height", `${cardH}px`);
+    }
+
     let numOfCardsPerRow = Math.floor((window.innerWidth - 64) / (cardW + 20));
-    let numOfCardsPerCol = Math.floor((window.innerHeight - 280) / (cardH + 20));
+    let numOfCardsPerCol = Math.floor(getHeight() / (cardH + 20));
     let numOfCardsPerPanel = numOfCardsPerRow * numOfCardsPerCol;
     let numofPanel = Math.ceil(cards.length / numOfCardsPerPanel);
     let indexofPanel = 0;
     
     let gapX = (window.innerWidth - 64 - cardW * numOfCardsPerRow) / (numOfCardsPerRow + 1);
-    let gapY = (window.innerHeight - 280 - cardH * numOfCardsPerCol) / (numOfCardsPerCol + 1);
+    let gapY = (getHeight() - cardH * numOfCardsPerCol) / (numOfCardsPerCol + 1);
 
     let cloudX = 0;
     let grassX = 0;
@@ -16,6 +29,7 @@ function initCards(cardW, cardH, term) {
 
     function initTouchEventForSlider() {
         let startX = 0;
+        let endX = 0;
         let threshold = 20; // Minimum swipe distance to consider as swipe
 
         // Detect when the user starts touching or clicking
@@ -26,12 +40,14 @@ function initCards(cardW, cardH, term) {
 
         // Detect when the user stops touching or clicking
         $('#container').on('mouseup touchend', function (e) {
-            let delta = e.pageX - startX;
+            endX = e.pageX || e.originalEvent.changedTouches[0].pageX;
+            let delta = endX - startX;
 
             if (Math.abs(delta) > threshold) {
                 moved = true;
                 if (delta < 0 && indexofPanel < numofPanel - 1) {
                     indexofPanel++;
+                    
                     btnStateUpdate();
                     arrangeCards();
                     assetsTransform(+1);
@@ -84,8 +100,18 @@ function initCards(cardW, cardH, term) {
     initTouchEventForSlider();
 
     window.addEventListener("resize", () => {
+        if (window.innerHeight < 500) {
+            cardH = window.innerHeight - 270;
+            $(".custom-card").css("height", `${cardH}px`);
+        }
+
+        if (window.innerHeight > 500) {
+            cardH = ( window.innerHeight - 360 ) / 2;
+            $(".custom-card").css("height", `${cardH}px`);
+        }
+
         numOfCardsPerRow = Math.floor((window.innerWidth - 64) / (cardW + 20));
-        numOfCardsPerCol = Math.floor((window.innerHeight - 280) / (cardH + 20));
+        numOfCardsPerCol = Math.floor(getHeight() / (cardH + 20));
         numOfCardsPerPanel = numOfCardsPerRow * numOfCardsPerCol;
         numofPanel = Math.ceil(cards.length / numOfCardsPerPanel);
         
@@ -94,7 +120,7 @@ function initCards(cardW, cardH, term) {
         }
 
         gapX = (window.innerWidth - 64 - cardW * numOfCardsPerRow) / (numOfCardsPerRow + 1);
-        gapY = (window.innerHeight - 280 - cardH * numOfCardsPerCol) / (numOfCardsPerCol + 1);
+        gapY = (getHeight() - cardH * numOfCardsPerCol) / (numOfCardsPerCol + 1);
         
         btnStateUpdate();
         arrangeCards();

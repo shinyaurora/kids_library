@@ -39,20 +39,20 @@
     # ############################################################################
     # Get the library name and other options from the library table
     ##############################################################################
-    require_once("/library/webserver/cgi-executables/kids_ini.php");
+    // require_once("/library/webserver/cgi-executables/kids_ini.php");
      
-    $database = "libraryworld";
-    $link_library = mysqli_connect("$library_server","$user","$pw", "$database");
-    if (mysqli_connect_errno())  {
-         echo "Failed to connect to MySQL: " . mysqli_connect_error();
-     }
+    // $database = "libraryworld";
+    // $link_library = mysqli_connect("$library_server","$user","$pw", "$database");
+    // if (mysqli_connect_errno())  {
+    //      echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    //  }
 
-     $query = "select libraryname from libraries where library_id = $library_id";
+    //  $query = "select libraryname from libraries where library_id = $library_id";
     
-     $library_result = mysqli_query($link_library, $query);
+    //  $library_result = mysqli_query($link_library, $query);
     
-     $a_row = mysqli_fetch_array($library_result, MYSQLI_ASSOC);
-     $libraryname = stripslashes($a_row['libraryname']);
+    //  $a_row = mysqli_fetch_array($library_result, MYSQLI_ASSOC);
+    //  $libraryname = stripslashes($a_row['libraryname']);
     
     
     
@@ -66,7 +66,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Series</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
