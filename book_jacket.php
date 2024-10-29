@@ -490,16 +490,16 @@
             <a class="d-flex flex-column text-decoration-none footer-item" href="series.php">
                 <div class="imgBtn d-flex">
                     <div class="imgBtnItem item1 p-1">
-                        <img src="./assets/img/categories/on (5).png" class="w-100 h-100" />
+                        <img src="./assets/img/series/Captain Underpants.jpeg" class="w-100 h-100" />
                     </div>
                     <div class="imgBtnItem item2 p-1">
-                        <img src="./assets/img/categories/on (6).png" class="w-100 h-100" />
+                        <img src="./assets/img/series/Diary of a Wimpy Kid.jpeg" class="w-100 h-100" />
                     </div>
                     <div class="imgBtnItem item3 p-1">
-                        <img src="./assets/img/categories/on (7).png" class="w-100 h-100" />
+                        <img src="./assets/img/series/Mercy Watson.jpeg" class="w-100 h-100" />
                     </div>
                     <div class="imgBtnItem item4 p-1">
-                        <img src="./assets/img/categories/on (8).png" class="w-100 h-100" />
+                        <img src="./assets/img/series/Harry Potter.jpeg" class="w-100 h-100" />
                     </div>
                 </div>
                 <span>Chapter & Series</span>
