@@ -91,6 +91,16 @@ body {
   justify-content: space-around;
 }
 
+.container-fluid {
+  position: relative;
+}
+
+
+.search, .title {
+  position: relative;
+  z-index: 4;
+}
+
 .cloudBg img {
   width: 300px;
   margin: 0px 40px;
@@ -111,6 +121,7 @@ body {
   position: fixed;
   left: 0;
   bottom: 0;
+  z-index: 3;
 }
 
 

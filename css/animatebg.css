@@ -1,0 +1,59 @@
+.animate-container {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.animate-container .bird {
+    position: absolute;
+    /* background-image: url('bird.gif'); Use your bird gif */
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation-timing-function: linear;
+    z-index: 2;
+}
+
+.animate-container .bird img {
+    transform: scaleX(1);
+}
+
+.animate-container #bird1 img{
+    width: 50px;
+    height: 50px;
+}
+
+.animate-container #bird2 img{
+    width: 80px;
+    height: 80px;
+}
+
+.animate-container #bird3 img{
+    width: 120px;
+    height: 120px;
+}
+
+
+.animate-container .balloon {
+    position: absolute;
+    background-image: url('../assets/img/bg/balloon4.png'); /* Use your hot air balloon image */
+    background-size: contain;
+    background-repeat: no-repeat;
+    visibility: hidden; /* Initially hidden */
+    z-index: 1;
+}
+
+.animate-container #balloon1 {
+    width: 50px;
+    height: 80px;
+}
+
+.animate-container #balloon2 {
+    width: 100px;
+    height: 150px;
+}
+
+.animate-container #balloon3 {
+    width: 70px;
+    height: 110px;
+}
