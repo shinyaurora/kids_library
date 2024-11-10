@@ -16,57 +16,59 @@
     ########################################################
 
     # Let's assume that you got this result array by mysql code
-     $result = [
-        [   "name"   => "Ali Cross / Patterson", "imgUrl" => "assets/img/series/Ali Cross.jpeg"],
-        [   "name"   => "Anne of Green Gables / Montgomery", "imgUrl" => "assets/img/series/Anne of Green Gables.jpeg"],
-        [   "name"   => "Bear Grylls", "imgUrl" => "assets/img/series/Bear Grylls.jpeg"],  
-        [   "name"   => "Binky the Space Cat", "imgUrl" => "assets/img/series/Binky the Space Cat.jpeg"],  
-        [   "name"   => "Captain Underpants / Pilkey", "imgUrl" => "assets/img/series/Captain Underpants.jpeg"], 
-        [   "name"   => "CatStronauts", "imgUrl" => "assets/img/series/CatStronauts.jpeg"], 
+
+    require_once("./pre.php");
+    //  $result = [
+    //     [   "name"   => "Ali Cross / Patterson", "imgUrl" => "assets/img/series/Ali Cross.jpeg"],
+    //     [   "name"   => "Anne of Green Gables / Montgomery", "imgUrl" => "assets/img/series/Anne of Green Gables.jpeg"],
+    //     [   "name"   => "Bear Grylls", "imgUrl" => "assets/img/series/Bear Grylls.jpeg"],  
+    //     [   "name"   => "Binky the Space Cat", "imgUrl" => "assets/img/series/Binky the Space Cat.jpeg"],  
+    //     [   "name"   => "Captain Underpants / Pilkey", "imgUrl" => "assets/img/series/Captain Underpants.jpeg"], 
+    //     [   "name"   => "CatStronauts", "imgUrl" => "assets/img/series/CatStronauts.jpeg"], 
         
-        [   "name"   => "The Critter Club", "imgUrl" => "assets/img/series/The Critter Club.jpeg"],
-        [   "name"   => "The Chronicles of Narnia / Lewis", "imgUrl" => "assets/img/series/The Chronicles of Narnia.jpeg"],
+    //     [   "name"   => "The Critter Club", "imgUrl" => "assets/img/series/The Critter Club.jpeg"],
+    //     [   "name"   => "The Chronicles of Narnia / Lewis", "imgUrl" => "assets/img/series/The Chronicles of Narnia.jpeg"],
         
         
-        [   "name"   => "Diary of a Wimpy Kid / Kinney", "imgUrl" => "assets/img/series/Diary of a Wimpy Kid.jpeg"], 
+    //     [   "name"   => "Diary of a Wimpy Kid / Kinney", "imgUrl" => "assets/img/series/Diary of a Wimpy Kid.jpeg"], 
         
-        [   "name"   => "Dragon Masters / West", "imgUrl" => "assets/img/series/Dragon Masters.jpeg"], 
+    //     [   "name"   => "Dragon Masters / West", "imgUrl" => "assets/img/series/Dragon Masters.jpeg"], 
         
-        [   "name"   => "Elephant Piggie / Willems", "imgUrl" => "assets/img/series/Elephant & Piggie.jpeg"], 
+    //     [   "name"   => "Elephant Piggie / Willems", "imgUrl" => "assets/img/series/Elephant & Piggie.jpeg"], 
         
-        [   "name"   => "Flat Stanley / Brown","imgUrl" => "assets/img/series/Flat Stanley.jpeg"], 
+    //     [   "name"   => "Flat Stanley / Brown","imgUrl" => "assets/img/series/Flat Stanley.jpeg"], 
         
-        [   "name"   => "Fly Guy / Arnold","imgUrl" => "assets/img/series/Fly Guy.jpeg"], 
+    //     [   "name"   => "Fly Guy / Arnold","imgUrl" => "assets/img/series/Fly Guy.jpeg"], 
         
-        [   "name"   => "Goosebumps / Stine","imgUrl" => "assets/img/series/Goosebumps.jpeg"],
+    //     [   "name"   => "Goosebumps / Stine","imgUrl" => "assets/img/series/Goosebumps.jpeg"],
                 
-        [   "name"   => "Harry Potter / Rowling", "imgUrl" => "assets/img/series/Harry Potter.jpeg"], 
-        [   "name"   => "I Can Read / Cazet", "imgUrl" => "assets/img/series/I Can Read.jpeg"],
+    //     [   "name"   => "Harry Potter / Rowling", "imgUrl" => "assets/img/series/Harry Potter.jpeg"], 
+    //     [   "name"   => "I Can Read / Cazet", "imgUrl" => "assets/img/series/I Can Read.jpeg"],
         
-        [   "name"   => "Katie Woo / Manushkin", "imgUrl" => "assets/img/series/Katie Woo.jpeg"],
+    //     [   "name"   => "Katie Woo / Manushkin", "imgUrl" => "assets/img/series/Katie Woo.jpeg"],
         
-        [   "name"   => "Little House / Wilder", "imgUrl" => "assets/img/series/Little House.jpeg"],
+    //     [   "name"   => "Little House / Wilder", "imgUrl" => "assets/img/series/Little House.jpeg"],
         
-        [   "name"   => "Magic School Bus", "imgUrl" => "assets/img/series/Magic School Bus.jpeg"],
+    //     [   "name"   => "Magic School Bus", "imgUrl" => "assets/img/series/Magic School Bus.jpeg"],
         
         
-        [   "name"   => "Mercy Watson / DiCamillo","imgUrl" => "assets/img/series/Mercy Watson.jpeg"],
-        [   "name"   => "Morris the Moose / Wiseman", "imgUrl" => "assets/img/series/Morris the Moose.jpeg"],
+    //     [   "name"   => "Mercy Watson / DiCamillo","imgUrl" => "assets/img/series/Mercy Watson.jpeg"],
+    //     [   "name"   => "Morris the Moose / Wiseman", "imgUrl" => "assets/img/series/Morris the Moose.jpeg"],
         
-        [   "name"   => "My Weird School / Gutman", "imgUrl" => "assets/img/series/My Weird School.jpeg"],
-        [   "name"   => "Percy Jackson / Riordan", "imgUrl" => "assets/img/series/Percy Jackson.jpeg" ], 
+    //     [   "name"   => "My Weird School / Gutman", "imgUrl" => "assets/img/series/My Weird School.jpeg"],
+    //     [   "name"   => "Percy Jackson / Riordan", "imgUrl" => "assets/img/series/Percy Jackson.jpeg" ], 
         
-        [   "name"   => "Secret Explorers / Ing", "imgUrl" => "assets/img/series/Secret Explorers.jpeg" ], 
+    //     [   "name"   => "Secret Explorers / Ing", "imgUrl" => "assets/img/series/Secret Explorers.jpeg" ], 
         
-        [   "name"   => "Stick Dog / Watson", "imgUrl" => "assets/img/series/Stick Dog.jpeg"],
-        [   "name"   => "Time Quintet", "imgUrl" => "assets/img/series/A Wrinkle in Time.jpeg"],
+    //     [   "name"   => "Stick Dog / Watson", "imgUrl" => "assets/img/series/Stick Dog.jpeg"],
+    //     [   "name"   => "Time Quintet", "imgUrl" => "assets/img/series/A Wrinkle in Time.jpeg"],
         
-        [   "name"   => "Vanderbeekers", "imgUrl" => "assets/img/series/Vanderbeekers.jpeg"]
+    //     [   "name"   => "Vanderbeekers", "imgUrl" => "assets/img/series/Vanderbeekers.jpeg"]
         
         
 
        
-    ];
+    // ];
     
     # This should all be done in a header file after index file and before category file to 
     # load the array and check to make sure there are records for each icon.
@@ -101,7 +103,6 @@
     
      $a_row = mysqli_fetch_array($library_result, MYSQLI_ASSOC);
      $libraryname = stripslashes($a_row['libraryname']);
-    
 ?>
 
 
@@ -121,6 +122,12 @@
 </head>
 
 <body>
+    <div class="loader">
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped"></div>
+        </div>
+    </div>
+
     <div class="animate-container">
         <div class="bird" id="bird1">
             <img src="./assets/img/bg/bird.gif"/>
@@ -240,6 +247,6 @@
         initCards(160, (window.innerHeight - 360) / 2, "seriesId");
     </script>
     <script src="js/animatebg.js"></script>
-    <!-- <script src="./js/loader.js"></script> -->
+    <script src="./js/loader.js"></script>
 </body>
 </html>

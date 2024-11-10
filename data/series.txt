@@ -1,0 +1,27 @@
+Ali Cross / Patterson\tassets/img/series/Ali Cross.jpeg\r
+Anne of Green Gables / Montgomery\tassets/img/series/Anne of Green Gables.jpeg\r
+Bear Grylls\tassets/img/series/Bear Grylls.jpeg\r  
+Binky the Space Cat\tassets/img/series/Binky the Space Cat.jpeg\r  
+Captain Underpants / Pilkey\tassets/img/series/Captain Underpants.jpeg\r 
+CatStronauts\tassets/img/series/CatStronauts.jpeg\r 
+The Critter Club\tassets/img/series/The Critter Club.jpeg\r
+The Chronicles of Narnia / Lewis\tassets/img/series/The Chronicles of Narnia.jpeg\r
+Diary of a Wimpy Kid / Kinney\tassets/img/series/Diary of a Wimpy Kid.jpeg\r 
+Dragon Masters / West\tassets/img/series/Dragon Masters.jpeg\r 
+Elephant Piggie / Willems\tassets/img/series/Elephant & Piggie.jpeg\r 
+Flat Stanley / Brown\tassets/img/series/Flat Stanley.jpeg\r 
+Fly Guy / Arnold\tassets/img/series/Fly Guy.jpeg\r 
+Goosebumps / Stine\tassets/img/series/Goosebumps.jpeg\r
+Harry Potter / Rowling\tassets/img/series/Harry Potter.jpeg\r 
+I Can Read / Cazet\tassets/img/series/I Can Read.jpeg\r
+Katie Woo / Manushkin\tassets/img/series/Katie Woo.jpeg\r
+Little House / Wilder\tassets/img/series/Little House.jpeg\r
+Magic School Bus\tassets/img/series/Magic School Bus.jpeg\r
+Mercy Watson / DiCamillo\tassets/img/series/Mercy Watson.jpeg\r
+Morris the Moose / Wiseman\tassets/img/series/Morris the Moose.jpeg\r
+My Weird School / Gutman\tassets/img/series/My Weird School.jpeg\r
+Percy Jackson / Riordan\tassets/img/series/Percy Jackson.jpeg\r 
+Secret Explorers / Ing\tassets/img/series/Secret Explorers.jpeg\r 
+Stick Dog / Watson\tassets/img/series/Stick Dog.jpeg\r
+Time Quintet\tassets/img/series/A Wrinkle in Time.jpeg\r
+Vanderbeekers\tassets/img/series/Vanderbeekers.jpeg\r

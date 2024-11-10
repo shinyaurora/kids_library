@@ -30,19 +30,20 @@ body {
   /* transition: all 0.5s; */
 }
 
-#loader {
+.loader {
   z-index: 9999 !important;
-  display: flex;
   transition: all 3.5s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
   position: fixed;
+  width: 400px;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
+  top: 200px;
+  text-align: center;
   opacity: 1;
+}
+
+.loader .progress {
+  height: 30px;
 }
 
 .main {
@@ -381,4 +382,9 @@ body {
     margin-left: -23px;
     margin-top: 20px;
 }
+}
+
+
+.search, .title, .content, .dogImg, .dogHouse, .footerContent {
+  opacity: 0;
 }

@@ -15,52 +15,55 @@
     ########################################################
 
     # Let's assume that you got this result array by mysql code
-   $result = [
-        [   "name"   => "Airplane", "imgUrl" => "assets/img/categories/Airplane.png"],   
-        [   "name"   => "Basketball", "imgUrl" => "assets/img/categories/Basketball.png"], 
-        [   "name"   => "Bird", "imgUrl" => "assets/img/categories/Bird.png"], 
-        [   "name"   => "Car", "imgUrl" => "assets/img/categories/Car.png"],     
-        [   "name"   => "Cars Racing", "imgUrl" => "assets/img/categories/Cars Racing.png"], 
-        [   "name"   => "Christmas", "imgUrl" => "assets/img/categories/Christmas.png"], 
-        [   "name"   => "Crabs", "imgUrl" => "assets/img/categories/Crabs.png"], 
-        [   "name"   => "Deer", "imgUrl" => "assets/img/categories/Deer.png"], 
-        [   "name"   => "Dinosaur", "imgUrl" => "assets/img/categories/Dinosaur.png"], 
-        [   "name"   => "Dog", "imgUrl" => "assets/img/categories/Dog.png"], 
-        [   "name"   => "Dragon", "imgUrl" => "assets/img/categories/Dragon.png"], 
-        [   "name"   => "Easter", "imgUrl" => "assets/img/categories/Easter.png"], 
-        [   "name"   => "Elephant", "imgUrl" => "assets/img/categories/Elephant.png"], 
-        [   "name"   => "Fire Engine", "imgUrl" => "assets/img/categories/Fire Engine.png"],
-        [   "name"   => "Fish", "imgUrl" => "assets/img/categories/Fish.png"], 
-        [   "name"   => "Football", "imgUrl" => "assets/img/categories/Football.png"], 
-        [   "name"   => "Fourth of July", "imgUrl" => "assets/img/categories/Fourth of July.png"], 
-        [   "name"   => "Frog", "imgUrl" => "assets/img/categories/Frog.png"], 
-        [   "name"   => "Golf", "imgUrl" => "assets/img/categories/Golf.png"], 
-        [   "name"   => "Giraffe", "imgUrl" => "assets/img/categories/Giraffe.png"],
-        [   "name"   => "Hippopotamus", "imgUrl" => "assets/img/categories/Hippopotamus.png"], 
-        [   "name"   => "Holloween", "imgUrl" => "assets/img/categories/Holloween.png"], 
-        [   "name"   => "Horse", "imgUrl" => "assets/img/categories/Horse.png"],  
-        [   "name"   => "Ladybug", "imgUrl" => "assets/img/categories/Ladybug.png"],
-        [   "name"   => "Money", "imgUrl" => "assets/img/categories/Money.png"], 
-        [   "name"   => "Monkey", "imgUrl" => "assets/img/categories/Monkey.png"], 
-        [   "name"   => "Moon", "imgUrl" => "assets/img/categories/Moon.png"],
-        [   "name"   => "Olympic", "imgUrl" => "assets/img/categories/Olympic.png"], 
-        [   "name"   => "Planet", "imgUrl" => "assets/img/categories/Planet.png"],
-        [   "name"   => "Pigs", "imgUrl" => "assets/img/categories/Pigs.png"], 
-        [   "name"   => "Pirate", "imgUrl" => "assets/img/categories/Pirate.png"], 
-        [   "name"   => "Rabbitt", "imgUrl" => "assets/img/categories/Rabbitt.png"], 
-        [   "name"   => "Rain", "imgUrl" => "assets/img/categories/Rain.png"], 
-        [   "name"   => "Rainbow", "imgUrl" => "assets/img/categories/Rainbow.png"], 
-        [   "name"   => "School Bus", "imgUrl" => "assets/img/categories/School Bus.png"], 
-        [   "name"   => "Shark", "imgUrl" => "assets/img/categories/Shark.png"], 
-        [   "name"   => "Teddy Bear", "imgUrl" => "assets/img/categories/Teddy Bear.png"], 
-        [   "name"   => "Tennis", "imgUrl" => "assets/img/categories/Tennis.png"],  
-        [   "name"   => "Tiger", "imgUrl" => "assets/img/categories/Tiger.png"], 
-        [   "name"   => "Train", "imgUrl" => "assets/img/categories/Train.png"], 
-        [   "name"   => "Truck", "imgUrl" => "assets/img/categories/Truck.png"], 
-        [   "name"   => "Whale", "imgUrl" => "assets/img/categories/Whale.png"], 
-        [   "name"   => "Zebra", "imgUrl" => "assets/img/categories/Zebra.png"], 
 
-    ];
+    require_once("./pre.php");
+
+    // $result = [
+    //     [   "name"   => "Airplane", "imgUrl" => "assets/img/categories/Airplane.png"],   
+    //     [   "name"   => "Basketball", "imgUrl" => "assets/img/categories/Basketball.png"], 
+    //     [   "name"   => "Bird", "imgUrl" => "assets/img/categories/Bird.png"], 
+    //     [   "name"   => "Car", "imgUrl" => "assets/img/categories/Car.png"],     
+    //     [   "name"   => "Cars Racing", "imgUrl" => "assets/img/categories/Cars Racing.png"], 
+    //     [   "name"   => "Christmas", "imgUrl" => "assets/img/categories/Christmas.png"], 
+    //     [   "name"   => "Crabs", "imgUrl" => "assets/img/categories/Crabs.png"], 
+    //     [   "name"   => "Deer", "imgUrl" => "assets/img/categories/Deer.png"], 
+    //     [   "name"   => "Dinosaur", "imgUrl" => "assets/img/categories/Dinosaur.png"], 
+    //     [   "name"   => "Dog", "imgUrl" => "assets/img/categories/Dog.png"], 
+    //     [   "name"   => "Dragon", "imgUrl" => "assets/img/categories/Dragon.png"], 
+    //     [   "name"   => "Easter", "imgUrl" => "assets/img/categories/Easter.png"], 
+    //     [   "name"   => "Elephant", "imgUrl" => "assets/img/categories/Elephant.png"], 
+    //     [   "name"   => "Fire Engine", "imgUrl" => "assets/img/categories/Fire Engine.png"],
+    //     [   "name"   => "Fish", "imgUrl" => "assets/img/categories/Fish.png"], 
+    //     [   "name"   => "Football", "imgUrl" => "assets/img/categories/Football.png"], 
+    //     [   "name"   => "Fourth of July", "imgUrl" => "assets/img/categories/Fourth of July.png"], 
+    //     [   "name"   => "Frog", "imgUrl" => "assets/img/categories/Frog.png"], 
+    //     [   "name"   => "Golf", "imgUrl" => "assets/img/categories/Golf.png"], 
+    //     [   "name"   => "Giraffe", "imgUrl" => "assets/img/categories/Giraffe.png"],
+    //     [   "name"   => "Hippopotamus", "imgUrl" => "assets/img/categories/Hippopotamus.png"], 
+    //     [   "name"   => "Holloween", "imgUrl" => "assets/img/categories/Holloween.png"], 
+    //     [   "name"   => "Horse", "imgUrl" => "assets/img/categories/Horse.png"],  
+    //     [   "name"   => "Ladybug", "imgUrl" => "assets/img/categories/Ladybug.png"],
+    //     [   "name"   => "Money", "imgUrl" => "assets/img/categories/Money.png"], 
+    //     [   "name"   => "Monkey", "imgUrl" => "assets/img/categories/Monkey.png"], 
+    //     [   "name"   => "Moon", "imgUrl" => "assets/img/categories/Moon.png"],
+    //     [   "name"   => "Olympic", "imgUrl" => "assets/img/categories/Olympic.png"], 
+    //     [   "name"   => "Planet", "imgUrl" => "assets/img/categories/Planet.png"],
+    //     [   "name"   => "Pigs", "imgUrl" => "assets/img/categories/Pigs.png"], 
+    //     [   "name"   => "Pirate", "imgUrl" => "assets/img/categories/Pirate.png"], 
+    //     [   "name"   => "Rabbitt", "imgUrl" => "assets/img/categories/Rabbitt.png"], 
+    //     [   "name"   => "Rain", "imgUrl" => "assets/img/categories/Rain.png"], 
+    //     [   "name"   => "Rainbow", "imgUrl" => "assets/img/categories/Rainbow.png"], 
+    //     [   "name"   => "School Bus", "imgUrl" => "assets/img/categories/School Bus.png"], 
+    //     [   "name"   => "Shark", "imgUrl" => "assets/img/categories/Shark.png"], 
+    //     [   "name"   => "Teddy Bear", "imgUrl" => "assets/img/categories/Teddy Bear.png"], 
+    //     [   "name"   => "Tennis", "imgUrl" => "assets/img/categories/Tennis.png"],  
+    //     [   "name"   => "Tiger", "imgUrl" => "assets/img/categories/Tiger.png"], 
+    //     [   "name"   => "Train", "imgUrl" => "assets/img/categories/Train.png"], 
+    //     [   "name"   => "Truck", "imgUrl" => "assets/img/categories/Truck.png"], 
+    //     [   "name"   => "Whale", "imgUrl" => "assets/img/categories/Whale.png"], 
+    //     [   "name"   => "Zebra", "imgUrl" => "assets/img/categories/Zebra.png"], 
+
+    // ];
     
     # This should all be done in a header file after index file and before category file to 
     # load the array and check to make sure there are records for each icon.
@@ -98,6 +101,7 @@
      $a_row = mysqli_fetch_array($library_result, MYSQLI_ASSOC);
      $libraryname = stripslashes($a_row['libraryname']);
 
+
 ?>
 
 
@@ -116,6 +120,13 @@
 </head>
 
 <body>
+
+    <div class="loader">
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped"></div>
+        </div>
+    </div>
+
     <div class="animate-container">
         <div class="bird" id="bird1">
             <img src="./assets/img/bg/bird.gif"/>
@@ -131,7 +142,7 @@
         <div id="balloon2" class="balloon"></div>
         <div id="balloon3" class="balloon"></div>
     </div>
-    <!-- <img src="./assets/img/item/loader-big.gif" alt="loader" id="loader" /> -->
+
     <div class="container-fluid vh-100 main">
         <div class="position-absolute cloudBg" id="cloud">
             <img src="assets/img/bg/cloud-2.png" alt="cloud-1" />
@@ -233,7 +244,7 @@
         initCards(140, 140, "category");
     </script>
     <script src="js/animatebg.js"></script>
-    <!-- <script src="./js/loader.js"></script> -->
+    <script src="./js/loader.js"></script>
 </body>
 
 </html>
