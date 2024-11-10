@@ -21,6 +21,11 @@ function getFields($record) {
 	$electronic_access_field = '';
 	$control = '';
 	
+	#accelerated reading values in 526.
+	$ar_interest_level = '';
+	$ar_reading_level = '';
+	$ar_points;
+		
 	global $opac_surpress;
 	
 	// get the record 
@@ -136,13 +141,31 @@ function getFields($record) {
 				$target_audience .= ' ';
 			}
 		}
-		if ($fieldtag === '526') {							// study program note
+		if ($fieldtag === '526') {							// study program note - Accelerated readers. 
 			$field_parts = explode("\t",$field);
 			$field_data = $field_parts[2];
 			$subfields = preg_split('/\x{1f}/',$field_data);
 			foreach ($subfields as $subfield) {
 				$study_program_note .= substr($subfield,1);
 				$study_program_note .= ' ';
+				
+				$sub_tag = substr($subfield,0,1);
+				if ($sub_tag == 'b') {
+					$ar_interest_level .= substr($subfield,1);
+					$ar_interest_level .= ' ';
+				}
+
+				if ($sub_tag == 'c') {
+					$ar_reading_level .= substr($subfield,1);
+					$ar_reading_level .= ' ';
+				}
+
+				if ($sub_tag == 'd') {
+					$ar_points .= substr($subfield,1);
+					$ar_points .= ' ';
+				}
+
+				
 			}
 		}
 		
@@ -235,7 +258,8 @@ function getFields($record) {
 		
 	}
 	
-	$fields = array($isbn,$issn,$author,$title,$call,$notes,$pub_date, $target_audience, $study_program_note, $electronic_access_field, $control, $subjects, $series, $description);
+	$fields = array($isbn,$issn,$author,$title,$call,$notes,$pub_date, $target_audience, $study_program_note, 
+	    $electronic_access_field, $control, $subjects, $series, $description, $ar_interest_level, $ar_reading_level, $ar_points);
 	return $fields;
 }
 

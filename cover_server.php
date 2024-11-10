@@ -46,7 +46,7 @@ else {
 	}
 	
 	if (strlen($isbn) >= 9) {
-		$result = mysqli_query($link, "select image from covers where isbn='$isbn'");
+		$result = mysqli_query($link, "select image, length(image) as size from covers where isbn='$isbn' order by size DESC");
 	    $a_row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 		$image = $a_row['image'];
 	}

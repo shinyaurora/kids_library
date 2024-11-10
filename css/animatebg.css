@@ -12,10 +12,10 @@
     background-repeat: no-repeat;
     animation-timing-function: linear;
     z-index: 2;
+    left: 100%;
 }
 
 .animate-container .bird img {
-    transform: scaleX(1);
 }
 
 .animate-container #bird1 img{
@@ -24,13 +24,13 @@
 }
 
 .animate-container #bird2 img{
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
 }
 
 .animate-container #bird3 img{
-    width: 120px;
-    height: 120px;
+    width: 80px;
+    height: 80px;
 }
 
 

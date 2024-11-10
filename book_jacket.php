@@ -22,6 +22,11 @@
     # This is code for gettring search term and search content
     $term = isset($_GET['filterTerm']) ? $_GET['filterTerm'] : ""; 
     $search = $term ? $_GET[$term] : "";
+
+
+    $library_id = isset($_GET['library_id']) ? $_GET['library_id'] : "";
+
+
     # You can use these values for mysql query to select corresponding filtered result
     
 
@@ -84,8 +89,8 @@
     #############################################################################
     # Get the library name and other options from the library table     
     #############################################################################
-    require_once("/library/webserver/cgi-executables/kids_ini.php");
-    
+
+   
      
     $database = "libraryworld";
     $link_library = mysqli_connect("$library_server","$user","$pw", "$database");
@@ -121,7 +126,7 @@
         foreach ($words as $word) {
             $count_loop++;
             $findset = array();
-            $where_str = "index_key like 'CAT::$word%::$field_num%'";
+            $where_str = "index_key like 'CAT::$word::$field_num%'";
             $query = "SELECT index_value from index_words where $where_str group by index_id";
 
             $result = mysqli_query($link, $query);
@@ -177,16 +182,22 @@
 	        
 	        $cat_fields = getFields($a_record);
 	        
-	        $isbn = $cat_fields[0];
-	        $issn = $cat_fields[1];
-	        $author = $cat_fields[2];
-	        $title = $cat_fields[3];
-	        $call = $cat_fields[4];
-	        $notes = $cat_fields[5];
-	        $pub_date = $cat_fields[6];
-	        $target_audience = $cat_fields[7];
-	        $study_program_note = $cat_fields[8];
-	        $electronic_access_field = $cat_fields[9];  // electronic access field
+            $isbn = $cat_fields[0];
+            $issn = $cat_fields[1];
+            $author = $cat_fields[2];
+            $title = $cat_fields[3];
+            $call = $cat_fields[4];
+            $notes = $cat_fields[5];
+            $pub_date = $cat_fields[6];
+            $target_audience = $cat_fields[7];
+            $study_program_note = $cat_fields[8];
+            $electronic_access_field = $cat_fields[9];  // electronic access field
+            $subjects = $cat_fields[11];
+            $series = $cat_fields[12];
+            $description = $cat_fields[13];
+            $ar_interest_level = $cat_fields[14];
+            $ar_reading_level = $cat_fields[15];
+            $ar_points = $cat_fields[16];
 
 	        $notes = substr($notes,4);
 	        
@@ -212,11 +223,15 @@
 
 	        $status = strtolower($status);
 	        
+	        
 	        if ($status == 'hold') {
 	            $status = 'out';
 	        }
 	        if ($status == 'lost') {
 	            $status = 'out';
+	        }
+	        if ($status == '') {
+	            $status = 'none';
 	        }
 	        
 	         $coverstr = "<img src=\"cover_server.php?cover_id=$a_cover_id&isbn=$isbn&type=$a_type\" height=$size border=0 alt=\"Book Jacket\">";
@@ -228,7 +243,7 @@
                 "title"  => "$title",
                 "status" => "$status",
                 "type"   => "book",
-                "level"  => "$target_audience",
+                "level"  => "$ar_reading_level",
                 "imgUrl" => "cover_server.php?cover_id=$a_cover_id&isbn=$isbn&type=$a_type\" height=$size border=0 alt=\"Book Jacket\"",
                 "location" => "$location",
                 "callnum" => "$call_number $call_cutter"
@@ -277,6 +292,7 @@
         <form class="search px-5 d-flex flex-row justify-content-center align-items-center" action="book_jacket.php" type="get">
             <input type="text" name="filterTerm" value="searchBox" hidden />
             <input type="text" class="form-control" value="<?php if($term == "searchBox") echo $search; ?>" name="searchBox" />
+            <input type="text" name="library_id" value="<?php echo $library_id?>" hidden />
             <button type="submit" class="searchBtn mx-2">Search</button>
         </form>
         <div class="title rounded-4 px-3 d-flex align-items-center text-black">
@@ -309,9 +325,9 @@
                         $colors = ["gray", "purple", "green"];
                         
                         foreach($result_array as $item) {
-                            $randomNumber = random_int(0, 2);
+                            $randomNumber = rand(0, 2);
                             echo "<div>".
-                                    "<div data-id=\"".$item["id"]."\" data-default='".$colors[$randomNumber]."' class='jacket-card d-flex justify-content-center flex-column align-items-center position-relative'>".
+                                    "<div data-id=\"".$item["id"]."\" data-library='".$library_id."' data-default='".$colors[$randomNumber]."' class='jacket-card d-flex justify-content-center flex-column align-items-center position-relative'>".
                                         "<div class='availability'>".
                                             "<img src='assets/img/item/".$item['status'].".png' />".
                                         "</div>".
@@ -355,7 +371,7 @@
                     <img src="" alt="availability" class="detail-avai" id="avail-img" />
                     <img src="" alt="type" class="detail-type" id="type-img" />
                 </div>
-                <button class="btn btn-style placehold">Change Hold</button>
+                <button class="btn btn-style placehold">Request Hold</button>
                 <div class="links d-flex flex-column align-items-end justify-content-end">
                     <a href="#" class="text-decoration-none kalam modal-link" data-to="copies-container">Copies</a>
                     <a href="#" class="text-decoration-none kalam modal-link" data-to="summary">Summary</a>
@@ -379,7 +395,7 @@
                     <div class="bg-blue-heading kalam">Details</div>
                     <div id="details"></div>
                 </div>
-                <button class="btn btn-style placehold">Change Hold</button>
+                <button class="btn btn-style placehold">Request Hold</button>
             </div>
             <img src="assets/img/item/close-button.png" alt="close" class="close-btn"/>
         </div>
@@ -458,16 +474,16 @@
         <div class="say-content noresult">Nothing found, please try again.</div>
     </div>
 
-    <a href="category.php" class="dogImg">
-        <img src="assets/img/item/dog.png" alt="dog" />
+    <a href="category.php?library_id=<?php echo $library_id?>" class="dogImg">
+        <img src="assets/img/item/horse.png" alt="horse" />
     </a>
 
     <div class="footer w-100">
         <div class="grass w-100" id="grass">
             <img src="assets/img/bg/grass-30.png" width="auto" />
         </div>
-        <a href="category.php" class="dogHouse">
-            <img src="assets/img/item/doghouse.png" alt="dogHouse" />
+        <a href="category.php?library_id=<?php echo $library_id?>" class="dogHouse">
+            <img src="assets/img/item/barn.png" alt="barn" />
         </a>
 
         <!-- When dogs saying, using JS DOM, can toggle the visibility during loading time -->
@@ -480,7 +496,7 @@
         </div> -->
 
         <div class="footerContent rounded-4 d-flex justify-content-between px-4">
-            <a class="d-flex flex-column text-decoration-none footer-item" href="category.php">
+            <a class="d-flex flex-column text-decoration-none footer-item" href="category.php?library_id=<?php echo $library_id?>">
                 <div class="imgBtn d-flex">
                     <div class="imgBtnItem item1 p-1">
                         <img src="./assets/img/categories/on (1).png" class="w-100 h-100" />
@@ -497,7 +513,7 @@
                 </div>
                 <span>Explore Categories</span>
             </a>
-            <a class="d-flex flex-column text-decoration-none footer-item" href="series.php">
+            <a class="d-flex flex-column text-decoration-none footer-item" href="series.php?library_id=<?php echo $library_id?>">
                 <div class="imgBtn d-flex">
                     <div class="imgBtnItem item1 p-1">
                         <img src="./assets/img/series/Captain Underpants.jpeg" class="w-100 h-100" />
@@ -512,7 +528,7 @@
                         <img src="./assets/img/series/Harry Potter.jpeg" class="w-100 h-100" />
                     </div>
                 </div>
-                <span>Chapter & Series</span>
+                <span>Explore Series</span>
             </a>
         </div>
         <div class="footerBar w-100 d-flex overflow-visible">

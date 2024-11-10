@@ -5,7 +5,7 @@
 
     $jacketID = isset($_POST['id']) ? $_POST['id'] : "";
     
-    
+    $library_id = isset($_POST['library_id']) ? $_POST['library_id'] : "";
     
     $database = "libraryworld";
     $link_library = mysqli_connect("$library_server","$user","$pw", "$database");
@@ -67,6 +67,9 @@
     $subjects = $cat_fields[11];
     $series = $cat_fields[12];
     $description = $cat_fields[13];
+    $ar_interest_level = $cat_fields[14];
+    $ar_reading_level = $cat_fields[15];
+    $ar_points = $cat_fields[16];
 
     $notes = substr($notes,4);
     
@@ -140,10 +143,10 @@
             "$notes"
         ],
         "levels" => [
-            "$target_audience", // Lexile Measure
-            "$study_program_note", // AR Reading Level
-            "MG", // AR Interest Level
-            "0.5" // AR Points
+            "$target_audience", //  Accerated readiner
+            "$ar_reading_level", // Lexile level
+            "$ar_interest_level", // AR Interest Level
+            "$ar_points" // AR Points
         ],
         "details" => [
             "author" => [ // It's by ...

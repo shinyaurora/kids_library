@@ -74,35 +74,43 @@
 let birds = [];
 
 function flyBird(birdElement, duration) {
-    const screenHeight = window.innerHeight;
-    const screenWidth = window.innerWidth;
-
+    
     function startFlying() {
-        // Random starting point on Y-axis (vertical)
-        const randomY = Math.random() * (screenHeight - birdElement.offsetHeight);
+        setTimeout(() => {
+            const screenHeight = window.innerHeight;
+            const screenWidth = window.innerWidth;
 
-        // Start the bird off-screen at the right
-        birdElement.style.top = `${randomY}px`;
-        birdElement.style.left = `${screenWidth + 100}px`;  // Off-screen to the right
+            const maxH = screenHeight / 2 - birdElement.offsetHeight;
+            const minH = 50;
+            // Random starting point on Y-axis (vertical)
+            let randomY = Math.random() * (maxH - minH) + minH;
 
-        // Make the bird visible
-        birdElement.style.visibility = 'visible';
+            console.log(screenHeight, randomY);
+            
 
-        // Animate the bird moving from right to left
-        const animation = birdElement.animate([
-            { transform: 'translateX(0)' },  // Start position (right)
-            { transform: `translateX(-${screenWidth + 200}px)` }  // Fly off-screen (left)
-        ], {
-            duration: duration,
-            iterations: 1,
-            easing: 'linear'
-        });
+            // Start the bird off-screen at the right
+            birdElement.style.top = `${randomY}px`;
+            birdElement.style.left = `${screenWidth + 100}px`;  // Off-screen to the right
 
-        // When the animation finishes, restart the flight
-        animation.onfinish = startFlying;
+            // Make the bird visible
+            birdElement.style.visibility = 'visible';
 
-        // Store the bird's animation reference for handling resize events
-        birds.push({ birdElement, animation, duration });
+            // Animate the bird moving from right to left
+            const animation = birdElement.animate([
+                { transform: 'translateX(0)' },  // Start position (right)
+                { transform: `translateX(-${screenWidth + 200}px)` }  // Fly off-screen (left)
+            ], {
+                duration: duration,
+                iterations: 1,
+                easing: 'linear'
+            });
+
+            // When the animation finishes, restart the flight
+            animation.onfinish = startFlying;
+
+            // Store the bird's animation reference for handling resize events
+            birds.push({ birdElement, animation, duration });
+        }, 10000); // The time (ms) How much time after, the birds start to appear 
     }
 
     startFlying();
@@ -113,33 +121,36 @@ let balloons = [];
 function flyBalloon(balloonElement, duration) {
 
     function startFlying() {
-        const screenHeight = window.innerHeight;
-        const screenWidth = window.innerWidth;
-        // Random starting point on X-axis
-        const randomX = Math.random() * (screenWidth - balloonElement.offsetWidth);
+        setTimeout(() => {
 
-        // Start the balloon off-screen at the bottom
-        balloonElement.style.left = `${randomX}px`;
-        balloonElement.style.top = `${screenHeight + 100}px`;
+            const screenHeight = window.innerHeight;
+            const screenWidth = window.innerWidth;
+            // Random starting point on X-axis
+            const randomX = Math.random() * (screenWidth - balloonElement.offsetWidth);
 
-        // Make the balloon visible
-        balloonElement.style.visibility = 'visible';
+            // Start the balloon off-screen at the bottom
+            balloonElement.style.left = `${randomX}px`;
+            balloonElement.style.top = `${screenHeight + 100}px`;
 
-        // Animate the balloon moving from bottom to top
-        const animation = balloonElement.animate([
-            { transform: 'translateY(0)' },  // Start position
-            { transform: `translateY(-${screenHeight + 200}px)` }  // Move up off-screen
-        ], {
-            duration: duration,
-            iterations: 1,
-            easing: 'linear'
-        });
+            // Make the balloon visible
+            balloonElement.style.visibility = 'visible';
 
-        // When the animation finishes, restart the flight
-        animation.onfinish = startFlying;
+            // Animate the balloon moving from bottom to top
+            const animation = balloonElement.animate([
+                { transform: 'translateY(0)' },  // Start position
+                { transform: `translateY(-${screenHeight + 200}px)` }  // Move up off-screen
+            ], {
+                duration: duration,
+                iterations: 1,
+                easing: 'linear'
+            });
 
-        // Store the balloon's animation reference for handling resize events
-        balloons.push({ balloonElement, animation, duration });
+            // When the animation finishes, restart the flight
+            animation.onfinish = startFlying;
+
+            // Store the balloon's animation reference for handling resize events
+            balloons.push({ balloonElement, animation, duration });
+        }, 15000) // The time (ms) How much time after, the balloons start to appear 
     }
 
     startFlying();
@@ -156,7 +167,11 @@ function onResize() {
         animation.cancel();
 
         // Ensure the bird's position is within the new screen dimensions
-        let randomY = Math.random() * (screenHeight - birdElement.offsetHeight);
+        const maxH = screenHeight / 2 - birdElement.offsetHeight;
+        const minH = 50;
+        // Random starting point on Y-axis (vertical)
+        let randomY = Math.random() * (maxH - minH) + minH;
+        
         if (parseInt(birdElement.style.top, 10) > screenHeight) {
             randomY = screenHeight - birdElement.offsetHeight;  // Keep within screen
         }
@@ -224,12 +239,13 @@ window.addEventListener('resize', onResize);
 
 window.onload = function () {
 
-    flyBird(document.getElementById('bird1'), 10000);  // Small bird (far away)
-    flyBird(document.getElementById('bird2'), 12000);  // Medium bird (middle)
-    flyBird(document.getElementById('bird3'), 15000);  // Large bird (nearest)
+    flyBird(document.getElementById('bird1'), 17000);  // Small bird (far away), The number is the time which takes the bird to fly over the screen
+    flyBird(document.getElementById('bird2'), 24000);  // Medium bird (middle)
+
+    // flyBird(document.getElementById('bird3'), 30000);  // Large bird (nearest)
 
     // Start flying balloons with different speeds
-    flyBalloon(document.getElementById('balloon1'), 15000);  // Small balloon
-    flyBalloon(document.getElementById('balloon2'), 10000);  // Medium balloon
-    flyBalloon(document.getElementById('balloon3'), 12000);  // Large balloon
+    flyBalloon(document.getElementById('balloon1'), 60000);  // Small balloon, The number is the time which takes the balloon to fly over the screen
+    flyBalloon(document.getElementById('balloon2'), 40000);  // Medium balloon
+    flyBalloon(document.getElementById('balloon3'), 50000);  // Large balloon
 };

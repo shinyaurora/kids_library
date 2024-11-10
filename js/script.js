@@ -152,7 +152,8 @@ function initCards(cardW, cardH, term, delta) {
     
     $(".custom-card").click(function () {
         let id = $(this).data("id");
-        window.location.href = `book_jacket.php?filterTerm=${term}&${term}=${id}`;
+        let library_id = $(this).data("library");
+        window.location.href = `book_jacket.php?filterTerm=${term}&${term}=${id}&library_id=${library_id}`;
     })
 
 }

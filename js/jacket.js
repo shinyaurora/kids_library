@@ -133,18 +133,19 @@ function initModalEffects() {
             
             let jacketID = $(this).find(".jacket-card").data("id");
             let defaultColor = $(this).find(".jacket-card").data("default");
+            let library_id = $(this).find(".jacket-card").data("library");
             currentJacketID = jacketID;
 
             $.ajax({
                 url: 'fetch_modal_content.php', // URL to fetch content (maybe you already have it.)
                 type: 'POST', // If then, you can get the request value(jacket/boot ID) using $_POST['id]
-                data: { id: jacketID }, // This is the request value
+                data: { id: jacketID, library_id: library_id }, // This is the request value
                 success: function (response) { // If the request is successful and get response,
                     // then update modal body with response
 
                     let detailInfo = JSON.parse(response);
 
-                    $("#thumb-alt-text").html("what is your name?");
+                    $("#thumb-alt-text").html(detailInfo.title);
                     $("#thumb-alt-img").attr("src", `assets/img/item/${defaultColor}.png`);
                     // $("#cover-img").attr("src", "assets/img/jackets/image1.jpeg");
                     $("#cover-img").attr("src", detailInfo.coverImgUrl);
@@ -163,7 +164,7 @@ function initModalEffects() {
                             <table class="table table-bordered">
                                 <thead class="t-head">
                                     <tr>
-                                        <th scope="col">Collection</th>
+                                        <th scope="col">Location</th>
                                         <th scope="col">Call Number</th>
                                         <th scope="col">Status</th>
                                     </tr>
@@ -232,7 +233,7 @@ function initModalEffects() {
 
                         detailInfo.details.author.forEach(author => {
                             detailsHTML += `
-                                <a href="book_jacket.php?filterTerm=author&author=${author}" class="text-decoration-none neg-margin">${author}, author.</a>
+                                <a href="book_jacket.php?filterTerm=author&author=${author}&library_id=${library_id}" class="text-decoration-none neg-margin">${author}</a>
                             `;
                         })
 
@@ -249,7 +250,7 @@ function initModalEffects() {
 
                         detailInfo.details.belongs.forEach(belong => {
                             detailsHTML += `
-                                <a href="book_jacket.php?filterTerm=seriesTitle&seriesTitle=${belong}" class="text-decoration-none neg-margin">${belong}</a>
+                                <a href="book_jacket.php?filterTerm=seriesTitle&seriesTitle=${belong}&library_id=${library_id}" class="text-decoration-none neg-margin">${belong}</a>
                             `;
                         });
                         
@@ -275,7 +276,7 @@ function initModalEffects() {
 
                         detailInfo.details.relates.forEach(relatedItem => {
                             detailsHTML += `
-                                <a href="book_jacket.php?filterTerm=searchBox&searchBox=${relatedItem}" class="text-decoration-none neg-margin">${relatedItem}</a>
+                                <a href="book_jacket.php?filterTerm=searchBox&searchBox=${relatedItem}&library_id=${library_id}" class="text-decoration-none neg-margin">${relatedItem}</a>
                             `;
                         })
 
